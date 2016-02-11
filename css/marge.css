@@ -1,0 +1,53 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_event_list\.scss}line{font-family:\000032}}
+#event_container {
+  display: -webkit-flexbox;
+  display: -moz-flexbox;
+  display: -ms-flexbox;
+  display: -o-flexbox;
+  display: flexbox;
+  display: flex;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_article_layout\.scss}line{font-family:\000035}}
+#article_tab_container {
+  border-bottom: solid;
+  border-width: 3px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_article_layout\.scss}line{font-family:\0000313}}
+#article_tab_container .each_tab_container {
+  margin: 0px;
+  padding-left: 40px;
+  padding-right: 20px;
+  text-align: center;
+  display: table-cell;
+  width: 50%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_article_layout\.scss}line{font-family:\0000322}}
+#article_tab_container .active_tab {
+  background-color: #F0F8FF;
+  border-bottom-color: transparent;
+  margin-bottom: -3px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_article_layout\.scss}line{font-family:\0000328}}
+#article_tab_container .article_tab {
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 8px 8px 0 0;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: large;
+  margin-bottom: -3px;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/ui_format\/app\/sass\/_article_layout\.scss}line{font-family:\0000344}}
+#article_view_container {
+  background-color: #F0F8FF;
+}
+
+/*# sourceMappingURL=marge.css.map */

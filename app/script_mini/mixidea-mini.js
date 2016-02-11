@@ -1,0 +1,1 @@
+"use strict";angular.module("mixideaWebApp",["ngAnimate","ngCookies","ngResource","ngSanitize","ngTouch"]),angular.module("mixideaWebApp").controller("MainCtrl",function(){this.awesomeThings=["HTML5 Boilerplate","AngularJS","Karma"]});
