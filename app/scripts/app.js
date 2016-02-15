@@ -1,4 +1,5 @@
 
+
 'use strict';
 
 /**
@@ -34,6 +35,18 @@ angular.module('mixideaWebApp')
 			"RootView":{
 				templateUrl: 'views/event_layout.html',
 				controller: 'EventFilterCtrl'
+			}
+		}
+	})
+	.state('/event_layout.list', {
+		url:'/list',
+		views:{
+			"event_main":{
+			templateUrl: 'views/event_list.html',
+			controller: 'EventListCtrl'
+			},
+			"event_right":{
+			templateUrl: 'views/right_column_ad.html'
 			}
 		}
 	});
