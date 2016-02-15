@@ -33,7 +33,7 @@ angular.module('mixideaWebApp')
 		url:"/event",
 		views:{
 			"RootView":{
-				templateUrl: 'views/event_layout.html',
+				templateUrl: 'views/event/event_layout.html',
 				controller: 'EventFilterCtrl'
 			}
 		}
@@ -42,13 +42,27 @@ angular.module('mixideaWebApp')
 		url:'/list',
 		views:{
 			"event_main":{
-			templateUrl: 'views/event_list.html',
+			templateUrl: 'views/event/event_list.html',
 			controller: 'EventListCtrl'
 			},
 			"event_right":{
 			templateUrl: 'views/right_column_ad.html'
 			}
 		}
+	})
+	.state('/event_layout.calendar', {
+		url:'/calendar',
+		views:{
+			"event_main":{
+			templateUrl: 'views/event/event_calendar.html',
+			controller: 'EventCalendarCtrl'
+			},
+			"event_right":{
+			templateUrl: 'views/right_column_ad.html'
+			}
+		}
 	});
+
+
 
 }]);

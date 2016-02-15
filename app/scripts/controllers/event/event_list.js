@@ -5,4 +5,6 @@ angular.module('mixideaWebApp')
 
 
   	console.log("event list ");
+  	$scope.name = "list list";
+  	
   });
