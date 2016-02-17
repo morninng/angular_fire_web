@@ -17,15 +17,12 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ]);
-
-
 
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-
-
 
 	$stateProvider
 	.state('/event_layout', {

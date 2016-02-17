@@ -1,0 +1,59 @@
+<div>
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner" >
+      <div class="item active">
+        <div align="center" ng-show="fb_login_show">
+          <br>
+          <div>You can login Mixidea through Facebook</div>
+          <br>
+  			  <div  align="center" style="width:100%">
+  			  	<a href="" ng-click = "login_fb()">
+  			     <img id="fb_logo" src="/images/fb_logo.jpg"></img>
+  			    </a>
+  			  </div>
+        </div>
+        <div align="center" style="width:100%" ng-show="fb_login_show">
+          <br>
+			<input type="button" value="cancel login" ng-click="close_modal()">
+          <br>
+        </div>
+        <div align="center"  ng-show="fb_login_loading_show">
+          <br><br><br>
+          <div class="ball"></div>
+          <div class="ball1"></div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="item">
+        <div align="center">select your language type for your speech transcription.
+          Even if you cannot find appropriate one, please select one.
+        </div>
+        <div>
+          <input type="radio" ng-model="lang_type" value="En-Au">English Australia<br>
+          <input type="radio" ng-model="lang_type" value="En-Ca">English Canada<br>
+          <input type="radio" ng-model="lang_type" value="En-In">English India<br>
+          <input type="radio" ng-model="lang_type" value="En-NZ">English NewZealand<br>
+          <input type="radio" ng-model="lang_type" value="En-SA">English South Africa<br>
+          <input type="radio" ng-model="lang_type" value="En-UK">English United Kingdom<br>
+          <input type="radio" ng-model="lang_type" value="En-US">English United States<br>
+      	</div>
+        <input type="button" value="confirm" ng-click="click_language_select()">
+      </div>
+      <div class="item">
+        <div align="center">input your own introduction such as your special knowledge, interest, or  debate award history.</div>
+        <div align="center">
+          <div>
+            <br>
+            <input type="text" ng-model="user_introduction" style="width:80%; height:150px">
+            <br>
+          </div>
+          <div>
+            <input type="button" value="skip input" ng-click="close_modal()">
+            <input type="button" value="confirm" ng-click="click_introduction_input()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

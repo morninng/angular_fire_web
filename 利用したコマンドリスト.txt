@@ -1,0 +1,14 @@
+
+yo angular mixidea_web
+bower install angular-ui-router --save
+touch .ftppass
+
+ yo angular-ui-router:route event_layout
+
+ yo angular-ui-router:route event_list
+  yo angular-ui-router:route event_calendar
+
+  yo angular:controller Header-User
+  yo angular:controller Login-Form
+
+  bower install angular-bootstrap --save
