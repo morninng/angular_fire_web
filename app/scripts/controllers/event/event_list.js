@@ -1,10 +1,16 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventListCtrl',['$scope', function ($scope) {
+  .controller('EventListCtrl',['$scope',"$firebaseArray" function ($scope, $firebaseArray) {
 
 
-  	console.log("event list ");
-  	$scope.name = "list list";
+    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var event_ref = root_ref.child("event_related/event");
+
+    var event_array = $firebaseArray(event_ref);
   	
+
+
+
+
   }]);

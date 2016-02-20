@@ -15,6 +15,7 @@ touch .ftppass
 
   bower install angular-bootstrap --save
 
+  yo angular:filter DateValueString
 
 
  yo angular-ui-router:route event_context
