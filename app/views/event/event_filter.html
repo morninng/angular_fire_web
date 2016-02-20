@@ -1,0 +1,82 @@
+
+
+<div id="event_filter">
+	<div class="left_select_box only_pc_menu">
+		<span class="event_list_item">view type</span><br>
+		 <a href="/#/event/calendar">calendar view.</a><br>
+		 <a href="/#/event/list">list view</a>
+	</div>
+	<div class="left_select_box">
+		<span class="event_list_item">Filter</span>
+		<div ng-mouseover="date_range_in()" ng-mouseleave="data_range_out()">
+			<p >date range</p>
+			<div  class="animate-show-hide" ng-show="date_range_show">
+		 		From: <input type="text" ng-model="date_from" uib-datepicker-popup="{{format}}"><br>
+		 		To: <input type="text" ng-model="date_to" uib-datepicker-popup="{{format}}">
+		 	</div>
+		 </div>
+		 <div class="pre_exist" ng-hide="date_range_show">from {{date_from | date:'yyyy-MMM-d'}} to {{date_to | date:'yyyy-MMM-d'}}</div>
+
+
+		 <div ng-mouseover="time_range_in()" ng-mouseleave="time_range_out()">
+		 	<p> time range</p>
+		 	<div  class="animate-show-hide" ng-show="time_range_show">
+		 		From:  <uib-timepicker ng-model="time_from" minute-step="15" show-meridian="ismeridian"></uib-timepicker><br>
+		 		To:  <uib-timepicker ng-model="time_to" minute-step="15" show-meridian="ismeridian"></uib-timepicker>
+		 	</div>
+		 </div>
+		 <div class="pre_exist" ng-hide="time_range_show">from {{time_from | date:'HH:mm'}} to {{time_to | date:'HH:mm'}}</div>
+
+
+		 <!-- week day is filtered not by query but after all the date is downloaded it is filtered locally-->
+
+
+		 <div ng-mouseover="week_range_in()" ng-mouseleave="week_range_out()">
+		 	<p> week range </p>
+		 	<div  class="animate-show-hide" ng-show="week_range_show">
+		 		<div ng-repeat="day in weeks">
+		 			<input type="checkbox" ng-change="week_change()" ng-model="day.checked">{{day.name}}<br>
+		 		</div>
+
+<!--
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Sun">Sunday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Mon">Monday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Tud">Tuesday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Wed">Wednesday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Thu">Thursday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Fri">Friday<br>
+				<input type="checkbox" ng-change="week_change()" ng-model="w_Sat">Saturday<br>
+-->
+		 	</div>
+		 </div>
+		 <div class="pre_exist" ng-hide="week_range_show">
+		 	<span ng-hide="week_filtered">All</span>
+		 	<span ng-show="week_filtered">
+		 		<ul class="active_weekday_list">
+		 			<li ng-repeat="day in active_days"> {{day}}</li>
+		 		</ul>
+		 	</span>
+		 </div>
+
+
+<!-- implement these types of filter later
+
+		<p>debate style</p>
+			<input type="checkbox" ng-model="style_NA">NA<br>
+			<input type="checkbox" ng-model="style_Asian">Asian<br>
+			<input type="checkbox" ng-model="style_BP">BP<br>
+		<p>debate skill</p>
+			<input type="checkbox" ng-model="deb_skill_vhigh">Very High<br>
+			<input type="checkbox" ng-model="deb_skill_high">High<br>
+			<input type="checkbox" ng-model="deb_skill_med">Medium<br>
+			<input type="checkbox" ng-model="deb_skill_beg">Beginner<br>
+		<p>language skill</p>
+			<input type="checkbox" ng-model="lang_main">Native<br>
+			<input type="checkbox" ng-model="lang_ESL">ESL<br>
+			<input type="checkbox" ng-model="lang_EFL_Low">EFL high<br>
+			<input type="checkbox" ng-model="lang_EFL_Low">EFL low<br>
+-->
+
+
+	</div>
+</div>

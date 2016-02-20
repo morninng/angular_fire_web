@@ -1,0 +1,137 @@
+
+
+<div id="create_event_container">
+	<h2>Create Event</h2>
+
+
+<div ng-switch="event_create_status">
+
+<span ng-switch-when="input" ng-controller="CreateEventInputCtrl">
+	<div >
+		<form name="event_create_form" novalidate>
+			<div>
+				<p>select date of the event</p>
+				<span class="req_message" ng-show="!event_date">mandatory field</span>
+				<span class="show_selected" ng-show="event_date">{{event_date | date:'fullDate' }}</span>
+
+				<div class="event_create_calendar">
+					<uib-datepicker name="date" ng-model="event_date" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
+				</div>
+			</div>
+
+			<div>
+				<p>decide time of the event</p>
+				<span class="req_message" ng-show="!show_time">mandatory field</span>
+				<span class="show_selected" ng-show="show_time">
+					{{event_time | date:'shortTime' }}
+				</span>
+				<div>
+					<uib-timepicker ng-model="event_time" ng-change="time_changed()"  hour-step="1" minute-step="15" show-meridian="true"></uib-timepicker>
+				</div>
+			</div>
+
+			<div>
+				<p>Abstract context what you want to discuss</p>
+				<span class="req_message" ng-show="event_create_form.context.$error.required">mandatory field</span>
+				<span class="req_message" ng-show="event_create_form.context.$error.maxlength">should be less than {{context_maxchar}} characters</span>
+				<span class="req_message" ng-show="event_create_form.context.$error.minlength">should be greater than than {{context_minchar}} characters</span>
+				<div>
+				<textarea name="context" ng-model="context" ng-minlength="20" ng-maxlength="350" ng-required="true" rows=3 placeholder="economy, politics, religion, recent affair etc"> </textarea>
+				</div>
+			</div>
+			<br>
+
+			<div>
+				<p>style</p>
+				<span class="req_message" ng-show="event_create_form.deb_skill.$error.required">mandatory field</span>
+				<div>
+				<input type="radio" name="style" ng-model="deb_style" value ="NA" ng-required="!deb_style">NA<br>
+				<input type="radio" name="style" ng-model="deb_style" value ="Asian" ng-required="!deb_style">Asian<br>
+				<input type="radio" name="style" ng-model="deb_style" value ="BP" ng-required="!deb_style">BP (not recommended)<br>
+				</div>
+			</div>
+
+			<br>
+			<div>
+				<p>expected debate skill</p>
+				<div>
+					<input type="radio" name="deb_skill" ng-model="exp_deb_skill" value ="Premium">Very High: International tournament level<br>
+					<input type="radio" name="deb_skill" ng-model="exp_deb_skill" value ="High">High: Domestic premium tournament level <br>
+					<input type="radio" name="deb_skill" ng-model="exp_deb_skill" value ="Medium">Medium: one or two year debate experience   <br>
+					<input type="radio" name="deb_skill" ng-model="exp_deb_skill" value ="Beginner"> Beginner: Just started practicing debate <br>
+				</div>
+			</div>
+			<br>
+
+			<div>
+				<p>Expected language skill</p>
+				<div>
+					<input type="radio" ng-model="exp_lang_skil" value ="Native">Native<br>
+					<input type="radio" ng-model="exp_lang_skil" value ="ESL">English as a second language <br>
+					<input type="radio" ng-model="exp_lang_skil" value ="EFL1">English as a foreign language <br>
+					<input type="radio" ng-model="exp_lang_skil" value ="EFL2"> English as a Foreign language with a limited speaking skill <br>
+				</div>
+			</div>
+			<div>
+				<p>motion</p>
+				<div>
+					<input class="event_motion_input" ng-model="motion" name="motion" ng-required="true" type="text" placeholder="motion can be decided later">
+				</div>
+			</div>
+			<p>prerequisit</p>
+			<div>
+				<div>
+				<textarea ng-model="prerequisit" placeholder="reading article, investigate"></textarea>
+				</div>
+			</div>
+
+			<br>
+			<div>
+				<div align="center">
+					<input type="button" ng-click="click_create()" value = "create">
+					<input type="button" ng-click="click_cancel()" value = "cancel">
+				</div>
+			</div>
+
+		</form>
+	<br><br><br>
+
+	</div>
+</span>
+<span ng-switch-when="confirm">
+	<div ng-controller="CreateEventConfirmCtrl">
+		<p>date and time of event</p>
+			{{date_time | date:'yyyy-MM-dd h:mm a Z'}}<br>
+		<p>debate context</p>
+			{{context}}<br>
+		<p>style of debate</p>
+			{{deb_style}}<br>
+		<p>Expected language skill</p>
+			{{exp_lang_skil}}<br>
+		<p>Motionl</p>
+			{{motion}}<br>
+		<p>prerequisit</p>
+			{{prerequisit}}<br>
+
+			<input type="button" ng-click="go_back_edit()" value = "go back to edit">
+			<input type="button" ng-click="click_save()" value = "send & save">
+	</div>
+</span>
+
+<span ng-switch-when="saved">
+  <div>
+    succeed to save event data;
+    you need to Join in the event window, 
+	<input type="button" ng-click="goto_event_window()" value = "close">
+
+  </div>
+</span>
+
+<span ng-switch-when="loading">
+ loading
+</span>
+
+</div>
+
+
+</div>

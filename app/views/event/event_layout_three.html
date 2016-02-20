@@ -1,0 +1,19 @@
+
+<div id="event_list_top" class="container" ng-controller="EventLayoutCtrl">
+	<div class="col-xs-8 col-sm-9 col-md-10 col-lg-11">
+	</div>
+	<div class="col-xs-4 col-sm-3 col-md-2 col-lg-1">
+		<input type="button" ng-click="open_create_event()" class="btn btn-primary" value = "create event">
+	</div>
+</div>
+
+
+<div id="event_container" class="container-fluid">
+	<div ui-view="event_left" class="col-xs-12 col-sm-3 col-md-3 col-lg-2" style="overflow:visible"></div>
+	
+	<div ui-view="event_main" class="col-xs-12 col-sm-9 col-md-5 col-lg-7" style="overflow:visible" ></div>
+
+	<div ui-view="event_right" class="hidden-xs hidden-sm col-md-4 col-lg-3" ></div>
+</div>
+ 
+ 

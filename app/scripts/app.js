@@ -25,19 +25,21 @@ angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
-	.state('/event_layout', {
-
+	.state('/event_layout_three_column', {
 		url:"/event",
 		views:{
 			"RootView":{
-				templateUrl: 'views/event/event_layout.html',
-				controller: 'EventFilterCtrl'
+				templateUrl: 'views/event/event_layout_three.html'
 			}
 		}
 	})
-	.state('/event_layout.list', {
+	.state('/event_layout_three_column.list', {
 		url:'/list',
 		views:{
+			"event_left":{
+			templateUrl: 'views/event/event_filter.html',
+			controller: 'EventFilterCtrl'
+			},
 			"event_main":{
 			templateUrl: 'views/event/event_list.html',
 			controller: 'EventListCtrl'
@@ -47,15 +49,24 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/event_layout.calendar', {
+	.state('/event_layout_two_column', {
+		url:"/event",
+		views:{
+			"RootView":{
+				templateUrl: 'views/event/event_layout_two.html'
+			}
+		}
+	})
+	.state('/event_layout_two_column.calendar', {
 		url:'/calendar',
 		views:{
+			"event_left":{
+			templateUrl: 'views/event/event_filter.html',
+			controller: 'EventFilterCtrl'
+			},
 			"event_main":{
 			templateUrl: 'views/event/event_calendar.html',
 			controller: 'EventCalendarCtrl'
-			},
-			"event_right":{
-			templateUrl: 'views/right_column_ad.html'
 			}
 		}
 	});

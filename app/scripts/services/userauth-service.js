@@ -18,7 +18,8 @@ angular.module('mixideaWebApp')
     last_name: null,
     profile_pict: null,
     lang_type: null,
-    regist_complete:false
+    regist_complete:false,
+    own_uid: null
   };
   var own_user_ref = null;
   var own_user_basic_ref = null;
@@ -33,7 +34,7 @@ angular.module('mixideaWebApp')
 
   var regist_listener_for_registered_user = function(){
     //profile info retrieval and set listener
-    own_user_basic_ref = root_ref.child("users/user_basic/" + self.own_uid);
+    own_user_basic_ref = root_ref.child("users/user_basic/" + user.own_uid);
     own_user_basic_ref.on("value", 
       retrieve_user_info, 
       show_error_log
