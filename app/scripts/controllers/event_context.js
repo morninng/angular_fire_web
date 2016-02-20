@@ -14,7 +14,7 @@ angular.module('mixideaWebApp')
     		$scope.event_obj = snapshot.val();
 	    });
     },function(){
-
+    	
     });
 
 
