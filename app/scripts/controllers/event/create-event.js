@@ -23,6 +23,7 @@ angular.module('mixideaWebApp')
     $scope.date_time = null;
     $scope.motion = null;
     $scope.prerequisit = null;
+    $scope.event_id = null;
 
   	$scope.click_cancel = function(){
   		console.log("cancel button is clicked");
@@ -90,7 +91,7 @@ angular.module('mixideaWebApp')
 
 
 angular.module('mixideaWebApp')
-  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService", function ($scope, UserAuthService) {
+  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout", function ($scope, UserAuthService,$timeout) {
 
     $scope.click_save = function(){
 
@@ -131,16 +132,39 @@ angular.module('mixideaWebApp')
       				console.log("error occured");
       			} else {
       				console.log("succeed to save");
-        			$scope.$parent.$parent.event_create_status = "saved";
+              $scope.$parent.$parent.event_id = event_id;
+              $timeout(function() {
+        			   $scope.$parent.$parent.event_create_status = "saved";
+              });
       			}
       		})
       	}
       });
+      return;
     }
 
+ 
     $scope.go_back_edit = function(){
+
         $scope.$parent.$parent.event_create_status = "input";
+
     }
 
 }]);
+
+
+angular.module('mixideaWebApp')
+  .controller('CreateEventCompleteCtrl',["$scope", "$state", function ($scope,$state) {
+
+
+    $scope.goto_event_window = function(){
+      console.log($scope.$parent.$parent.event_id);
+      var event_id = $scope.$parent.$parent.event_id;
+      $state.go("/eventcontext_layout_two_column.context", {id:event_id});
+      $scope.$parent.$parent.click_cancel();
+      return;
+    }
+
+}]);
+
 

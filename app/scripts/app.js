@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'firebase'
   ]);
 
 angular.module('mixideaWebApp')
@@ -78,7 +79,7 @@ angular.module('mixideaWebApp')
 		}
 	})
 	.state('/eventcontext_layout_two_column.context', {
-		url:'/:id',
+		url:'/context/:id',
 		views:{
 			"eventcontext_main":{
 			templateUrl: 'views/event/event_context.html',

@@ -119,7 +119,7 @@
 </span>
 
 <span ng-switch-when="saved">
-  <div>
+  <div ng-controller="CreateEventCompleteCtrl">
     succeed to save event data;
     you need to Join in the event window, 
 	<input type="button" ng-click="goto_event_window()" value = "close">
