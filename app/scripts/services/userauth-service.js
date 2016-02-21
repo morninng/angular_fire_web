@@ -55,9 +55,13 @@ angular.module('mixideaWebApp')
 
   var retrieve_user_info = function(snapshot){
     var value = snapshot.val();
-    user.first_name = value.first_name;
-    user.last_name = value.last_name;
-    user.profile_pict = value.profile_pict;
+
+    $timeout(function() {
+      user.first_name = value.first_name;
+      user.last_name = value.last_name;
+      user.profile_pict = value.profile_pict;
+    });
+
   }
 
 

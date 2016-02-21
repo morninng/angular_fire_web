@@ -7,4 +7,12 @@ prerequisit: {{event_obj.prerequisit}} <br>
 deb_style: {{event_obj.deb_style}} <br>
 deb_skill: {{event_obj.deb_skill}} <br>
 motion: {{event_obj.motion}} <br>
-date: {{event_obj.date_time | DateValueString}}
+date: {{event_obj.date_time | DateValueString}}<br>
+
+
+<div>
+  <input type="button" ng-click="join_as_audience()" value="join as Audience">
+  <input type="button" ng-click="join_as_debater()" value="join as Debater">
+  <input type="button" ng-click="join_as_AudOrDebater()" value="join either Audience or Debaer">
+
+</div>
