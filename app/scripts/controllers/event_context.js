@@ -71,9 +71,44 @@ angular.module('mixideaWebApp')
         }
       }
 
+      if($scope.participant_debater){
+          $scope.participant_debater.length=0;
+      }
+      var number_debater = 0;
+      if(participant_obj){
+        for(var key in participant_obj.debater){
+          retrieve_userinfo(key, $scope.participant_debater);
+          $scope.total_num++;
+          number_debater++;
+          if(key == $scope.user.own_uid){
+            exist_own = true;
+            own_role = "debater";
+          }
+        }
+      }
+
+      if($scope.participant_aud_or_debater){
+          $scope.participant_aud_or_debater.length=0;
+      }
+      var number_aud_or_debater = 0;
+      if(participant_obj){
+        for(var key in participant_obj.aud_or_debater){
+          retrieve_userinfo(key, $scope.participant_aud_or_debater);
+          $scope.total_num++;
+          number_aud_or_debater++;
+          if(key == $scope.user.own_uid){
+            exist_own = true;
+            own_role = "aud_or_debater";
+          }
+        }
+      }
+
+
       //the end
       $timeout(function() {
         $scope.available_audience = validate("audience", number_audience);
+        $scope.available_debater = validate("debater", number_debater);
+        $scope.available_aud_or_debater = validate("aud_or_debater", number_aud_or_debater);
    
         if(!exist_own){
           $scope.already_joined = false;
@@ -236,10 +271,7 @@ angular.module('mixideaWebApp')
       var new_vlaue = current_num-1;
       return new_vlaue;
     });
-
   }
-
-
 
 
 	$scope.join = function(role){

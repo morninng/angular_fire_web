@@ -18,6 +18,33 @@ date: {{event_obj.date_time | DateValueString}}<br>
 </div>
 
 <div class="participate_control_container">
+  <div id="debater_participate_container">
+	<p>
+		<span class="role_title">debater participant</span>
+		<span ng-show="!available_debater" class="role_title_right role_availability_message" > already full</span>
+		<span ng-show="available_debater && !already_joined" class="role_title_right" >
+			<input type="button" ng-click="join('debater')" value="join as Debater" class="btn btn-success">
+		</span>
+	</p>
+	<div class="participants_container">
+		<div ng-repeat="participant in participant_debater" class="each_participant_container" >
+			<div class="participant_img">
+				<img src={{participant.profile_pict}}>
+			</div>
+			<div class="participant_name">
+				{{participant.first_name}} {{participant.last_name}}
+
+			</div>
+			<div ng-if="participant.id == user.own_uid">
+				<input ng-click="cancel_participante('debater')" value="cancel" type="button">
+			</div>
+		</div>
+
+	</div>
+  </div>
+
+
+  <div id="audience_participate_container">
 	<p>
 		<span class="role_title">audience participant</span>
 		<span ng-show="!available_audience" class="role_title_right role_availability_message" > already full</span>
@@ -40,6 +67,36 @@ date: {{event_obj.date_time | DateValueString}}<br>
 		</div>
 
 	</div>
+  </div>
+
+
+
+  <div id="aud_or_debater_participate_container">
+	<p>
+		<span class="role_title">Either Debater or Audience participant</span>
+		<span ng-show="!available_aud_or_debater" class="role_title_right role_availability_message" > already full</span>
+		<span ng-show="available_aud_or_debater && !already_joined" class="role_title_right" >
+			<input type="button" ng-click="join('aud_or_debater')" value="join as Either Debater or Audience" class="btn btn-success">
+		</span>
+	</p>
+	<div class="participants_container">
+		<div ng-repeat="participant in participant_aud_or_debater" class="each_participant_container" >
+			<div class="participant_img">
+				<img src={{participant.profile_pict}}>
+			</div>
+			<div class="participant_name">
+				{{participant.first_name}} {{participant.last_name}}
+
+			</div>
+			<div ng-if="participant.id == user.own_uid">
+				<input ng-click="cancel_participante('aud_or_debater')" value="cancel" type="button">
+			</div>
+		</div>
+
+	</div>
+  </div>
+
+
 </div>
 
 
