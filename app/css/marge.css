@@ -190,4 +190,76 @@
   display: inline;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\000035}}
+#event_context_container {
+  /*
+  	.participate_button_container{
+  		height:$each_participant_container_height;
+  		
+  		vertical-align: middle;
+  		display: table-cell;
+  		height:50px;
+  		
+  		position: relative;
+  		> div{
+  			position: absolute;
+  			top: 0;
+  			bottom: 0;
+  			margin: auto;
+  		}
+  	}
+  	*/
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\000037}}
+#event_context_container .participants_container {
+  display: -webkit-flexbox;
+  display: -moz-flexbox;
+  display: -ms-flexbox;
+  display: -o-flexbox;
+  display: flexbox;
+  display: flex;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000316}}
+#event_context_container .each_participant_container {
+  background-color: #F0F8FF;
+  margin: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000321}}
+#event_context_container .each_participant_container .participant_img {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000326}}
+#event_context_container .each_participant_container .participant_name {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000330}}
+#event_context_container .each_participant_container img {
+  height: 70px;
+  width: auto;
+  margin-top: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000355}}
+#event_context_container .role_title {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: large;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000360}}
+#event_context_container .role_title_right {
+  margin-left: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000363}}
+#event_context_container .role_availability_message {
+  color: red;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000366}}
+#event_context_container .participate_control_container {
+  padding: 5px;
+}
+
 /*# sourceMappingURL=marge.css.map */

@@ -1,5 +1,4 @@
 
-
 'use strict';
 
 /**
@@ -17,30 +16,30 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap',
+    'firebase'
   ]);
-
-
 
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-
-
 	$stateProvider
-	.state('/event_layout', {
-
+	.state('/eventsearch_layout_three_column', {
 		url:"/event",
 		views:{
 			"RootView":{
-				templateUrl: 'views/event/event_layout.html',
-				controller: 'EventFilterCtrl'
+				templateUrl: 'views/event/event_layout_three.html'
 			}
 		}
 	})
-	.state('/event_layout.list', {
+	.state('/eventsearch_layout_three_column.list', {
 		url:'/list',
 		views:{
+			"event_left":{
+			templateUrl: 'views/event/event_filter.html',
+			controller: 'EventFilterCtrl'
+			},
 			"event_main":{
 			templateUrl: 'views/event/event_list.html',
 			controller: 'EventListCtrl'
@@ -50,39 +49,670 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/event_layout.calendar', {
+	.state('/eventsearch_layout_two_column', {
+		url:"/event",
+		views:{
+			"RootView":{
+				templateUrl: 'views/event/event_layout_two.html'
+			}
+		}
+	})
+	.state('/eventsearch_layout_two_column.calendar', {
 		url:'/calendar',
 		views:{
+			"event_left":{
+			templateUrl: 'views/event/event_filter.html',
+			controller: 'EventFilterCtrl'
+			},
 			"event_main":{
 			templateUrl: 'views/event/event_calendar.html',
 			controller: 'EventCalendarCtrl'
+			}
+		}
+	})
+	.state('/eventcontext_layout_two_column', {
+		url:'/eventcontext',
+		views:{
+			"RootView":{
+				templateUrl: 'views/event/eventcontext_layout.html'
+			}
+		}
+	})
+	.state('/eventcontext_layout_two_column.context', {
+		url:'/context/:id',
+		views:{
+			"eventcontext_main":{
+			templateUrl: 'views/event/event_context.html',
+			controller: 'EventContextCtrl'
 			},
-			"event_right":{
+			"eventcontext_right":{
 			templateUrl: 'views/right_column_ad.html'
 			}
 		}
 	});
 
+}]);
+'use strict';
 
+angular.module('mixideaWebApp')
+  .controller('EventContextCtrl',['$scope', '$stateParams','$timeout', 'UserAuthService', function ($scope, $stateParams,$timeout, UserAuthService) {
+
+    console.log("event context controller called");
+
+  	var event_id = $stateParams.id;
+    var user = UserAuthService;
+  	$scope.event_obj = new Object();
+    $scope.participant_audience = new Array();
+    $scope.participant_debater = new Array();
+    $scope.participant_aud_or_debater = new Array();
+    $scope.available_audience = false;
+    $scope.available_debater = false;
+    $scope.available_aud_or_debater = false;
+    $scope.already_joined = true;
+    var own_role = null;
+
+    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var event_ref = root_ref.child("event_related/event/" + event_id);
+    event_ref.once("value", function(snapshot){
+    	
+      $scope.event_obj = snapshot.val();
+
+    },function(){
+    	alert("fail to load event data");
+    });
+
+
+
+    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var event_participant_ref = root_ref.child("event_related/participants/" + event_id + "/event_role");
+    event_participant_ref.on("value", function(snapshot){
+
+
+      $scope.available_audience = false;
+      $scope.available_debater = false;
+      $scope.available_aud_or_debater = false;
+      $scope.already_joined = true;
+      $scope.total_num = 0;
+
+
+      var participant_obj = snapshot.val();
+      /*
+      if(!participant_obj){
+        $timeout(function() {
+          $scope.available_audience = true;
+          $scope.available_debater = true;
+          $scope.available_aud_or_debater = true;
+          $scope.already_joined = false;
+        });
+        return;
+      }
+*/
+
+
+      retrieve_userinfo_all(participant_obj);
+
+    },function(){
+      alert("fail to load participant data");
+    });
+
+    function retrieve_userinfo_all(participant_obj){
+
+      $scope.total_num = 0;
+      var exist_own = false;
+
+      if($scope.participant_audience){
+        $timeout(function() {
+          $scope.participant_audience.length=0;
+        });
+      }
+      var number_audience = 0;
+      if(participant_obj){
+        for(var key in participant_obj.audience){
+          retrieve_userinfo(key, $scope.participant_audience);
+          $scope.total_num++;
+          number_audience++;
+          if(key == user.own_uid){
+            exist_own = true;
+            own_role = "audience";
+          }
+        }
+      }
+
+      //the end
+      $timeout(function() {
+        $scope.available_audience = validate("audience", number_audience);
+   
+        if(!exist_own){
+          $scope.already_joined = false;
+        }
+      });
+
+    }
+
+
+    function retrieve_userinfo(user_id, user_array){
+      var user_ref =  root_ref.child("users/user_basic/" + user_id);
+      user_ref.once("value", function(snapshot){
+        $timeout(function() {
+          var user_data = snapshot.val();
+          var user_id = snapshot.key();
+          user_data.id = user_id;
+          if(user_id == user.own_uid){
+            user_data.yourself = true;
+          }else{
+            user_data.yourself = false;
+          }
+          user_array.push(user_data);
+        });
+      })
+
+    }
+
+
+
+
+  function validate(role_type, num){
+
+    var style = $scope.event_obj.deb_style;
+    if($scope.total_num>9){
+      return false
+    }
+
+    switch (style){
+      case "NA":
+        switch (role_type){
+          case "debater":
+            if(num<6 ){
+              return true;
+            }
+          break;
+          case "audience":
+            if(num<6){
+              return true;
+            }
+          break;
+          case "aud_or_debater":
+            return true;
+          break;
+        }
+      break;
+      case "Asian":
+      case "BP":
+        switch (role_type){
+          case "debater":
+            if(num<8 ){
+              return true;
+            }
+          break;
+          case "audience":
+            if(num<3){
+              return true;
+            }
+          break;
+          case "aud_or_debater":
+            return true;
+          break;
+        }
+      break;
+    }
+    return false;
+
+  }
+
+
+  function register_user(role_type){
+
+
+    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + user.own_uid);
+    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + user.own_uid);
+
+    full_participant_ref.set(true).then(function(obj){
+
+      return event_participant_user_ref.set(true);
+    }).then(function(){
+      
+      alert("succeed to join");
+    },function(){
+
+      alert("error to save data")
+    })
+  }
+
+  function un_register_user(role_type){
+
+    var role_ref = event_ref.child("participant/" + role_type + "/member/" + user.own_uid);
+    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + user.own_uid);
+
+
+
+    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + user.own_uid);
+    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + user.own_uid);
+
+    
+    event_participant_user_ref.set(null).then(function(obj){
+
+      return full_participant_ref.set(null);
+    }).then(function(){
+      
+      alert("succeed to cancel");
+    },function(){
+
+      alert("error to cancel");
+    })
+  }
+
+  function count_up_participants(role_type){
+
+    if(!user.own_uid){
+      alert("you need to login to join the game");
+      return;
+    }
+
+    var participant_num_ref = event_ref.child("participants_num/" + role_type);
+    participant_num_ref.transaction(function(current_num){
+
+      var valid = true;
+      var new_num = current_num;
+
+      if(current_num){
+        valid = validate(role_type, current_num);
+        if(!valid){
+          return;        
+        }
+      }else{
+        valid = validate(role_type, 0);
+        if(!valid){
+          return;        
+        }
+        new_num = 0;
+      }
+      new_num = new_num + 1;
+
+      return new_num;
+
+    }, function(error, committed, snapshot){
+      console.log("transaction complete");
+      if(error){
+        alert('transaction failed' + error);
+      }else if(!committed){
+        alert("other person may take a role and cannot login more");
+      }else{
+        register_user(role_type);
+      }
+    });
+  }
+
+
+  function count_down_participants(role_type){
+
+
+
+    var participant_num_ref = event_ref.child("participants_num/" + role_type);
+    participant_num_ref.transaction(function(current_num){
+      var new_vlaue = current_num-1;
+      return new_vlaue;
+    });
+
+  }
+
+
+
+
+	$scope.join_as_debater = function(){
+    count_up_participants("debater");
+
+	}
+
+	$scope.join_as_audience = function(){
+    count_up_participants("audience");
+
+	}
+
+	$scope.join_as_AudOrDebater = function(){
+    count_up_participants("aud_or_debater");
+
+	}
+
+  $scope.cancel_participante = function(){
+    if(!own_role){
+      alert("something went wrong, please refresh and try again");
+    }
+    count_down_participants(own_role);
+    un_register_user(own_role);
+  }
 
 }]);
+
 'use strict';
 
 /**
  * @ngdoc function
- * @name mixideaWebApp.controller:MainCtrl
+ * @name mixideaWebApp.controller:HeaderUserCtrl
  * @description
- * # MainCtrl
+ * # HeaderUserCtrl
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' , function ($scope, UserAuthService, $uibModal) {
+
+  	$scope.user = UserAuthService;
+
+  	$scope.logout = function(){
+		$scope.user.logout();
+  	}
+
+
+
+	$scope.show_lgoin_form = function(){
+		console.log("show login form is called");
+		var modalInstance = $uibModal.open({
+			templateUrl: 'views/login_form.html',
+			controller: 'LoginFormCtrl',
+			backdrop:"static",
+			size:'sm'
+		})
+	}
+
+
+
+
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name mixideaWebApp.controller:LoginFormCtrl
+ * @description
+ * # LoginFormCtrl
+ * Controller of the mixideaWebApp
+ */
+angular.module('mixideaWebApp')
+  .controller('LoginFormCtrl',['$scope', 'UserAuthService','$uibModalInstance',  function ($scope, UserAuthService, $uibModalInstance) {
+
+  	console.log("login form control is called");
+  	$scope.fb_login_show = true;
+  	$scope.fb_login_loading_show = false;
+  	$scope.lang_type = null;
+  	$scope.user_introduction = null;
+  	$scope.user = UserAuthService;
+
+
+	var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+
+  	$scope.login_fb = function(){
+  		console.log("facebook login is clicked");
+	  	$scope.fb_login_show = false;
+	  	$scope.fb_login_loading_show = true;
+  		$scope.user.login();
+  	}
+
+	$scope.close_modal = function(){
+		$uibModalInstance.close();
+	}
+
+	$scope.click_introduction_input = function(){
+
+		var user_introduction = $scope.user_introduction;
+		if(!user_introduction){
+			alert("input your self introduction");
+			return;
+		}
+
+		var own_uid = $scope.user.own_uid;
+		var user_ext_lang_type_ref = root_ref.child("users/user_ext/" + own_uid + "/profile/introduction");
+        user_ext_lang_type_ref.set(user_introduction);
+	}
+
+
+	$scope.click_language_select = function(){
+
+		var lang_type = $scope.lang_type;
+		if(!lang_type){
+			alert("select one of the english types");
+			return;
+		}
+		var own_uid = $scope.user.own_uid;
+		var user_ext_lang_type_ref = root_ref.child("users/user_ext/" + own_uid + "/profile/lang_type");
+        user_ext_lang_type_ref.set(lang_type);
+	}
+
+	$scope.$watch('user.regist_complete', function(){
+		if($scope.user.regist_complete == true){
+
+			var myCarousel_element = document.getElementById("myCarousel")
+			var carousel_element = angular.element(myCarousel_element);   
+
+			var own_uid = $scope.user.own_uid;
+        	var user_ext_lang_type_ref = root_ref.child("users/user_ext/" + own_uid + "/profile/lang_type");
+        	var user_ext_introduction_ref = root_ref.child("users/user_ext/" + own_uid + "/profile/introduction");
+        	user_ext_lang_type_ref.on('value', function(snapshot){ 
+        		var lang_type = snapshot.val();
+        		if(lang_type){
+        			console.log(lang_type);
+					user_ext_introduction_ref.on('value', function(snapshot2){
+						var introduction = snapshot2.val();
+						if(introduction){
+							$uibModalInstance.close();
+						}else{
+							carousel_element.carousel(2);
+							carousel_element.carousel('pause');
+
+						}
+					})
+        		}else{
+					carousel_element.carousel(1);
+					carousel_element.carousel('pause');
+        			console.log(lang_type);
+        		}
+        	},function(){
+        		console.log(lang_type);
+        	});
+		}
+  	})
+
+
+
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name mixideaWebApp.controller:CreateEventCtrl
+ * @description
+ * # CreateEventCtrl
+ * Controller of the mixideaWebApp
+ */
+angular.module('mixideaWebApp')
+  .controller('CreateEventCtrl',["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+
+  	console.log("CreateEventCtrl");
+
+    $scope.event_create_status = "input";
+    $scope.event_date = null;
+    $scope.event_time = null;
+    $scope.context = null;
+    $scope.deb_style = null;
+    $scope.exp_deb_skill = null;
+    $scope.exp_lang_skil = null;
+    $scope.event_time = null;
+    $scope.date_time = null;
+    $scope.motion = null;
+    $scope.prerequisit = null;
+    $scope.event_id = null;
+
+  	$scope.click_cancel = function(){
+  		console.log("cancel button is clicked");
+      $uibModalInstance.close();
+	}
+
+}]);
+
+
+angular.module('mixideaWebApp')
+  .controller('CreateEventInputCtrl',["$scope", function ($scope) {
+
+	var current_date = new Date(); 
+	$scope.minDate = current_date.setDate(current_date.getDate()-1);
+	var init_time = new Date(2015,1,1,0,0);
+	$scope.event_time = init_time;
+	$scope.context_maxchar = 350;
+	$scope.context_minchar = 20;
+	$scope.show_time = false;
+
+
+    $scope.click_create = function(){
+
+      console.log("create button is clicked");
+      console.log($scope.$parent.event_create_status);
+
+      if(!$scope.event_date || 
+        !$scope.context || 
+        $scope.context.length > $scope.context_maxchar  || 
+        $scope.context.length < $scope.context_minchar ||
+        !$scope.show_time){
+        alert("input data error");
+        return;
+
+      }else{
+        $scope.$parent.$parent.date_time = new Date();
+        $scope.$parent.$parent.date_time.setYear($scope.event_date.getFullYear());
+        $scope.$parent.$parent.date_time.setMonth($scope.event_date.getMonth());
+        $scope.$parent.$parent.date_time.setDate($scope.event_date.getDate());
+        $scope.$parent.$parent.date_time.setHours($scope.event_time.getHours());
+        $scope.$parent.$parent.date_time.setMinutes($scope.event_time.getMinutes());
+
+        $scope.$parent.$parent.event_date = $scope.event_date;
+        $scope.$parent.$parent.context = $scope.context;
+        $scope.$parent.$parent.deb_style = $scope.deb_style;
+        $scope.$parent.$parent.exp_deb_skill = $scope.exp_deb_skill;
+        $scope.$parent.$parent.exp_lang_skil = $scope.exp_lang_skil;
+        $scope.$parent.$parent.event_time = $scope.event_time;
+        $scope.$parent.$parent.motion = $scope.motion;
+        $scope.$parent.$parent.prerequisit = $scope.prerequisit;
+
+        $scope.$parent.$parent.event_create_status = "confirm";
+
+       // $scope.$emit('status_change', "confirm");
+        return;
+      }
+    }
+
+
+    $scope.time_changed = function(){
+      $scope.show_time = true;
+    }
+
+}]);
+
+
+angular.module('mixideaWebApp')
+  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout", function ($scope, UserAuthService,$timeout) {
+
+    $scope.click_save = function(){
+
+      var event_date = $scope.$parent.$parent.date_time.getTime();
+      var event_time = $scope.$parent.$parent.date_time.getUTCHours() * 60 + 
+      						$scope.$parent.$parent.date_time.getUTCMinutes();
+
+      console.log("sss");
+
+      var event_obj = {
+      	"date_time": event_date,
+      	"time":event_time,
+      	"deb_style": $scope.$parent.$parent.deb_style,
+      	"context": $scope.$parent.$parent.context,
+      	"deb_skill": $scope.$parent.$parent.exp_deb_skill,
+      	"lang_skil": $scope.$parent.$parent.exp_lang_skil,
+      	"motion": $scope.$parent.$parent.motion,
+      	"prerequisit": $scope.$parent.$parent.prerequisit,
+      	"created_by": UserAuthService.own_uid
+      }
+      var game_obj = {
+      	"deb_style": $scope.$parent.$parent.deb_style,
+      	"motion":$scope.$parent.$parent.motion,
+      	"game_status": "introduction",
+      	"type": "debate",
+      }
+
+      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var event_ref = root_ref.child("event_related/event");
+      var event_obj_ref = event_ref.push(event_obj, function(error){
+      	if(error){
+      		console.log("fail to save");
+      	}else {
+      		var event_id = event_obj_ref.key();
+      		var game_ref = root_ref.child("event_related/game/" + event_id);
+      		game_ref.set(game_obj, function(error){
+      			if(error){
+      				console.log("error occured");
+      			} else {
+      				console.log("succeed to save");
+              $scope.$parent.$parent.event_id = event_id;
+              $timeout(function() {
+        			   $scope.$parent.$parent.event_create_status = "saved";
+              });
+      			}
+      		})
+      	}
+      });
+      return;
+    }
+
+ 
+    $scope.go_back_edit = function(){
+
+        $scope.$parent.$parent.event_create_status = "input";
+
+    }
+
+}]);
+
+
+angular.module('mixideaWebApp')
+  .controller('CreateEventCompleteCtrl',["$scope", "$state", function ($scope,$state) {
+
+
+    $scope.goto_event_window = function(){
+      console.log($scope.$parent.$parent.event_id);
+      var event_id = $scope.$parent.$parent.event_id;
+      $state.go("/eventcontext_layout_two_column.context", {id:event_id});
+      $scope.$parent.$parent.click_cancel();
+      return;
+    }
+
+}]);
+
+
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name mixideaWebApp.controller:EventLayoutCtrl
+ * @description
+ * # EventLayoutCtrl
+ * Controller of the mixideaWebApp
+ */
+angular.module('mixideaWebApp')
+  .controller('EventLayoutCtrl',["$scope","$uibModal", function ($scope, $uibModal) {
+
+  	console.log("event layout");
+
+  	$scope.open_create_event = function(){
+  		console.log("create event is clicked");
+  		var modalInstance = $uibModal.open({
+			templateUrl: 'views/event/create_event.html',
+			controller: 'CreateEventCtrl',
+        	backdrop:"static",
+        	size:'lg'
+		});
+  	}
+
+
+
+  }]);
 
 'use strict';
 
@@ -103,15 +733,103 @@ angular.module('mixideaWebApp')
   	console.log("event filter called");
   	$scope.name ="event filter yuta";
 
+
+    $scope.date_range_show = false;
+    $scope.date_from = new Date();
+    $scope.date_to = new Date();
+    $scope.date_to.setMonth( $scope.date_to.getMonth() + 13 );
+    $scope.format = 'yyyy/MM/dd';
+
+
+    $scope.time_from = new Date();
+    $scope.time_from.setHours(0);
+    $scope.time_from.setMinutes(0);
+    $scope.time_to = new Date();
+    $scope.time_to.setHours(23); 
+    $scope.time_to.setMinutes(59); 
+
+    $scope.date_range_in = function(){
+      if(!$scope.date_range_show ){
+        $scope.date_range_show = true;
+      }
+    }
+
+    $scope.data_range_out = function(){
+      if($scope.date_range_show ){
+        $scope.date_range_show = false;
+      }
+    }
+
+    $scope.time_range_in = function(){
+      if(!$scope.time_range_show ){
+        $scope.time_range_show = true;
+      }
+    }
+    $scope.time_range_out = function(){
+      if($scope.time_range_show ){
+        $scope.time_range_show = false;
+      }
+    }
+
+    $scope.week_range_in = function(){
+      if(!$scope.week_range_show ){
+        $scope.week_range_show = true;
+      }
+    }
+    $scope.week_range_out = function(){
+      if($scope.week_range_show ){
+        $scope.week_range_show = false;
+      }
+    }
+
+    $scope.week_change = function(){
+      console.log("aaa");
+      var selected_days = $scope.weeks.filter(function(value){return value.checked});
+       
+      if(selected_days.length !=7){
+        $scope.week_filtered = true;
+        $scope.active_days.length=0;
+        for(var i=0; i< selected_days.length; i++){
+          $scope.active_days.push(selected_days[i].short_name);
+        }
+      }
+
+    }
+
   }]);
 
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventListCtrl',['$scope', function ($scope) {
+  .controller('EventListCtrl',['$scope','EventSearchService', function ($scope, EventSearchService) {
 
 
-  	console.log("event list ");
-  	$scope.name = "list list";
+  	$scope.event_list =  EventSearchService.event_list;
   	
+
+
+
+
   }]);
+
+'use strict';
+
+/**
+ * @ngdoc filter
+ * @name mixideaWebApp.filter:DateValueString
+ * @function
+ * @description
+ * # DateValueString
+ * Filter in the mixideaWebApp.
+ */
+angular.module('mixideaWebApp')
+  .filter('DateValueString', function () {
+    return function (input) {
+
+	    var date = new Date(input);
+	    var date_string = date.toString()
+
+
+      return date_string;
+    };
+  });

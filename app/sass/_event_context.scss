@@ -1,0 +1,71 @@
+
+$each_participant_container_height: 100px;
+$each_participant_imagebox_height: 70px;
+
+#event_context_container{
+
+	.participants_container{
+		display: -webkit-flexbox;
+		display: -moz-flexbox;
+		display: -ms-flexbox;
+		display: -o-flexbox;
+		display: flexbox;
+		display: flex;
+	}
+
+	.each_participant_container{
+		background-color:#F0F8FF;
+		margin:10px;
+		padding-bottom:20px;
+		text-align:center;
+		.participant_img{
+			padding-left:10px;
+			padding-right:10px;
+			padding-top:10px;
+		}
+		.participant_name{
+			margin-left:10px;
+			margin-right:10px;
+		}
+		img{
+			height:$each_participant_imagebox_height;
+			width:auto;
+			margin-top:10px
+		}
+
+	}
+/*
+	.participate_button_container{
+		height:$each_participant_container_height;
+		
+		vertical-align: middle;
+		display: table-cell;
+		height:50px;
+		
+		position: relative;
+		> div{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	}
+	*/
+
+	.role_title{
+		font-weight: bold;
+		text-decoration: underline;
+		font-size:large;
+	}
+	.role_title_right{
+		margin-left:10px;
+	}
+	.role_availability_message{
+		color: red;
+	}
+	.participate_control_container{
+		padding:5px;
+
+	}
+
+}
