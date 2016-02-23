@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('CreateEventCtrl',["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+  .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray", function ($scope, $uibModalInstance, $firebaseArray) {
 
   	console.log("CreateEventCtrl");
 
@@ -24,6 +24,38 @@ angular.module('mixideaWebApp')
     $scope.motion = null;
     $scope.prerequisit = null;
     $scope.event_id = null;
+    $scope.hangout_upload_object = null;
+    $scope.retrieved_hangout_keylist = new Array();
+
+
+    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var hangout_list_ref = root_ref.child("hangout_url");
+    var hangout_query = hangout_list_ref.equalTo(null).limitToFirst(5).once("value", function(query_snapshot){
+      var hangout_retrieved_object = query_snapshot.val();
+      var main_url = null;
+      var teamdiscussion_url_array = new Array();
+      var i=0;
+      for( var key in hangout_retrieved_object){
+        if(i==0){
+          main_url = hangout_retrieved_object[key].url;
+        }else{
+          teamdiscussion_url_array.push(hangout_retrieved_object[key].url);
+        }
+        $scope.retrieved_hangout_keylist.push(key);
+        i++;
+      }
+      if(i !=5){
+        alert("error: please inform it to administrator");
+        $uibModalInstance.close();
+      }
+
+      $scope.hangout_upload_object = {
+        main: main_url,
+        team_discussion:teamdiscussion_url_array
+      }
+    });
+
+
 
   	$scope.click_cancel = function(){
   		console.log("cancel button is clicked");
@@ -138,11 +170,38 @@ angular.module('mixideaWebApp')
               });
       			}
       		})
+          save_hangout_data(event_id);
       	}
       });
       return;
     }
 
+    function save_hangout_data(event_id){
+
+      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id);
+      hangout_ref.set($scope.$parent.$parent.hangout_upload_object, function(error){
+        if(error){
+          alert("error to save event hangout url");
+        } else {
+          console.log("succeed to save");
+        }
+      });
+
+      for(var i=0; i< $scope.retrieved_hangout_keylist.length; i++){
+        disable_hangout_url($scope.retrieved_hangout_keylist[i]);
+      }
+
+    }
+
+    function disable_hangout_url(key){
+
+      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var hangout_status_ref = root_ref.child("hangout_url/" + key + "/status");
+      hangout_status_ref.set(false);
+
+
+    }
  
     $scope.go_back_edit = function(){
 

@@ -112,6 +112,7 @@ angular.module('mixideaWebApp')
    
         if(!exist_own){
           $scope.already_joined = false;
+          show_hangout_button();
         }
       });
     }
@@ -283,5 +284,10 @@ angular.module('mixideaWebApp')
     count_down_participants(role);
     un_register_user(role);
   }
+
+  function show_hangout_button(){
+    
+  }
+
 
 }]);
