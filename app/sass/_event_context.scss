@@ -12,6 +12,14 @@ $each_participant_imagebox_height: 70px;
 		display: flexbox;
 		display: flex;
 	}
+	#event_info{
+		margin:10px;
+		padding: 10px;
+		background-color:#FFFAF0;
+		.category_title{
+			font-weight: bold;
+		}
+	}
 
 	.each_participant_container{
 		background-color:#F0F8FF;
@@ -34,23 +42,6 @@ $each_participant_imagebox_height: 70px;
 		}
 
 	}
-/*
-	.participate_button_container{
-		height:$each_participant_container_height;
-		
-		vertical-align: middle;
-		display: table-cell;
-		height:50px;
-		
-		position: relative;
-		> div{
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
-	}
-	*/
 
 	.role_title{
 		font-weight: bold;
@@ -67,5 +58,21 @@ $each_participant_imagebox_height: 70px;
 		padding:5px;
 
 	}
+	#hangout_button_container{
+		text-align:center;
+		background-color:#FFF8DC;
+		padding:5px;
+	}
+
+	/* The starting CSS styles for the enter animation */
+	.fade_angular.ng-enter {
+		transition:1.0s linear all;
+		opacity:0.2;
+	}
+	/* The finishing CSS styles for the enter animation */
+	.fade_angular.ng-enter.ng-enter-active {
+		opacity:1;
+	}
+
 
 }

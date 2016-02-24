@@ -1,21 +1,28 @@
 
 <div id="event_context_container">
 
-
-motion: {{event_obj.motion}} <br>
-context: {{event_obj.context}} <br>
-prerequisit: {{event_obj.prerequisit}} <br>
-deb_style: {{event_obj.deb_style}} <br>
-deb_skill: {{event_obj.deb_skill}} <br>
-motion: {{event_obj.motion}} <br>
-date: {{event_obj.date_time | DateValueString}}<br>
-
-
-<div>
-  <input type="button" ng-click="join_as_debater()" value="join as Debater">
-  <input type="button" ng-click="join_as_AudOrDebater()" value="join either Audience or Debaer">
-
+<div id="event_info">
+	<span class="category_title">motion:</span> {{event_obj.motion}} <br>
+	<span class="category_title">context:</span>  {{event_obj.context}} <br>
+	<span class="category_title">prerequisit:</span>  {{event_obj.prerequisit}} <br>
+	<span class="category_title">deb_style:</span>  {{event_obj.deb_style}} <br>
+	<span class="category_title">deb_skill:</span>  {{event_obj.deb_skill}} <br>
+	<span class="category_title">motion:</span>  {{event_obj.motion}} <br>
+	<span class="category_title">date:</span> {{event_obj.date_time | DateValueString}}<br>
 </div>
+
+<div id="hangout_button_container" ng-if="show_hangout" class="fade_angular">
+	<div class="hangout_button_area">
+		<div>click here to join a event call</div>
+		<div>
+			<a href={{hangout_url_main}}>
+				<img src= "https://ssl.gstatic.com/s2/oz/images/stars/hangout/1/gplus-hangout-60x230-normal.png">
+			</a>
+		</div>
+		<div> participants only</div>
+	</div>
+</div>
+
 
 <div class="participate_control_container">
   <div id="debater_participate_container">

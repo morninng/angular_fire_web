@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams','$timeout', 'UserAuthService', function ($scope, $stateParams,$timeout, UserAuthService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService', function ($scope, $stateParams,$timeout, UserAuthService) {
 
     console.log("event context controller called");
 
@@ -9,7 +9,9 @@ angular.module('mixideaWebApp')
     var root_ref = new Firebase("https://mixidea.firebaseio.com/");
     $scope.user = UserAuthService;
 
+//////////////////////////////////
 //show basic event info
+/////////////////////////////////
 
   	$scope.event_obj = new Object();
     var event_ref = root_ref.child("event_related/event/" + event_id);
@@ -21,7 +23,10 @@ angular.module('mixideaWebApp')
     	alert("fail to load event data");
     });
 
-///participant management
+
+//////////////////////////////////
+// participant management
+/////////////////////////////////
 
     $scope.participant_audience = new Array();
     $scope.participant_debater = new Array();
@@ -112,6 +117,8 @@ angular.module('mixideaWebApp')
    
         if(!exist_own){
           $scope.already_joined = false;
+          remove_hangout_button();
+        }else{
           show_hangout_button();
         }
       });
@@ -180,7 +187,9 @@ angular.module('mixideaWebApp')
     return false;
 
   }
-
+//////////////////////////////////
+// user join and cancel management
+/////////////////////////////////
 
   function register_user(role_type){
 
@@ -285,8 +294,28 @@ angular.module('mixideaWebApp')
     un_register_user(role);
   }
 
+
+//////////////////////////////////
+// hangout button show and hide management
+/////////////////////////////////
+
+
+  var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+  var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id + "/main");
+  hangout_ref.once("value", function(snapshot){
+    $scope.hangout_url_main = snapshot.val();
+
+  });
+  $scope.show_hangout = false;
+
+
   function show_hangout_button(){
-    
+    $scope.show_hangout = true;
+
+  }
+
+  function remove_hangout_button(){
+    $scope.show_hangout = false;
   }
 
 
