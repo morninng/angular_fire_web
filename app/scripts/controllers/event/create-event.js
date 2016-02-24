@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray", function ($scope, $uibModalInstance, $firebaseArray) {
+  .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray",'MixideaSetting', function ($scope, $uibModalInstance, $firebaseArray, MixideaSetting) {
 
   	console.log("CreateEventCtrl");
 
@@ -28,7 +28,7 @@ angular.module('mixideaWebApp')
     $scope.retrieved_hangout_keylist = new Array();
 
 
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
     var hangout_list_ref = root_ref.child("hangout_url");
     var hangout_query = hangout_list_ref.equalTo(null).limitToFirst(5).once("value", function(query_snapshot){
       var hangout_retrieved_object = query_snapshot.val();
@@ -66,7 +66,7 @@ angular.module('mixideaWebApp')
 
 
 angular.module('mixideaWebApp')
-  .controller('CreateEventInputCtrl',["$scope", function ($scope) {
+  .controller('CreateEventInputCtrl',["$scope",'MixideaSetting', function ($scope,MixideaSetting) {
 
 	var current_date = new Date(); 
 	$scope.minDate = current_date.setDate(current_date.getDate()-1);
@@ -123,7 +123,7 @@ angular.module('mixideaWebApp')
 
 
 angular.module('mixideaWebApp')
-  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout", function ($scope, UserAuthService,$timeout) {
+  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout",'MixideaSetting', function ($scope, UserAuthService,$timeout, MixideaSetting) {
 
     $scope.click_save = function(){
 
@@ -151,7 +151,7 @@ angular.module('mixideaWebApp')
       	"type": "debate",
       }
 
-      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
       var event_ref = root_ref.child("event_related/event");
       var event_obj_ref = event_ref.push(event_obj, function(error){
       	if(error){
@@ -178,7 +178,7 @@ angular.module('mixideaWebApp')
 
     function save_hangout_data(event_id){
 
-      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
       var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id);
       hangout_ref.set($scope.$parent.$parent.hangout_upload_object, function(error){
         if(error){
@@ -196,7 +196,7 @@ angular.module('mixideaWebApp')
 
     function disable_hangout_url(key){
 
-      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
       var hangout_status_ref = root_ref.child("hangout_url/" + key + "/status");
       hangout_status_ref.set(false);
 

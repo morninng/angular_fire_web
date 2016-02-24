@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('LoginFormCtrl',['$scope', 'UserAuthService','$uibModalInstance',  function ($scope, UserAuthService, $uibModalInstance) {
+  .controller('LoginFormCtrl',['$scope', 'UserAuthService','$uibModalInstance', 'MixideaSetting', function ($scope, UserAuthService, $uibModalInstance, MixideaSetting) {
 
   	console.log("login form control is called");
   	$scope.fb_login_show = true;
@@ -18,7 +18,7 @@ angular.module('mixideaWebApp')
   	$scope.user = UserAuthService;
 
 
-	var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+	var root_ref = new Firebase(MixideaSetting.firebase_url);
 
   	$scope.login_fb = function(){
   		console.log("facebook login is clicked");

@@ -8,7 +8,7 @@
  * Factory in the mixideaWebApp.
  */
 angular.module('mixideaWebApp')
-  .factory('UserAuthService',['$timeout', function ($timeout) {
+  .factory('UserAuthService',['$timeout','MixideaSetting', function ($timeout, MixideaSetting) {
 
   console.log("UserAuthService called");
 
@@ -26,7 +26,7 @@ angular.module('mixideaWebApp')
   var user_ext_profile_ref = null;
 
 
-  var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+  var root_ref = new Firebase(MixideaSetting.firebase_url);
 
 
 //when user is loged in, multiple listener start,

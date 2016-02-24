@@ -24,6 +24,7 @@ angular
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
+
 	$stateProvider
 	.state('/eventsearch_layout_three_column', {
 		url:"/event",

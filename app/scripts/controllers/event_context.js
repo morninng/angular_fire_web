@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService', function ($scope, $stateParams,$timeout, UserAuthService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting) {
 
     console.log("event context controller called");
 
   	var event_id = $stateParams.id;
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
     $scope.user = UserAuthService;
 
 //////////////////////////////////
@@ -38,7 +38,7 @@ angular.module('mixideaWebApp')
     var own_role = null;
 
 
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
     var event_participant_ref = root_ref.child("event_related/participants/" + event_id + "/event_role");
     event_participant_ref.on("value", function(snapshot){
 
@@ -300,7 +300,7 @@ angular.module('mixideaWebApp')
 /////////////////////////////////
 
 
-  var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+  var root_ref = new Firebase(MixideaSetting.firebase_url);
   var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id + "/main");
   hangout_ref.once("value", function(snapshot){
     $scope.hangout_url_main = snapshot.val();

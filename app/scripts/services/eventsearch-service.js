@@ -8,14 +8,14 @@
  * Factory in the mixideaWebApp.
  */
 angular.module('mixideaWebApp')
-  .factory('EventSearchService',["$firebaseArray","$timeout", function ($firebaseArray,$timeout) {
+  .factory('EventSearchService',["$firebaseArray","$timeout",'MixideaSetting', function ($firebaseArray,$timeout,MixideaSetting) {
 
     var event_search = {
       event_list: []
     }
     var all_event_list = [];
 
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
     var event_ref = root_ref.child("event_related/event");
 
 

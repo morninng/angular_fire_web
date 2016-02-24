@@ -21,3 +21,4 @@ touch .ftppass
  yo angular-ui-router:route event_context
 
  yo angular:factory EventSearch-Service
+ yo angular:constant MixideaInitial-Setting
