@@ -9,7 +9,6 @@
  */
 angular.module('mixideaWebApp')
   .constant('MixideaSetting', {
-  	hangout_main_appid: 'aaaaa',
-  	firebase_url: "https://mixidea.firebaseio.com/",
-  	parameter:global_param
+  	hangout_appid: '211272797315',
+  	firebase_url: "https://mixidea.firebaseio.com/"
   });

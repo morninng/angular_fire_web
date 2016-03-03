@@ -24,6 +24,7 @@ angular
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
+
 	$stateProvider
 	.state('/eventsearch_layout_three_column', {
 		url:"/event",
@@ -95,23 +96,19 @@ angular.module('mixideaWebApp')
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams','$timeout', 'UserAuthService', function ($scope, $stateParams,$timeout, UserAuthService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting) {
 
     console.log("event context controller called");
 
   	var event_id = $stateParams.id;
-    var user = UserAuthService;
-  	$scope.event_obj = new Object();
-    $scope.participant_audience = new Array();
-    $scope.participant_debater = new Array();
-    $scope.participant_aud_or_debater = new Array();
-    $scope.available_audience = false;
-    $scope.available_debater = false;
-    $scope.available_aud_or_debater = false;
-    $scope.already_joined = true;
-    var own_role = null;
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
+    $scope.user = UserAuthService;
 
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+//////////////////////////////////
+//show basic event info
+/////////////////////////////////
+
+  	$scope.event_obj = new Object();
     var event_ref = root_ref.child("event_related/event/" + event_id);
     event_ref.once("value", function(snapshot){
     	
@@ -122,11 +119,23 @@ angular.module('mixideaWebApp')
     });
 
 
+//////////////////////////////////
+// participant management
+/////////////////////////////////
 
-    var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+    $scope.participant_audience = new Array();
+    $scope.participant_debater = new Array();
+    $scope.participant_aud_or_debater = new Array();
+    $scope.available_audience = false;
+    $scope.available_debater = false;
+    $scope.available_aud_or_debater = false;
+    $scope.already_joined = true;
+    var own_role = null;
+
+
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
     var event_participant_ref = root_ref.child("event_related/participants/" + event_id + "/event_role");
     event_participant_ref.on("value", function(snapshot){
-
 
       $scope.available_audience = false;
       $scope.available_debater = false;
@@ -134,21 +143,7 @@ angular.module('mixideaWebApp')
       $scope.already_joined = true;
       $scope.total_num = 0;
 
-
       var participant_obj = snapshot.val();
-      /*
-      if(!participant_obj){
-        $timeout(function() {
-          $scope.available_audience = true;
-          $scope.available_debater = true;
-          $scope.available_aud_or_debater = true;
-          $scope.already_joined = false;
-        });
-        return;
-      }
-*/
-
-
       retrieve_userinfo_all(participant_obj);
 
     },function(){
@@ -161,9 +156,7 @@ angular.module('mixideaWebApp')
       var exist_own = false;
 
       if($scope.participant_audience){
-        $timeout(function() {
           $scope.participant_audience.length=0;
-        });
       }
       var number_audience = 0;
       if(participant_obj){
@@ -171,22 +164,59 @@ angular.module('mixideaWebApp')
           retrieve_userinfo(key, $scope.participant_audience);
           $scope.total_num++;
           number_audience++;
-          if(key == user.own_uid){
+          if(key == $scope.user.own_uid){
             exist_own = true;
             own_role = "audience";
           }
         }
       }
 
+      if($scope.participant_debater){
+          $scope.participant_debater.length=0;
+      }
+      var number_debater = 0;
+      if(participant_obj){
+        for(var key in participant_obj.debater){
+          retrieve_userinfo(key, $scope.participant_debater);
+          $scope.total_num++;
+          number_debater++;
+          if(key == $scope.user.own_uid){
+            exist_own = true;
+            own_role = "debater";
+          }
+        }
+      }
+
+      if($scope.participant_aud_or_debater){
+          $scope.participant_aud_or_debater.length=0;
+      }
+      var number_aud_or_debater = 0;
+      if(participant_obj){
+        for(var key in participant_obj.aud_or_debater){
+          retrieve_userinfo(key, $scope.participant_aud_or_debater);
+          $scope.total_num++;
+          number_aud_or_debater++;
+          if(key == $scope.user.own_uid){
+            exist_own = true;
+            own_role = "aud_or_debater";
+          }
+        }
+      }
+
+
       //the end
       $timeout(function() {
         $scope.available_audience = validate("audience", number_audience);
+        $scope.available_debater = validate("debater", number_debater);
+        $scope.available_aud_or_debater = validate("aud_or_debater", number_aud_or_debater);
    
         if(!exist_own){
           $scope.already_joined = false;
+          remove_hangout_button();
+        }else{
+          show_hangout_button();
         }
       });
-
     }
 
 
@@ -197,15 +227,9 @@ angular.module('mixideaWebApp')
           var user_data = snapshot.val();
           var user_id = snapshot.key();
           user_data.id = user_id;
-          if(user_id == user.own_uid){
-            user_data.yourself = true;
-          }else{
-            user_data.yourself = false;
-          }
           user_array.push(user_data);
         });
       })
-
     }
 
 
@@ -258,13 +282,15 @@ angular.module('mixideaWebApp')
     return false;
 
   }
-
+//////////////////////////////////
+// user join and cancel management
+/////////////////////////////////
 
   function register_user(role_type){
 
 
-    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + user.own_uid);
-    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + user.own_uid);
+    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
+    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + $scope.user.own_uid);
 
     full_participant_ref.set(true).then(function(obj){
 
@@ -280,13 +306,13 @@ angular.module('mixideaWebApp')
 
   function un_register_user(role_type){
 
-    var role_ref = event_ref.child("participant/" + role_type + "/member/" + user.own_uid);
-    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + user.own_uid);
+    var role_ref = event_ref.child("participant/" + role_type + "/member/" + $scope.user.own_uid);
+    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + $scope.user.own_uid);
 
 
 
-    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + user.own_uid);
-    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + user.own_uid);
+    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
+    var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + $scope.user.own_uid);
 
     
     event_participant_user_ref.set(null).then(function(obj){
@@ -303,7 +329,7 @@ angular.module('mixideaWebApp')
 
   function count_up_participants(role_type){
 
-    if(!user.own_uid){
+    if(!$scope.user.own_uid){
       alert("you need to login to join the game");
       return;
     }
@@ -345,41 +371,60 @@ angular.module('mixideaWebApp')
 
   function count_down_participants(role_type){
 
-
-
     var participant_num_ref = event_ref.child("participants_num/" + role_type);
     participant_num_ref.transaction(function(current_num){
       var new_vlaue = current_num-1;
       return new_vlaue;
     });
-
   }
 
 
-
-
-	$scope.join_as_debater = function(){
-    count_up_participants("debater");
-
+	$scope.join = function(role){
+    count_up_participants(role);
 	}
 
-	$scope.join_as_audience = function(){
-    count_up_participants("audience");
 
-	}
-
-	$scope.join_as_AudOrDebater = function(){
-    count_up_participants("aud_or_debater");
-
-	}
-
-  $scope.cancel_participante = function(){
-    if(!own_role){
-      alert("something went wrong, please refresh and try again");
-    }
-    count_down_participants(own_role);
-    un_register_user(own_role);
+  $scope.cancel_participante = function(role){
+    count_down_participants(role);
+    un_register_user(role);
   }
+
+
+//////////////////////////////////
+// hangout button show and hide management
+/////////////////////////////////
+
+  $scope.hangout_link_str = null;
+  $scope.show_hangout = false;
+
+
+  var root_ref = new Firebase(MixideaSetting.firebase_url);
+  var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id + "/main");
+  hangout_ref.once("value", function(snapshot){
+    var hangout_url = snapshot.val();
+
+    var hangout_gid = "?gid=";
+    var hangout_appid = MixideaSetting.hangout_appid;
+    var hangout_query_key = "&gd=";
+    var first_query_value = $scope.user.own_uid;;
+    var second_query_value = event_id;
+    var third_query_value = "main";
+    $scope.hangout_link_str= hangout_url + hangout_gid + 
+            hangout_appid + hangout_query_key 
+         + first_query_value + "^" + second_query_value + "^" + third_query_value;
+
+  });
+
+
+  function show_hangout_button(){
+    $scope.show_hangout = true;
+
+  }
+
+  function remove_hangout_button(){
+    $scope.show_hangout = false;
+  }
+
 
 }]);
 
@@ -428,7 +473,7 @@ angular.module('mixideaWebApp')
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('LoginFormCtrl',['$scope', 'UserAuthService','$uibModalInstance',  function ($scope, UserAuthService, $uibModalInstance) {
+  .controller('LoginFormCtrl',['$scope', 'UserAuthService','$uibModalInstance', 'MixideaSetting', function ($scope, UserAuthService, $uibModalInstance, MixideaSetting) {
 
   	console.log("login form control is called");
   	$scope.fb_login_show = true;
@@ -438,7 +483,7 @@ angular.module('mixideaWebApp')
   	$scope.user = UserAuthService;
 
 
-	var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+	var root_ref = new Firebase(MixideaSetting.firebase_url);
 
   	$scope.login_fb = function(){
   		console.log("facebook login is clicked");
@@ -525,7 +570,7 @@ angular.module('mixideaWebApp')
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('CreateEventCtrl',["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
+  .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray",'MixideaSetting', function ($scope, $uibModalInstance, $firebaseArray, MixideaSetting) {
 
   	console.log("CreateEventCtrl");
 
@@ -541,6 +586,38 @@ angular.module('mixideaWebApp')
     $scope.motion = null;
     $scope.prerequisit = null;
     $scope.event_id = null;
+    $scope.hangout_upload_object = null;
+    $scope.retrieved_hangout_keylist = new Array();
+
+
+    var root_ref = new Firebase(MixideaSetting.firebase_url);
+    var hangout_list_ref = root_ref.child("hangout_url");
+    var hangout_query = hangout_list_ref.equalTo(null).limitToFirst(5).once("value", function(query_snapshot){
+      var hangout_retrieved_object = query_snapshot.val();
+      var main_url = null;
+      var teamdiscussion_url_array = new Array();
+      var i=0;
+      for( var key in hangout_retrieved_object){
+        if(i==0){
+          main_url = hangout_retrieved_object[key].url;
+        }else{
+          teamdiscussion_url_array.push(hangout_retrieved_object[key].url);
+        }
+        $scope.retrieved_hangout_keylist.push(key);
+        i++;
+      }
+      if(i !=5){
+        alert("error: please inform it to administrator");
+        $uibModalInstance.close();
+      }
+
+      $scope.hangout_upload_object = {
+        main: main_url,
+        team_discussion:teamdiscussion_url_array
+      }
+    });
+
+
 
   	$scope.click_cancel = function(){
   		console.log("cancel button is clicked");
@@ -551,7 +628,7 @@ angular.module('mixideaWebApp')
 
 
 angular.module('mixideaWebApp')
-  .controller('CreateEventInputCtrl',["$scope", function ($scope) {
+  .controller('CreateEventInputCtrl',["$scope",'MixideaSetting', function ($scope,MixideaSetting) {
 
 	var current_date = new Date(); 
 	$scope.minDate = current_date.setDate(current_date.getDate()-1);
@@ -608,7 +685,7 @@ angular.module('mixideaWebApp')
 
 
 angular.module('mixideaWebApp')
-  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout", function ($scope, UserAuthService,$timeout) {
+  .controller('CreateEventConfirmCtrl',["$scope", "UserAuthService","$timeout",'MixideaSetting', function ($scope, UserAuthService,$timeout, MixideaSetting) {
 
     $scope.click_save = function(){
 
@@ -636,7 +713,7 @@ angular.module('mixideaWebApp')
       	"type": "debate",
       }
 
-      var root_ref = new Firebase("https://mixidea.firebaseio.com/");
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
       var event_ref = root_ref.child("event_related/event");
       var event_obj_ref = event_ref.push(event_obj, function(error){
       	if(error){
@@ -655,11 +732,38 @@ angular.module('mixideaWebApp')
               });
       			}
       		})
+          save_hangout_data(event_id);
       	}
       });
       return;
     }
 
+    function save_hangout_data(event_id){
+
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
+      var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id);
+      hangout_ref.set($scope.$parent.$parent.hangout_upload_object, function(error){
+        if(error){
+          alert("error to save event hangout url");
+        } else {
+          console.log("succeed to save");
+        }
+      });
+
+      for(var i=0; i< $scope.retrieved_hangout_keylist.length; i++){
+        disable_hangout_url($scope.retrieved_hangout_keylist[i]);
+      }
+
+    }
+
+    function disable_hangout_url(key){
+
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
+      var hangout_status_ref = root_ref.child("hangout_url/" + key + "/status");
+      hangout_status_ref.set(false);
+
+
+    }
  
     $scope.go_back_edit = function(){
 

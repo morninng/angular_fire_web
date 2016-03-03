@@ -299,14 +299,26 @@ angular.module('mixideaWebApp')
 // hangout button show and hide management
 /////////////////////////////////
 
+  $scope.hangout_link_str = null;
+  $scope.show_hangout = false;
+
 
   var root_ref = new Firebase(MixideaSetting.firebase_url);
   var hangout_ref = root_ref.child("event_related/game_hangout_obj_list/" + event_id + "/main");
   hangout_ref.once("value", function(snapshot){
-    $scope.hangout_url_main = snapshot.val();
+    var hangout_url = snapshot.val();
+
+    var hangout_gid = "?gid=";
+    var hangout_appid = MixideaSetting.hangout_appid;
+    var hangout_query_key = "&gd=";
+    var first_query_value = $scope.user.own_uid;;
+    var second_query_value = event_id;
+    var third_query_value = "main";
+    $scope.hangout_link_str= hangout_url + hangout_gid + 
+            hangout_appid + hangout_query_key 
+         + first_query_value + "^" + second_query_value + "^" + third_query_value;
 
   });
-  $scope.show_hangout = false;
 
 
   function show_hangout_button(){
