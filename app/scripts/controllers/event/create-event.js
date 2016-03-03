@@ -7,10 +7,10 @@
  * # CreateEventCtrl
  * Controller of the mixideaWebApp
  */
+
 angular.module('mixideaWebApp')
   .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray",'MixideaSetting', function ($scope, $uibModalInstance, $firebaseArray, MixideaSetting) {
 
-  	console.log("CreateEventCtrl");
 
     $scope.event_create_status = "input";
     $scope.event_date = null;
@@ -55,12 +55,10 @@ angular.module('mixideaWebApp')
       }
     });
 
-
-
   	$scope.click_cancel = function(){
   		console.log("cancel button is clicked");
       $uibModalInstance.close();
-	}
+	  }
 
 }]);
 
@@ -114,7 +112,6 @@ angular.module('mixideaWebApp')
       }
     }
 
-
     $scope.time_changed = function(){
       $scope.show_time = true;
     }
@@ -149,12 +146,10 @@ angular.module('mixideaWebApp')
       	if(error){
       		console.log("fail to save");
       	}else {
-
       		var event_id = event_obj_ref.key();
           save_game_data(event_id);
           save_arguments_data(event_id);
           save_hangout_data(event_id);
-
       	}
       });
       return;
@@ -184,38 +179,37 @@ angular.module('mixideaWebApp')
       });
     }
 
+
     function save_arguments_data(event_id){
 
 
       var root_ref = new Firebase(MixideaSetting.firebase_url);
       var argument_arr = [
-        {style:"NA",team:"Gov"},
-        {style:"NA",team:"Gov"},
-        {style:"NA",team:"Opp"},
-        {style:"NA",team:"Opp"},
-        {style:"Asian",team:"Prop"},
-        {style:"Asian",team:"Prop"},
-        {style:"Asian",team:"Opp"},
-        {style:"Asian",team:"Opp"},
-        {style:"BP",team:"OG"},
-        {style:"BP",team:"OG"},
-        {style:"BP",team:"OO"},
-        {style:"BP",team:"OO"},
-        {style:"BP",team:"CG"},
-        {style:"BP",team:"CG"},
-        {style:"BP",team:"CO"},
-        {style:"BP",team:"CO"},
+        {style:"NA",team:"Gov",type:"def_intro"},
+        {style:"NA",team:"Gov",type:"arguments"},
+        {style:"NA",team:"Gov",type:"arguments"},
+        {style:"NA",team:"Opp",type:"arguments"},
+        {style:"NA",team:"Opp",type:"arguments"},
+        {style:"Asian",team:"Prop",type:"def_intro"},
+        {style:"Asian",team:"Prop",type:"arguments"},
+        {style:"Asian",team:"Prop",type:"arguments"},
+        {style:"Asian",team:"Opp",type:"arguments"},
+        {style:"Asian",team:"Opp",type:"arguments"},
+        {style:"BP",team:"OG",type:"def_intro"},
+        {style:"BP",team:"OG",type:"arguments"},
+        {style:"BP",team:"OG",type:"arguments"},
+        {style:"BP",team:"OO",type:"arguments"},
+        {style:"BP",team:"OO",type:"arguments"},
+        {style:"BP",team:"CG",type:"arguments"},
+        {style:"BP",team:"CG",type:"arguments"},
+        {style:"BP",team:"CO",type:"arguments"},
+        {style:"BP",team:"CO",type:"arguments"},
       ];
       var arguments_ref = root_ref.child("event_related/Article_Context/" + event_id + "/");
       var dummy_content = {dummy:true};
-      var NA_Gov_intro = arguments_ref.child("NA/Gov/def_intro");
-      NA_Gov_intro.set(dummy_content);
-      var Asian_Prop_intro = arguments_ref.child("Asian/Prop/def_intro");
-      Asian_Prop_intro.set(dummy_content);
-      var BP_OG_intro = arguments_ref.child("BP/OG/def_intro");
-      BP_OG_intro.set(dummy_content);
+
       for(var i=0; i< argument_arr.length; i++){
-        var argument_content_ref = arguments_ref.child(argument_arr[i].style + "/" + argument_arr[i].team + "/arguments");
+        var argument_content_ref = arguments_ref.child(argument_arr[i].style + "/" + argument_arr[i].team + "/"+ argument_arr[i].type );
         argument_content_ref.push(dummy_content);
       }
     }
@@ -251,6 +245,8 @@ angular.module('mixideaWebApp')
     }
 
 }]);
+
+
 
 
 angular.module('mixideaWebApp')
