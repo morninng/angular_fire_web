@@ -569,10 +569,10 @@ angular.module('mixideaWebApp')
  * # CreateEventCtrl
  * Controller of the mixideaWebApp
  */
+
 angular.module('mixideaWebApp')
   .controller('CreateEventCtrl',["$scope", "$uibModalInstance","$firebaseArray",'MixideaSetting', function ($scope, $uibModalInstance, $firebaseArray, MixideaSetting) {
 
-  	console.log("CreateEventCtrl");
 
     $scope.event_create_status = "input";
     $scope.event_date = null;
@@ -617,12 +617,10 @@ angular.module('mixideaWebApp')
       }
     });
 
-
-
   	$scope.click_cancel = function(){
   		console.log("cancel button is clicked");
       $uibModalInstance.close();
-	}
+	  }
 
 }]);
 
@@ -676,7 +674,6 @@ angular.module('mixideaWebApp')
       }
     }
 
-
     $scope.time_changed = function(){
       $scope.show_time = true;
     }
@@ -693,8 +690,6 @@ angular.module('mixideaWebApp')
       var event_time = $scope.$parent.$parent.date_time.getUTCHours() * 60 + 
       						$scope.$parent.$parent.date_time.getUTCMinutes();
 
-      console.log("sss");
-
       var event_obj = {
       	"date_time": event_date,
       	"time":event_time,
@@ -706,12 +701,6 @@ angular.module('mixideaWebApp')
       	"prerequisit": $scope.$parent.$parent.prerequisit,
       	"created_by": UserAuthService.own_uid
       }
-      var game_obj = {
-      	"deb_style": $scope.$parent.$parent.deb_style,
-      	"motion":$scope.$parent.$parent.motion,
-      	"game_status": "introduction",
-      	"type": "debate",
-      }
 
       var root_ref = new Firebase(MixideaSetting.firebase_url);
       var event_ref = root_ref.child("event_related/event");
@@ -720,22 +709,71 @@ angular.module('mixideaWebApp')
       		console.log("fail to save");
       	}else {
       		var event_id = event_obj_ref.key();
-      		var game_ref = root_ref.child("event_related/game/" + event_id);
-      		game_ref.set(game_obj, function(error){
-      			if(error){
-      				console.log("error occured");
-      			} else {
-      				console.log("succeed to save");
-              $scope.$parent.$parent.event_id = event_id;
-              $timeout(function() {
-        			   $scope.$parent.$parent.event_create_status = "saved";
-              });
-      			}
-      		})
+          save_game_data(event_id);
+          save_arguments_data(event_id);
           save_hangout_data(event_id);
       	}
       });
       return;
+    }
+
+    function save_game_data(event_id){
+
+      var game_obj = {
+        "deb_style": $scope.$parent.$parent.deb_style,
+        "motion":$scope.$parent.$parent.motion,
+        "game_status": "introduction",
+        "type": "debate",
+      }
+
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
+      var game_ref = root_ref.child("event_related/game/" + event_id);
+      game_ref.set(game_obj, function(error){
+        if(error){
+          console.log("error occured");
+        } else {
+          console.log("succeed to save");
+          $scope.$parent.$parent.event_id = event_id;
+          $timeout(function() {
+             $scope.$parent.$parent.event_create_status = "saved";
+          });
+        }
+      });
+    }
+
+
+    function save_arguments_data(event_id){
+
+
+      var root_ref = new Firebase(MixideaSetting.firebase_url);
+      var argument_arr = [
+        {style:"NA",team:"Gov",type:"def_intro"},
+        {style:"NA",team:"Gov",type:"arguments"},
+        {style:"NA",team:"Gov",type:"arguments"},
+        {style:"NA",team:"Opp",type:"arguments"},
+        {style:"NA",team:"Opp",type:"arguments"},
+        {style:"Asian",team:"Prop",type:"def_intro"},
+        {style:"Asian",team:"Prop",type:"arguments"},
+        {style:"Asian",team:"Prop",type:"arguments"},
+        {style:"Asian",team:"Opp",type:"arguments"},
+        {style:"Asian",team:"Opp",type:"arguments"},
+        {style:"BP",team:"OG",type:"def_intro"},
+        {style:"BP",team:"OG",type:"arguments"},
+        {style:"BP",team:"OG",type:"arguments"},
+        {style:"BP",team:"OO",type:"arguments"},
+        {style:"BP",team:"OO",type:"arguments"},
+        {style:"BP",team:"CG",type:"arguments"},
+        {style:"BP",team:"CG",type:"arguments"},
+        {style:"BP",team:"CO",type:"arguments"},
+        {style:"BP",team:"CO",type:"arguments"},
+      ];
+      var arguments_ref = root_ref.child("event_related/Article_Context/" + event_id + "/identifier/");
+      var dummy_content = {dummy:true};
+
+      for(var i=0; i< argument_arr.length; i++){
+        var argument_content_ref = arguments_ref.child(argument_arr[i].style + "/" + argument_arr[i].team + "/"+ argument_arr[i].type );
+        argument_content_ref.push(dummy_content);
+      }
     }
 
     function save_hangout_data(event_id){
@@ -762,16 +800,15 @@ angular.module('mixideaWebApp')
       var hangout_status_ref = root_ref.child("hangout_url/" + key + "/status");
       hangout_status_ref.set(false);
 
-
     }
  
     $scope.go_back_edit = function(){
-
         $scope.$parent.$parent.event_create_status = "input";
-
     }
 
 }]);
+
+
 
 
 angular.module('mixideaWebApp')

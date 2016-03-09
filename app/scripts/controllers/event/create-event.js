@@ -205,7 +205,7 @@ angular.module('mixideaWebApp')
         {style:"BP",team:"CO",type:"arguments"},
         {style:"BP",team:"CO",type:"arguments"},
       ];
-      var arguments_ref = root_ref.child("event_related/Article_Context/" + event_id + "/");
+      var arguments_ref = root_ref.child("event_related/Article_Context/" + event_id + "/identifier/");
       var dummy_content = {dummy:true};
 
       for(var i=0; i< argument_arr.length; i++){
