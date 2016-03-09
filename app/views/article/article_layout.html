@@ -1,0 +1,22 @@
+
+<div id="article_top_link" class="container">
+	<div class="article_title_element col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div class="article_title_element_inner">
+		<a ui-sref="/article.audio_transcript({id:article_id})">Audio and Transcription</a>
+		</div>
+	</div>
+	<div class="article_title_element col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div class="article_title_element_inner">
+		<a ui-sref="/article.written_description({id:article_id})">Write Description</a>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	
+	<div ui-view="article_main" class="col-xs-12 col-sm-12 col-md-9 col-lg-9"></div>
+
+	<div ui-view="article_right" class="hidden-xs hidden-sm col-md-3 col-lg-3" ></div>
+</div>
+ 

@@ -272,4 +272,25 @@
   opacity: 1;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\000032}}
+#article_top_link .article_title_element {
+  background-color: #FFFAFA;
+  border: 1px solid #000000;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\000036}}
+#article_top_link .article_title_element_inner {
+  background-color: #FFE4E1;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: large;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000319}}
+#audio_transcript_container {
+  background-color: #FFEFD5;
+}
+
 /*# sourceMappingURL=marge.css.map */

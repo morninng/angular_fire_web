@@ -90,6 +90,41 @@ angular.module('mixideaWebApp')
 			templateUrl: 'views/right_column_ad.html'
 			}
 		}
-	});
+	})
+	.state('/article', {
+		url:'/article/{id}',
+		views:{
+			"RootView":{
+				templateUrl: 'views/article/article_layout.html',
+				controller: 'ArticleLayoutCtrl'
+			}
+		}
+	})
+	.state('/article.audio_transcript', {
+		url:'/audio_transcript',
+		views:{
+			"article_main":{
+				templateUrl: 'views/article/audio_transcript.html',
+				controller: 'ArticleAudiotranscriptCtrl'
+			},
+			"article_right":{
+				templateUrl: 'views/right_column_ad.html'
+			}
+		}
+	})
+	.state('/article.written_description', {
+		url:'/written_description',
+		views:{
+			"article_main":{
+				templateUrl: 'views/article/written_description.html'
+			},
+			"article_right":{
+				templateUrl: 'views/right_column_ad.html'
+			}
+		}
+	})
+
+
+	;
 
 }]);

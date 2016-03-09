@@ -12,6 +12,9 @@ touch .ftppass
   yo angular:controller Login-Form
   yo angular:controller Event-Layout
   yo angular:controller Create-Event
+  yo angular:controller Article-Layout
+  yo angular:controller Article-AudioTranscript
+  yo angular:controller Article-WrittenDescription
 
   bower install angular-bootstrap --save
 
