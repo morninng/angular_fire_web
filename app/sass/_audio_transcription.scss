@@ -1,0 +1,82 @@
+#audio_transcript_container{
+
+	.speech_context{
+		flex:1;
+		background-color:#FFFAF0;
+		margin:5px;
+		ul{
+			list-style:none;
+			padding-left:20px;
+		}
+
+		.normal{
+			color:black;
+		}
+		.current_speech{
+			color:red;
+		}
+	}
+
+	.speaker_info{
+		width: 60px;
+	}
+}
+.motion{
+	text-align:center;
+}
+
+
+.left_side{
+	.audio_player{
+		text-align:left;
+	}
+
+	.role_name{
+		text-align:left;
+		font-weight: bold;
+		margin-bottom:2px;
+	}
+
+	.speech{
+		display:flex;
+		background-color:#F0F8FF;
+		margin-left:5px;
+		margin-right:50px;
+	}
+	.poi{
+		display:flex;
+		flex-direction:row-reverse;
+		background-color:#FFF0F5;
+		margin-left:50px;
+		margin-right:5px;
+		font-style: italic;
+	}
+}
+
+
+.right_side{
+	margin-top:20px;
+	.audio_player{
+		text-align:right;
+	}
+	.role_name{
+		text-align:right;
+		font-weight: bold;
+		margin-bottom:2px;
+	}
+	.speech{
+		background-color:#F0F8FF;
+		margin-left:50px;
+		margin-right:5px;
+	}
+	.poi{
+		background-color:#FFF0F5;
+		margin-left:5px;
+		margin-right:50px;
+		font-style: italic;
+	}
+
+}
+
+
+

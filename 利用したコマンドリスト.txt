@@ -25,3 +25,6 @@ touch .ftppass
 
  yo angular:factory EventSearch-Service
  yo angular:constant MixideaInitial-Setting
+
+ 
+yo angular:directive one-aud-trans

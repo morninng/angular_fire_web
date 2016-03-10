@@ -1,0 +1,27 @@
+<div class="audio_transcript_container">
+
+<div class="audio_player"></div>
+
+<div ng-repeat="short_context in short_context_array">
+
+	<div ng-class="short_context.type">
+		<div class="speaker_info">
+			type {{short_context.type}}<br>
+			user is {{short_context.user}}<br>
+			context {{short_context.context}}<br>
+			</div>
+		<div class="speech_context">
+			<ul>
+				<li  ng-repeat="sentence in short_context.context">
+					<span ng-class="sentence.style">{{sentence.text}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div>
+	<textarea rows="2" cols="40" placeholder="comment" value="aaa"></textarea>
+</div>
+
+</div>

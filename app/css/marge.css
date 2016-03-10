@@ -293,4 +293,88 @@
   background-color: #FFEFD5;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\000033}}
+#audio_transcript_container .speech_context {
+  flex: 1;
+  background-color: #FFFAF0;
+  margin: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\000037}}
+#audio_transcript_container .speech_context ul {
+  list-style: none;
+  padding-left: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000312}}
+#audio_transcript_container .speech_context .normal {
+  color: black;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000315}}
+#audio_transcript_container .speech_context .current_speech {
+  color: red;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000320}}
+#audio_transcript_container .speaker_info {
+  width: 60px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000324}}
+.motion {
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000330}}
+.left_side .audio_player {
+  text-align: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000334}}
+.left_side .role_name {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000340}}
+.left_side .speech {
+  display: flex;
+  background-color: #F0F8FF;
+  margin-left: 5px;
+  margin-right: 50px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000346}}
+.left_side .poi {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #FFF0F5;
+  margin-left: 50px;
+  margin-right: 5px;
+  font-style: italic;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000357}}
+.right_side {
+  margin-top: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000359}}
+.right_side .audio_player {
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000362}}
+.right_side .role_name {
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000367}}
+.right_side .speech {
+  background-color: #F0F8FF;
+  margin-left: 50px;
+  margin-right: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000372}}
+.right_side .poi {
+  background-color: #FFF0F5;
+  margin-left: 5px;
+  margin-right: 50px;
+  font-style: italic;
+}
+
 /*# sourceMappingURL=marge.css.map */
