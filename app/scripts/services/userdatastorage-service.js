@@ -17,20 +17,6 @@ angular.module('mixideaWebApp')
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
 
-/*
-    user_service.add = functino(user_id){
-      var user_obj_ref = root_ref.child("users/user_basic/" + user_id);
-      user_obj_ref.on("value", function(snapshot) {
-
-        var user_obj  = snapshot.val();
-        var user_key = snapshot.key();
-        $timeout(function() {
-          user_service.user_data[user_key] = user_obj;
-        });
-      });
-    }
-*/
-
     var count_user = 0;
 
     user_service.add_by_array = function(user_id_array){
@@ -63,7 +49,6 @@ angular.module('mixideaWebApp')
       });
 
     }
-
 
     // Public API here
     return user_service;

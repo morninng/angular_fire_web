@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','UserDataStorageService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, UserDataStorageService) {
 
     console.log("event context controller called");
 
   	var event_id = $stateParams.id;
     var root_ref = new Firebase(MixideaSetting.firebase_url);
     $scope.user = UserAuthService;
+    $scope.user_service = UserDataStorageService
 
 //////////////////////////////////
 //show basic event info
@@ -34,8 +35,6 @@ angular.module('mixideaWebApp')
     $scope.available_audience = false;
     $scope.available_debater = false;
     $scope.available_aud_or_debater = false;
-    $scope.already_joined = true;
-    var own_role = null;
 
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
@@ -45,7 +44,6 @@ angular.module('mixideaWebApp')
       $scope.available_audience = false;
       $scope.available_debater = false;
       $scope.available_aud_or_debater = false;
-      $scope.already_joined = true;
       $scope.total_num = 0;
 
       var participant_obj = snapshot.val();
@@ -58,21 +56,18 @@ angular.module('mixideaWebApp')
     function retrieve_userinfo_all(participant_obj){
 
       $scope.total_num = 0;
-      var exist_own = false;
 
       if($scope.participant_audience){
           $scope.participant_audience.length=0;
       }
+      var all_user_id_array = new Array();
       var number_audience = 0;
       if(participant_obj){
         for(var key in participant_obj.audience){
-          retrieve_userinfo(key, $scope.participant_audience);
+          $scope.participant_audience.push(key);
+          all_user_id_array.push(key);
           $scope.total_num++;
           number_audience++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "audience";
-          }
         }
       }
 
@@ -81,14 +76,12 @@ angular.module('mixideaWebApp')
       }
       var number_debater = 0;
       if(participant_obj){
+        var user_id_array = new Array();
         for(var key in participant_obj.debater){
-          retrieve_userinfo(key, $scope.participant_debater);
+          $scope.participant_debater.push(key);
+          all_user_id_array.push(key);
           $scope.total_num++;
           number_debater++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "debater";
-          }
         }
       }
 
@@ -97,17 +90,16 @@ angular.module('mixideaWebApp')
       }
       var number_aud_or_debater = 0;
       if(participant_obj){
+        var aud_or_debater_user_id_array = new Array();
         for(var key in participant_obj.aud_or_debater){
-          retrieve_userinfo(key, $scope.participant_aud_or_debater);
+          $scope.participant_aud_or_debater.push(key)
+          all_user_id_array.push(key);
           $scope.total_num++;
           number_aud_or_debater++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "aud_or_debater";
-          }
         }
       }
 
+      $scope.user_service.add_by_array(all_user_id_array);
 
       //the end
       $timeout(function() {
@@ -115,26 +107,7 @@ angular.module('mixideaWebApp')
         $scope.available_debater = validate("debater", number_debater);
         $scope.available_aud_or_debater = validate("aud_or_debater", number_aud_or_debater);
    
-        if(!exist_own){
-          $scope.already_joined = false;
-          remove_hangout_button();
-        }else{
-          show_hangout_button();
-        }
       });
-    }
-
-
-    function retrieve_userinfo(user_id, user_array){
-      var user_ref =  root_ref.child("users/user_basic/" + user_id);
-      user_ref.once("value", function(snapshot){
-        $timeout(function() {
-          var user_data = snapshot.val();
-          var user_id = snapshot.key();
-          user_data.id = user_id;
-          user_array.push(user_data);
-        });
-      })
     }
 
 
@@ -318,16 +291,5 @@ angular.module('mixideaWebApp')
          + first_query_value + "^" + second_query_value + "^" + third_query_value;
 
   });
-
-
-  function show_hangout_button(){
-    $scope.show_hangout = true;
-
-  }
-
-  function remove_hangout_button(){
-    $scope.show_hangout = false;
-  }
-
 
 }]);
