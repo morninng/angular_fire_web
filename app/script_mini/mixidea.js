@@ -162,8 +162,6 @@ angular.module('mixideaWebApp')
     $scope.available_audience = false;
     $scope.available_debater = false;
     $scope.available_aud_or_debater = false;
-    $scope.already_joined = true;
-    var own_role = null;
 
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
@@ -173,7 +171,6 @@ angular.module('mixideaWebApp')
       $scope.available_audience = false;
       $scope.available_debater = false;
       $scope.available_aud_or_debater = false;
-      $scope.already_joined = true;
       $scope.total_num = 0;
 
       var participant_obj = snapshot.val();
@@ -186,7 +183,6 @@ angular.module('mixideaWebApp')
     function retrieve_userinfo_all(participant_obj){
 
       $scope.total_num = 0;
-      var exist_own = false;
 
       if($scope.participant_audience){
           $scope.participant_audience.length=0;
@@ -199,10 +195,6 @@ angular.module('mixideaWebApp')
           all_user_id_array.push(key);
           $scope.total_num++;
           number_audience++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "audience";
-          }
         }
       }
 
@@ -217,10 +209,6 @@ angular.module('mixideaWebApp')
           all_user_id_array.push(key);
           $scope.total_num++;
           number_debater++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "debater";
-          }
         }
       }
 
@@ -235,10 +223,6 @@ angular.module('mixideaWebApp')
           all_user_id_array.push(key);
           $scope.total_num++;
           number_aud_or_debater++;
-          if(key == $scope.user.own_uid){
-            exist_own = true;
-            own_role = "aud_or_debater";
-          }
         }
       }
 
@@ -250,12 +234,6 @@ angular.module('mixideaWebApp')
         $scope.available_debater = validate("debater", number_debater);
         $scope.available_aud_or_debater = validate("aud_or_debater", number_aud_or_debater);
    
-        if(!exist_own){
-          $scope.already_joined = false;
-          remove_hangout_button();
-        }else{
-          show_hangout_button();
-        }
       });
     }
 
@@ -440,17 +418,6 @@ angular.module('mixideaWebApp')
          + first_query_value + "^" + second_query_value + "^" + third_query_value;
 
   });
-
-
-  function show_hangout_button(){
-    $scope.show_hangout = true;
-
-  }
-
-  function remove_hangout_button(){
-    $scope.show_hangout = false;
-  }
-
 
 }]);
 

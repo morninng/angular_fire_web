@@ -11,7 +11,7 @@
 	<span class="category_title">date:</span> {{event_obj.date_time | DateValueString}}<br>
 </div>
 
-<div id="hangout_button_container" ng-if="(participant_debater.indexOf(user.own_uid) != -1) && (participant_audience.indexOf(user.own_uid) != -1) && (participant_aud_or_debater.indexOf(user.own_uid) != -1) " class="fade_angular">
+<div id="hangout_button_container" ng-if="(participant_debater.indexOf(user.own_uid) != -1) || (participant_audience.indexOf(user.own_uid) != -1) || (participant_aud_or_debater.indexOf(user.own_uid) != -1) " class="fade_angular">
 	<div class="hangout_button_area">
 		<div>click here to join a event call</div>
 		<div>
