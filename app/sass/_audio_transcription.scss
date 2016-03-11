@@ -19,7 +19,12 @@
 
 	.speaker_info{
 		width: 60px;
+		img{
+			width:40px;
+			height:auto;
+		}
 	}
+
 }
 .motion{
 	text-align:center;
@@ -65,11 +70,14 @@
 		margin-bottom:2px;
 	}
 	.speech{
+		display:flex;
+		flex-direction:row-reverse;
 		background-color:#F0F8FF;
 		margin-left:50px;
 		margin-right:5px;
 	}
 	.poi{
+		display:flex;
 		background-color:#FFF0F5;
 		margin-left:5px;
 		margin-right:50px;

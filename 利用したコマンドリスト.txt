@@ -28,3 +28,11 @@ touch .ftppass
 
  
 yo angular:directive one-aud-trans
+
+
+
+
+ yo angular:factory UserDataStorage-Service
+ 
+
+

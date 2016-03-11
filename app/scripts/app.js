@@ -122,9 +122,6 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/right_column_ad.html'
 			}
 		}
-	})
-
-
-	;
+	});
 
 }]);

@@ -275,7 +275,6 @@ angular.module('mixideaWebApp')
 
 
   function count_down_participants(role_type){
-
     var participant_num_ref = event_ref.child("participants_num/" + role_type);
     participant_num_ref.transaction(function(current_num){
       var new_vlaue = current_num-1;

@@ -316,30 +316,35 @@
 #audio_transcript_container .speaker_info {
   width: 60px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000322}}
+#audio_transcript_container .speaker_info img {
+  width: 40px;
+  height: auto;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000329}}
 .motion {
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000335}}
 .left_side .audio_player {
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000339}}
 .left_side .role_name {
   text-align: left;
   font-weight: bold;
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000345}}
 .left_side .speech {
   display: flex;
   background-color: #F0F8FF;
   margin-left: 5px;
   margin-right: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000346}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000351}}
 .left_side .poi {
   display: flex;
   flex-direction: row-reverse;
@@ -349,28 +354,31 @@
   font-style: italic;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000362}}
 .right_side {
   margin-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000364}}
 .right_side .audio_player {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000367}}
 .right_side .role_name {
   text-align: right;
   font-weight: bold;
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000372}}
 .right_side .speech {
+  display: flex;
+  flex-direction: row-reverse;
   background-color: #F0F8FF;
   margin-left: 50px;
   margin-right: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000379}}
 .right_side .poi {
+  display: flex;
   background-color: #FFF0F5;
   margin-left: 5px;
   margin-right: 50px;

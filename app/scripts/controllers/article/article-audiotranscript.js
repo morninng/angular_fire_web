@@ -76,6 +76,15 @@ $scope.audio_transcript_obj = {
 						{audio_time: 2000, text:"lo1_abcde"},
 						{audio_time: 3000, text:"lo1_abcde"}
 					]
+				},
+				short_bbb:{
+					type: "poi",
+					user: "facebook:1520978701540732",
+					context: [
+						{audio_time: 7000, text:"pm2_OPQ"},
+						{audio_time: 9000, text:"pm2_RST"},
+						{audio_time: 15000, text:"pm2_UVW"}
+					]
 				}
 			},
 			audio:"https://s3-ap-northeast-1.amazonaws.com/mixideaspeech/yFLAmQp13d_LeaderOpposition_ad125a4b.mp3"

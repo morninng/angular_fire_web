@@ -6,10 +6,9 @@
 
 	<div ng-class="short_context.type">
 		<div class="speaker_info">
-			type {{short_context.type}}<br>
-			user is {{short_context.user}}<br>
-			context {{short_context.context}}<br>
-			</div>
+			<img ng-src={{user_service.user_data[short_context.user].profile_pict}}>
+			<span>{{user_service.user_data[short_context.user].first_name}}</span>
+		</div>
 		<div class="speech_context">
 			<ul>
 				<li  ng-repeat="sentence in short_context.context">
