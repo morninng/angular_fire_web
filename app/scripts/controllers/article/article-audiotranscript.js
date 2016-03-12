@@ -17,9 +17,9 @@ angular.module('mixideaWebApp')
     var audio_trnscript_ref = root_ref.child("event_related/audio_transcript/" + article_id);
     $scope.deb_style = "BP";
     $scope.game_motion = null;
-
+/*
 $scope.audio_transcript_obj = {
-	PM: {sp_11111:{
+	DPM: {sp_11111:{
 			speech_context:{
 				short_aaa:{
 					type: "speech",
@@ -66,7 +66,7 @@ $scope.audio_transcript_obj = {
 			audio:"https://s3-ap-northeast-1.amazonaws.com/mixideaspeech/yFLAmQp13d_LeaderOpposition_ad125a4b.mp3"
 		},
     },
-	LO: {sp_11111:{
+	DLO: {sp_11111:{
 			speech_context:{
 				short_aaa:{
 					type: "speech",
@@ -91,20 +91,20 @@ $scope.audio_transcript_obj = {
 		}
     }
 }
- 
+ */
 
 
     game_ref.once("value").then(function(snapshot_game){
 
     	var obj = snapshot_game.val();
-    	$timeout(function() {
-			$scope.game_motion = obj.motion;
-			$scope.deb_style = obj.deb_style;
-		});
+		$scope.game_motion = obj.motion;
+		$scope.deb_style = obj.deb_style;
 
     	return audio_trnscript_ref.once("value");
     }).then(function(snapshot_audio_transcript){
- //   	var audio_transcript_obj = snapshot_audio_transcript.val();
+    	$timeout(function() {
+    		$scope.audio_transcript_obj = snapshot_audio_transcript.val();
+    	});
     }, function(error){
     	console.log(error);
     });

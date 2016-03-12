@@ -28,6 +28,15 @@
 
 <span ng-switch-when="Asian">
  Asian
+<div class="right_side">
+	<p class="role_name">Depty Prime Minister</p>
+	<div ng-repeat="(key, value) in audio_transcript_obj.DPM">
+	 <one-aud-trans audtrans-data="value">
+	 </one-aud-trans>
+	</div>
+</div>
+
+
 </span>
 
 <span ng-switch-when="BP">
