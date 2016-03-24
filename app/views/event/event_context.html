@@ -15,14 +15,13 @@
 	<div class="hangout_button_area">
 		<div>click here to join a event call</div>
 		<div>
-			<a href={{hangout_link_str}} target="_blank">
+			<a ng-href="{{hangout_link_str_pre_uid}}{{user.own_uid}}{{hangout_link_str_post_uid}}" target="_blank">
 				<img src= "https://ssl.gstatic.com/s2/oz/images/stars/hangout/1/gplus-hangout-60x230-normal.png">
 			</a>
 		</div>
 		<div> participants only</div>
 	</div>
 </div>
-
 
 <div class="participate_control_container">
   <div id="debater_participate_container">

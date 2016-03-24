@@ -290,6 +290,10 @@ angular.module('mixideaWebApp')
             hangout_appid + hangout_query_key 
          + first_query_value + "^" + second_query_value + "^" + third_query_value;
 
+    $scope.hangout_link_str_pre_uid = hangout_url + hangout_gid + hangout_appid + hangout_query_key;
+    $scope.hangout_link_str_post_uid = "^" + second_query_value + "^" + third_query_value;
+
+
   });
 
 }]);

@@ -38,7 +38,7 @@
           <div ng-show="user.loggedIn">
             <ul class="nav  navbar-right mobile-hide" >
               <li>
-                <img syle="width:30px;height:30px" src="{{user.profile_pict}}">
+                <img syle="width:30px;height:30px" ng-src="{{user.profile_pict}}">
               </li>
               <li>
                 <a href="" ng-click="user.logout()">
