@@ -7,15 +7,17 @@
 <span ng-switch="deb_style">
 <span ng-switch-when="NA">
 
-
-<div class="left_side">
-	<p class="role_name">PrimeMinister</p>
-	<div ng-repeat="(key, value) in audio_transcript_obj.PM">
+<div ng-repeat="role in role_array">
+<div ng-class="role.role_class">
+	<p class="role_name">{{role.show_name}}</p>
+	<div ng-repeat="(key, value) in audio_transcript_obj[role.name]">
 	 <one-aud-trans audtrans-data="value">
 	 </one-aud-trans>
 	</div>
 </div>
 
+
+<!--
 <div class="right_side">
 	<p class="role_name">Leader Opposition</p>
 	<div ng-repeat="(key, value) in audio_transcript_obj.LO">
@@ -23,6 +25,8 @@
 	 </one-aud-trans>
 	</div>
 </div>
+-->
+
 
 </span>
 

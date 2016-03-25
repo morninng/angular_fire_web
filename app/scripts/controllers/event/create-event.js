@@ -256,7 +256,7 @@ angular.module('mixideaWebApp')
     $scope.goto_event_window = function(){
       console.log($scope.$parent.$parent.event_id);
       var event_id = $scope.$parent.$parent.event_id;
-      $state.go("/eventcontext_layout_two_column.context", {id:event_id});
+      $state.go("eventcontext_layout_two_column.context", {id:event_id});
       $scope.$parent.$parent.click_cancel();
       return;
     }

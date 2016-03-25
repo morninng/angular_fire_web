@@ -26,7 +26,7 @@ angular.module('mixideaWebApp')
 
 
 	$stateProvider
-	.state('/eventsearch_layout_three_column', {
+	.state('eventsearch_layout_three_column', {
 		url:"/event",
 		views:{
 			"RootView":{
@@ -34,7 +34,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/eventsearch_layout_three_column.list', {
+	.state('eventsearch_layout_three_column.list', {
 		url:'/list',
 		views:{
 			"event_left":{
@@ -50,7 +50,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/eventsearch_layout_two_column', {
+	.state('eventsearch_layout_two_column', {
 		url:"/event",
 		views:{
 			"RootView":{
@@ -58,7 +58,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/eventsearch_layout_two_column.calendar', {
+	.state('eventsearch_layout_two_column.calendar', {
 		url:'/calendar',
 		views:{
 			"event_left":{
@@ -71,7 +71,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/eventcontext_layout_two_column', {
+	.state('eventcontext_layout_two_column', {
 		url:'/eventcontext',
 		views:{
 			"RootView":{
@@ -79,7 +79,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/eventcontext_layout_two_column.context', {
+	.state('eventcontext_layout_two_column.context', {
 		url:'/context/:id',
 		views:{
 			"eventcontext_main":{
@@ -91,7 +91,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/article', {
+	.state('article', {
 		url:'/article/{id}',
 		views:{
 			"RootView":{
@@ -100,7 +100,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/article.audio_transcript', {
+	.state('article.audio_transcript', {
 		url:'/audio_transcript',
 		views:{
 			"article_main":{
@@ -112,7 +112,7 @@ angular.module('mixideaWebApp')
 			}
 		}
 	})
-	.state('/article.written_description', {
+	.state('article.written_description', {
 		url:'/written_description',
 		views:{
 			"article_main":{
