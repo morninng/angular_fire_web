@@ -28,15 +28,25 @@ angular.module('mixideaWebApp')
     ];
 
     var Asian_role_array = [
-    	{name:"" ,show_name: ""},
-    	{name:"" ,show_name: ""},
-    	{name:"" ,show_name: ""}
+        {name:"PM" ,show_name: "Prime Minister", role_class: "left_side"},
+        {name:"LO" ,show_name: "Leader Opposition", role_class:"right_side" },
+        {name:"DPM" ,show_name: "Depty Prime Minister", role_class: "left_side"},
+        {name:"DLO" ,show_name: "Depty Leader Opposition", role_class: "right_side"},
+        {name:"GW" ,show_name: "Govenment Whip", role_class: "left_side"},
+        {name:"OW" ,show_name: "Opposition Whip", role_class: "right_side"},
+        {name:"LOR" ,show_name: "Leader Opposition Reply", role_class:"right_side" },
+        {name:"PMR" ,show_name: "Prime Minister Reply", role_class:"left_side" }
     ];
 
     var BP_role_array = [
-    	{name:"" ,show_name: ""},
-    	{name:"" ,show_name: ""},
-    	{name:"" ,show_name: ""}
+        {name:"PM" ,show_name: "Prime Minister", role_class: "left_side"},
+        {name:"LO" ,show_name: "Leader Opposition", role_class:"right_side" },
+        {name:"DPM" ,show_name: "Depty Prime Minister", role_class: "left_side"},
+        {name:"DLO" ,show_name: "Depty Leader Opposition", role_class: "right_side"},
+        {name:"MG" ,show_name: "Member Government", role_class:"left_side" },
+        {name:"MO" ,show_name: "Member Opposition", role_class:"right_side" },
+        {name:"GW" ,show_name: "Govenment Whip", role_class: "left_side"},
+        {name:"OW" ,show_name: "Opposition Whip", role_class: "right_side"},
     ];
 
     game_ref.once("value").then(function(snapshot_game){
@@ -45,8 +55,11 @@ angular.module('mixideaWebApp')
 		$scope.game_motion = obj.motion;
 		$scope.deb_style = obj.deb_style;
 
-    	return audio_trnscript_ref.once("value");
+        var audio_trnscript_style_ref = audio_trnscript_ref.child($scope.deb_style);
+
+    	return audio_trnscript_style_ref.once("value");
     }).then(function(snapshot_audio_transcript){
+        
     	switch($scope.deb_style){
     		case "NA":
     			$scope.role_array = NA_role_array;

@@ -64,29 +64,29 @@ angular.module('mixideaWebApp')
           scope.short_context_array.length=0;
           var already_switched = false;
           current_time = current_time*1000;
-          $timeout(function() {
-            for(var key_short_split in speech_context){
-              var short_split_object = new Object();
-              var short_split_context_array = new Array();
+          
+          for(var key_short_split in speech_context){
+            var short_split_object = new Object();
+            var short_split_context_array = new Array();
 
-              for(var key_sentence_time in speech_context[key_short_split].context){
-                var each_sentence_context = new Object();
-                each_sentence_context.style = "normal";
-                each_sentence_context.text = speech_context[key_short_split].context[key_sentence_time];
-                if( (current_time >= 0) && 
-                    (!already_switched) &&  
-                    (key_sentence_time > current_time)){
-                  each_sentence_context.style = "current_speech";
-                  already_switched = true;
-                }
-                short_split_context_array.push(each_sentence_context)
+            for(var key_sentence_time in speech_context[key_short_split].context){
+              var each_sentence_context = new Object();
+              each_sentence_context.style = "normal";
+              each_sentence_context.text = speech_context[key_short_split].context[key_sentence_time];
+              if( (current_time >= 0) && 
+                  (!already_switched) &&  
+                  (key_sentence_time > current_time)){
+                each_sentence_context.style = "current_speech";
+                already_switched = true;
               }
-              short_split_object.context = short_split_context_array;
-              short_split_object.user = speech_context[key_short_split].user;
-              short_split_object.type = speech_context[key_short_split].type;
-              scope.short_context_array.push(short_split_object);
+              short_split_context_array.push(each_sentence_context)
             }
-          });
+            short_split_object.context = short_split_context_array;
+            short_split_object.user = speech_context[key_short_split].user;
+            short_split_object.type = speech_context[key_short_split].type;
+            scope.short_context_array.push(short_split_object);
+          }
+          $timeout(function() {});
         }
 
 
