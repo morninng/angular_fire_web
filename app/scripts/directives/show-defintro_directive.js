@@ -22,7 +22,8 @@ angular.module('mixideaWebApp')
         var deb_style = scope.argument_id_obj.deb_style;
         var team = scope.argument_id_obj.team;
         console.log(arg_id);
-        scope.arg_id = arg_id;
+        scope.defintro_content = null;
+        scope.defintro_div = null;
 
         var root_ref = new Firebase(MixideaSetting.firebase_url);
         var defintro_content_path = "event_related/Article_Context/" + event_id + "/context/" 
