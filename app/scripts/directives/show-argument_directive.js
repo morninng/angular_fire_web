@@ -21,6 +21,12 @@ angular.module('mixideaWebApp')
         var event_id = scope.argument_id_obj.event_id;
         var deb_style = scope.argument_id_obj.deb_style;
         var team = scope.argument_id_obj.team;
+        scope.title = null;
+        scope.content = null;
+        scope.content_div = null;
+        scope.refute = null;
+        scope.refute_div = null;
+        scope.show_all = false;
 
 
 
@@ -32,6 +38,9 @@ angular.module('mixideaWebApp')
         var title_ref = argument_content_ref.child("title");
         title_ref.once("value", function(snapshot){
           scope.title = snapshot.val();
+          if(scope.title){
+            scope.show_all = true;
+          }
           $timeout(function(){});
         }); 
 
@@ -39,6 +48,9 @@ angular.module('mixideaWebApp')
         content_ref.once("value", function(snapshot){
           scope.content = snapshot.val();
           scope.content_div = UtilService.add_linebreak_html(scope.content);
+          if(scope.content){
+            scope.show_all = true;
+          }
           $timeout(function(){});
         }); 
 
@@ -47,6 +59,9 @@ angular.module('mixideaWebApp')
           
           scope.refute = snapshot.val();
           scope.refute_div = UtilService.add_linebreak_html(scope.refute);
+          if(scope.refute){
+            scope.show_all = true;
+          }
           $timeout(function(){});
         }); 
 

@@ -478,28 +478,37 @@
 .showArgumentDirective .argument_container .mainArg_container .MainArg_font {
   font-size: medium;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000360}}
-.showArgumentDirective .argument_container .refute_container {
-  position: relative;
-  top: -20px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000363}}
-.showArgumentDirective .argument_container .refute_container > div {
-  width: 70%;
-  margin-left: auto;
-  margin-right: 10px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000361}}
 .showArgumentDirective .argument_container .refute_container .Refute_Content {
-  min-height: 40px;
+  width: 70%;
+  /*
+  margin-left:auto;
+  				*/
+  margin-right: 10px;
   border-style: solid;
   border-color: #FFFFFF;
   border-width: thin;
   background-color: #FFE4C4;
+  float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000374}}
 .showArgumentDirective .argument_container .refute_container .Refute_font {
   font-size: medium;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000377}}
+.showArgumentDirective .argument_container .refute_container .refute_mark {
+  padding-right: 5px;
+  width: 20%;
+  float: right;
+  text-align: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000384}}
+.showArgumentDirective .argument_container .clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  visibility: hidden;
+  height: 0px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\000035}}
