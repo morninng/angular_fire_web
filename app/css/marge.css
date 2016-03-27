@@ -307,71 +307,73 @@
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\000031}}
 #audio_transcript_container {
   background-color: #FFEFD5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\000034}}
 #audio_transcript_container .motion {
   font-weight: bold;
   font-size: large;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\000038}}
 #audio_transcript_container .motion_prefix {
   font-size: large;
   font-style: oblique;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000312}}
 #audio_transcript_container .motion_p {
   text-align: center;
+  background-color: #98FB98;
+  border-bottom: medium solid #ffffff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000321}}
 #audio_transcript_container .speech_context {
   flex: 1;
   background-color: #FFFAF0;
   margin: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000325}}
 #audio_transcript_container .speech_context ul {
   list-style: none;
   padding-left: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000330}}
 #audio_transcript_container .speech_context .normal {
   color: black;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000333}}
 #audio_transcript_container .speech_context .current_speech {
   color: red;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000343}}
 .left_side .audio_player {
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000347}}
 .left_side .role_name {
   text-align: left;
   font-weight: bold;
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000353}}
 .left_side .speech {
   display: flex;
   background-color: #F0F8FF;
   margin-left: 5px;
   margin-right: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000359}}
 .left_side .speech .speaker_info {
   width: 60px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000361}}
 .left_side .speech .speaker_info img {
   width: 40px;
   height: auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000369}}
 .left_side .poi {
   display: flex;
   flex-direction: row-reverse;
@@ -380,33 +382,33 @@
   margin-right: 5px;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000378}}
 .left_side .poi .speaker_info {
   width: 40px;
   text-align: right;
   font-size: x-small;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000382}}
 .left_side .poi .speaker_info img {
   width: 25px;
   height: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000394}}
 .right_side {
   margin-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000394}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000396}}
 .right_side .audio_player {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\0000399}}
 .right_side .role_name {
   text-align: right;
   font-weight: bold;
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003104}}
 .right_side .speech {
   display: flex;
   flex-direction: row-reverse;
@@ -414,16 +416,16 @@
   margin-left: 50px;
   margin-right: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003112}}
 .right_side .speech .speaker_info {
   width: 60px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003112}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003114}}
 .right_side .speech .speaker_info img {
   width: 40px;
   height: auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003123}}
 .right_side .poi {
   display: flex;
   background-color: #FFF0F5;
@@ -431,16 +433,107 @@
   margin-right: 50px;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003131}}
 .right_side .poi .speaker_info {
   width: 40px;
   text-align: left;
   font-size: x-small;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_audio_transcription\.scss}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_audio_transcription\.scss}line{font-family:\00003135}}
 .right_side .poi .speaker_info img {
   width: 25px;
   height: auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\000031}}
+#written_description {
+  background-color: #FFEFD5;
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\000035}}
+#written_description .motion {
+  font-weight: bold;
+  font-size: large;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\000039}}
+#written_description .motion_prefix {
+  font-size: large;
+  font-style: oblique;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000313}}
+#written_description .motion_p {
+  text-align: center;
+  background-color: #98FB98;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000322}}
+#written_description .article_show_left {
+  background-color: #FFEBCD;
+  border: medium solid #E0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000325}}
+#written_description .article_show_left .team_container {
+  margin: 5px;
+  margin-bottom: 15px;
+  background-color: #00FA9A;
+  padding-bottom: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000333}}
+#written_description .article_show_right {
+  background-color: #F0FFF0;
+  border: medium solid #E0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000336}}
+#written_description .article_show_right .team_container {
+  margin: 5px;
+  margin-bottom: 15px;
+  background-color: #00FA9A;
+  padding-bottom: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000344}}
+#written_description .each_element {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000354}}
+#written_description .participant_element {
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000356}}
+#written_description .participant_element > div {
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #FAEBD7;
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000366}}
+#written_description .participant_element img {
+  height: 40px;
+  width: auto;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000370}}
+#written_description .participant_element .person_name {
+  font-size: small;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000373}}
+#written_description .participant_element .user_info {
+  padding: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article_written_description\.scss}line{font-family:\0000378}}
+#written_description .team_name {
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-decoration: underline;
+  color: #000080;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\000034}}
@@ -550,96 +643,6 @@
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\0000322}}
 .showDefintroDirective .DefIntro_container .defintro_font {
   font-size: medium;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000031}}
-#written_description {
-  background-color: #FFEFD5;
-  width: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000035}}
-#written_description .motion {
-  font-weight: bold;
-  font-size: large;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000039}}
-#written_description .motion_prefix {
-  font-size: large;
-  font-style: oblique;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000313}}
-#written_description .motion_p {
-  text-align: center;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000321}}
-#written_description .article_show_left {
-  background-color: #FFEBCD;
-  border: medium solid #E0FFFF;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000324}}
-#written_description .article_show_left .team_container {
-  margin: 5px;
-  margin-bottom: 15px;
-  background-color: #00FA9A;
-  padding-bottom: 5px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000332}}
-#written_description .article_show_right {
-  background-color: #F0FFF0;
-  border: medium solid #E0FFFF;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000335}}
-#written_description .article_show_right .team_container {
-  margin: 5px;
-  margin-bottom: 15px;
-  background-color: #00FA9A;
-  padding-bottom: 5px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000343}}
-#written_description .each_element {
-  width: 90%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 5px;
-  margin-bottom: 30px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000353}}
-#written_description .participant_element {
-  text-align: center;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000355}}
-#written_description .participant_element > div {
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  background-color: #FAEBD7;
-  display: inline-block;
-  margin: 5px;
-  text-align: center;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000365}}
-#written_description .participant_element img {
-  height: 40px;
-  width: auto;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000369}}
-#written_description .participant_element .person_name {
-  font-size: small;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000372}}
-#written_description .participant_element .user_info {
-  padding: 5px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000377}}
-#written_description .team_name {
-  font-weight: bold;
-  font-size: large;
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-decoration: underline;
-  color: #000080;
 }
 
 /*# sourceMappingURL=marge.css.map */
