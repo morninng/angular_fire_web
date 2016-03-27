@@ -1,4 +1,20 @@
 #audio_transcript_container{
+	background-color:#FFEFD5;
+
+	.motion{
+		font-weight:bold;
+		font-size:large;
+	}
+	.motion_prefix{
+		font-size:large;
+		font-style:oblique;
+	}
+	.motion_p{
+		text-align:center;
+	}
+
+
+
 
 	.speech_context{
 		flex:1;
