@@ -1,16 +1,26 @@
-<div id="audio_transcript_container">
 
-<p ><span class="motion_prefix">motion:</span><span class="motion"> {{game_motion}}</span></p>
+<div class="container">
+<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 
+	<div id="audio_transcript_container">
 
+		<p ><span class="motion_prefix">motion:</span><span class="motion"> {{game_motion}}</span></p>
 
-
-<div ng-repeat="role in role_array">
-<div ng-class="role.role_class">
-	<p class="role_name">{{role.show_name}}</p>
-	<div ng-repeat="(key, value) in audio_transcript_obj[role.name]">
-	 <one-aud-trans audtrans-data="value">
-	 </one-aud-trans>
+		<div ng-repeat="role in role_array">
+			<div ng-class="role.role_class">
+				<p class="role_name">{{role.show_name}}</p>
+				<div ng-repeat="(key, value) in audio_transcript_obj[role.name]">
+				 <one-aud-trans audtrans-data="value">
+				 </one-aud-trans>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 </div>
 
+<div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+ right column ad
+</div>
+
+</div>

@@ -1,0 +1,28 @@
+
+.showDefintroDirective{
+
+	.DefIntro_head{
+		.DefIntro_mark{
+			font-weight:bold;
+			font-size: medium;
+		}
+	}
+
+	.DefIntro_container{
+		padding: 3px;
+		width:100%;
+		background-color:#F0FFFF;
+
+		.defintro_Content{
+			border-style: solid;
+			border-color:#FFFFFF ;
+			border-width: thin;
+			background-color: #FCF5F5;
+		}
+		.defintro_font{
+			font-size: medium;
+		}
+
+	}
+
+}

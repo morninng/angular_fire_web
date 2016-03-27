@@ -288,21 +288,21 @@
   font-size: large;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000319}}
 #audio_transcript_container {
   background-color: #FFEFD5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000322}}
 #audio_transcript_container .motion {
   font-weight: bold;
   font-size: large;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000326}}
 #audio_transcript_container .motion_prefix {
   font-size: large;
   font-style: oblique;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\0000330}}
 #audio_transcript_container > p {
   text-align: center;
 }
@@ -423,6 +423,181 @@
 .right_side .poi .speaker_info img {
   width: 25px;
   height: auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\000034}}
+.showArgumentDirective .argument_head .argument_mark {
+  font-weight: bold;
+  font-size: medium;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000310}}
+.showArgumentDirective .argument_container {
+  padding: 3px;
+  width: 100%;
+  background-color: #F0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000316}}
+.showArgumentDirective .argument_container .title_container .title_font {
+  font-weight: bold;
+  font-size: large;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000320}}
+.showArgumentDirective .argument_container .title_container .argument_title_css {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 95%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000325}}
+.showArgumentDirective .argument_container .title_container .title_span {
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 150px;
+  background-color: #FCF5F5;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: inline-block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000338}}
+.showArgumentDirective .argument_container .title_container .title_p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000347}}
+.showArgumentDirective .argument_container .mainArg_container .MainArg_Content {
+  min-height: 60px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-width: thin;
+  background-color: #FCF5F5;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000354}}
+.showArgumentDirective .argument_container .mainArg_container .MainArg_font {
+  font-size: medium;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000360}}
+.showArgumentDirective .argument_container .refute_container {
+  position: relative;
+  top: -20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000363}}
+.showArgumentDirective .argument_container .refute_container > div {
+  width: 70%;
+  margin-left: auto;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000368}}
+.showArgumentDirective .argument_container .refute_container .Refute_Content {
+  min-height: 40px;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-width: thin;
+  background-color: #FFE4C4;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_argument\.scss}line{font-family:\0000375}}
+.showArgumentDirective .argument_container .refute_container .Refute_font {
+  font-size: medium;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\000035}}
+.showDefintroDirective .DefIntro_head .DefIntro_mark {
+  font-weight: bold;
+  font-size: medium;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\0000311}}
+.showDefintroDirective .DefIntro_container {
+  padding: 3px;
+  width: 100%;
+  background-color: #F0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\0000316}}
+.showDefintroDirective .DefIntro_container .defintro_Content {
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-width: thin;
+  background-color: #FCF5F5;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_directive_show_defintro\.scss}line{font-family:\0000322}}
+.showDefintroDirective .DefIntro_container .defintro_font {
+  font-size: medium;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000031}}
+#written_description {
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000034}}
+#written_description .article_show_left {
+  background-color: #FFEBCD;
+  border: medium solid #E0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\000037}}
+#written_description .article_show_left .team_container {
+  margin: 5px;
+  margin-bottom: 15px;
+  background-color: #00FA9A;
+  padding-bottom: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000315}}
+#written_description .article_show_right {
+  background-color: #F0FFF0;
+  border: medium solid #E0FFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000318}}
+#written_description .article_show_right .team_container {
+  margin: 5px;
+  margin-bottom: 15px;
+  background-color: #00FA9A;
+  padding-bottom: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000326}}
+#written_description .each_element {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000336}}
+#written_description .participant_element {
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000338}}
+#written_description .participant_element > div {
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #FAEBD7;
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000348}}
+#written_description .participant_element img {
+  height: 40px;
+  width: auto;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000352}}
+#written_description .participant_element .person_name {
+  font-size: small;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000355}}
+#written_description .participant_element .user_info {
+  padding: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_written_description\.scss}line{font-family:\0000360}}
+#written_description .team_name {
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-decoration: underline;
+  color: #000080;
 }
 
 /*# sourceMappingURL=marge.css.map */

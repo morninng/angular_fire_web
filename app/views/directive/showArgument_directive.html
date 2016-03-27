@@ -1,0 +1,35 @@
+<div class="showArgumentDirective">
+	<div class="argument_head">
+		<span class="argument_mark">Argumet</span>
+	</div>
+
+	<div class="argument_container">
+		<div class="title_container">
+			<div class="title_p">
+				<span class="title_font title_span">{{title}}</span>
+			</div>
+		</div>
+
+		content
+		<div class="mainArg_container">
+			<div class="parent_show_hide">
+				<div class="MainArg_Content MainArg_font"  ng-bind-html="content_div"></div>
+			</div>
+		</div>
+
+
+		<div class="refute_container">
+			<div>
+			Refute
+				<div class="parent_show_hide">
+					<div ng-class="show_hide_refute_context">
+						<div class="Refute_Content Refute_font"  ng-bind-html="refute_div"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>

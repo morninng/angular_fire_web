@@ -1,1 +1,92 @@
-written description
+<div id="written_description">
+
+
+
+
+
+<div class="article_show_left col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Opening Government</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in BP_OG_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div class="each_element" ng-if="BP_OG_def_intro">
+				<div class="each_element">
+					<show-defintro_directive arg-id="BP_OG_def_intro"></show-defintro_directive>
+				</div>
+			</div>
+			<div ng-repeat="arg in BP_OG_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+		<div class="team_container">
+			<p class="team_name">Closing Government</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in BP_CG_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div ng-repeat="arg in BP_CG_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="article_show_right col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Opening Opposition</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in BP_OO_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div ng-repeat="arg in BP_OO_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+		<div class="team_container">
+			<p class="team_name">Closing Opposition</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in BP_CO_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div ng-repeat="arg in BP_CO_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+</div>

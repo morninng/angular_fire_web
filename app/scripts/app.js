@@ -106,21 +106,28 @@ angular.module('mixideaWebApp')
 			"article_main":{
 				templateUrl: 'views/article/audio_transcript.html',
 				controller: 'ArticleAudiotranscriptCtrl'
-			},
+			}
+/*
+			,
 			"article_right":{
 				templateUrl: 'views/right_column_ad.html'
 			}
+*/
+
 		}
 	})
 	.state('article.written_description', {
 		url:'/written_description',
 		views:{
 			"article_main":{
-				templateUrl: 'views/article/written_description.html'
+				templateUrl: 'views/article/written_description.html',
+				controller: 'ArticleWrittendescriptionCtrl'
 			},
+			/*
 			"article_right":{
 				templateUrl: 'views/right_column_ad.html'
 			}
+			*/
 		}
 	});
 

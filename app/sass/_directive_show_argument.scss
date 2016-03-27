@@ -1,0 +1,83 @@
+.showArgumentDirective{
+
+	.argument_head{
+		.argument_mark{
+			font-weight:bold;
+			font-size: medium;
+		}
+	}
+
+	.argument_container{
+		padding: 3px;
+		width:100%;
+		background-color:#F0FFFF;
+		.title_container{
+
+			.title_font{
+				font-weight: bold; 
+				font-size: large;
+			}
+			.argument_title_css{
+				margin-right:10px;
+				margin-left:10px;
+				width:95%;
+			}
+			.title_span{
+				margin-left:10px;
+				margin-right:10px;
+				min-width:150px;
+				background-color:#FCF5F5;
+				text-align: left;
+				vertical-align:middle;
+				padding-left: 10px;
+				padding-right: 20px;
+				padding-top:3px; 
+				padding-bottom:3px; 
+				display:inline-block;
+			}
+			.title_p {
+				margin-bottom:5px;
+				margin-top:5px;
+			}
+
+		}
+
+
+		.mainArg_container{
+			.MainArg_Content{
+				min-height: 60px;
+				border-style: solid;
+				border-color:#FFFFFF ;
+				border-width: thin;
+				background-color: #FCF5F5;
+			}
+			.MainArg_font{
+				font-size: medium;
+			}
+
+
+		}
+		.refute_container{
+			position:relative;
+			top:-20px;
+			>div{
+				width:70%;
+				margin-left:auto;
+				margin-right:10px;
+			}
+			.Refute_Content{
+				min-height: 40px;
+				border-style: solid;
+				border-color:#FFFFFF ;
+				border-width: thin;
+				background-color: #FFE4C4;
+			}
+			.Refute_font{
+				font-size: medium;
+			}
+
+		}
+
+	}
+
+}

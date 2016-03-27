@@ -1,0 +1,70 @@
+#written_description{
+	width:100%;
+
+	.article_show_left{
+		background-color:#FFEBCD;
+		border: medium solid #E0FFFF;
+		.team_container{
+			margin:5px;
+			margin-bottom:15px;
+			background-color: #00FA9A;
+			padding-bottom:5px;
+		}
+	}
+
+	.article_show_right{
+		background-color:#F0FFF0;
+		border: medium solid #E0FFFF;
+		.team_container{
+			margin:5px;
+			margin-bottom:15px;
+			background-color: #00FA9A;
+			padding-bottom:5px;
+		}
+
+	}
+	.each_element{
+		width:90%;
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:5px;
+		margin-bottom:30px;
+	}
+
+
+
+	.participant_element{
+		text-align:center;
+		>div{
+			padding-left:2px;
+			padding-right:2px;
+			padding-top:0px;
+			padding-bottom:0px;
+			background-color:#FAEBD7;
+			display: inline-block;
+			margin:5px;
+			text-align:center;
+		}
+		img {
+			height:40px;
+			width:auto;
+		}
+		.person_name{
+			font-size:small;
+		}
+		.user_info{
+			padding:5px;
+		}
+	}
+
+	.team_name{
+		font-weight:bold;
+		font-size:large;
+		text-align:center;
+		margin-top:5px;
+		margin-bottom:5px;
+		text-decoration: underline;
+		color:#000080;
+	}
+
+}
