@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','UserDataStorageService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, UserDataStorageService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','UserDataStorageService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, UserDataStorageService, CheckBrowserService) {
 
     console.log("event context controller called");
 
@@ -10,6 +10,7 @@ angular.module('mixideaWebApp')
     $scope.user = UserAuthService;
     $scope.user_service = UserDataStorageService
 
+    $scope.check_browser = CheckBrowserService;
 //////////////////////////////////
 //show basic event info
 /////////////////////////////////

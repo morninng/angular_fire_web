@@ -13,7 +13,8 @@
 
 <div id="hangout_button_container" ng-if="(participant_debater.indexOf(user.own_uid) != -1) || (participant_audience.indexOf(user.own_uid) != -1) || (participant_aud_or_debater.indexOf(user.own_uid) != -1) " class="fade_angular">
 	<div class="hangout_button_area">
-		<div>click here to join a event call</div>
+		<div ng-show="check_browser.is_ok">click here to join a event call</div>
+		<div ng-show="!check_browser.is_ok" ng-bind-html="check_browser.alert"></div>
 		<div>
 			<a ng-href="{{hangout_link_str_pre_uid}}{{user.own_uid}}{{hangout_link_str_post_uid}}" target="_blank">
 				<img src= "https://ssl.gstatic.com/s2/oz/images/stars/hangout/1/gplus-hangout-60x230-normal.png">
