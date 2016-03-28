@@ -10,6 +10,7 @@ touch .ftppass
 
   yo angular:controller Header-User
   yo angular:controller Login-Form
+  yo angular:controller Login-Form-Simple
   yo angular:controller Event-Layout
   yo angular:controller Create-Event
   yo angular:controller Article-Layout

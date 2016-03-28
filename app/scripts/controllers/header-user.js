@@ -17,7 +17,7 @@ angular.module('mixideaWebApp')
   	}
 
 
-
+/*
 	$scope.show_lgoin_form = function(){
 		console.log("show login form is called");
 		var modalInstance = $uibModal.open({
@@ -27,7 +27,17 @@ angular.module('mixideaWebApp')
 			size:'sm'
 		})
 	}
+*/
 
+	$scope.show_lgoin_form = function(){
+		console.log("show login form is called");
+		var modalInstance = $uibModal.open({
+			templateUrl: 'views/login_form_simple.html',
+			controller: 'LoginFormSimpleCtrl',
+			backdrop:"static",
+			size:'sm'
+		})
+	}
 
 
 

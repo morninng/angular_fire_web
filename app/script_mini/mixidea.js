@@ -106,21 +106,28 @@ angular.module('mixideaWebApp')
 			"article_main":{
 				templateUrl: 'views/article/audio_transcript.html',
 				controller: 'ArticleAudiotranscriptCtrl'
-			},
+			}
+/*
+			,
 			"article_right":{
 				templateUrl: 'views/right_column_ad.html'
 			}
+*/
+
 		}
 	})
 	.state('article.written_description', {
 		url:'/written_description',
 		views:{
 			"article_main":{
-				templateUrl: 'views/article/written_description.html'
+				templateUrl: 'views/article/written_description.html',
+				controller: 'ArticleWrittendescriptionCtrl'
 			},
+			/*
 			"article_right":{
 				templateUrl: 'views/right_column_ad.html'
 			}
+			*/
 		}
 	});
 
@@ -444,7 +451,7 @@ angular.module('mixideaWebApp')
   	}
 
 
-
+/*
 	$scope.show_lgoin_form = function(){
 		console.log("show login form is called");
 		var modalInstance = $uibModal.open({
@@ -454,8 +461,61 @@ angular.module('mixideaWebApp')
 			size:'sm'
 		})
 	}
+*/
+
+	$scope.show_lgoin_form = function(){
+		console.log("show login form is called");
+		var modalInstance = $uibModal.open({
+			templateUrl: 'views/login_form_simple.html',
+			controller: 'LoginFormSimpleCtrl',
+			backdrop:"static",
+			size:'sm'
+		})
+	}
 
 
+
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name mixideaWebApp.controller:LoginFormSimpleCtrl
+ * @description
+ * # LoginFormSimpleCtrl
+ * Controller of the mixideaWebApp
+ */
+angular.module('mixideaWebApp')
+  .controller('LoginFormSimpleCtrl',['$scope','UserAuthService','$uibModalInstance', function ($scope, UserAuthService, $uibModalInstance) {
+
+
+  	$scope.fb_login_show = true;
+  	$scope.fb_login_loading_show = false;
+  	$scope.user = UserAuthService;
+
+
+  	$scope.login_fb = function(){
+  		console.log("facebook login is clicked");
+	  	$scope.fb_login_show = false;
+	  	$scope.fb_login_loading_show = true;
+  		$scope.user.login();
+  	}
+
+	$scope.close_modal = function(){
+		$uibModalInstance.close();
+	  	$scope.fb_login_show = true;
+	  	$scope.fb_login_loading_show = false;
+	}
+
+
+	$scope.$watch('user.regist_complete', function(){
+		if($scope.user.regist_complete == true){
+		  	$scope.fb_login_show = true;
+		  	$scope.fb_login_loading_show = false;
+			$uibModalInstance.close();
+		}
+  	})
 
 
   }]);

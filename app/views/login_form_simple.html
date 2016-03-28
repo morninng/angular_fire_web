@@ -1,0 +1,27 @@
+<div>
+
+        <div align="center" ng-show="fb_login_show">
+          <br>
+          <div>You can login Mixidea through Facebook</div>
+          <br>
+  			  <div  align="center" style="width:100%">
+  			  	<a href="" ng-click = "login_fb()">
+  			     <img id="fb_logo" src="./images/fb_logo.jpg"></img>
+  			    </a>
+  			  </div>
+        </div>
+        <div align="center" style="width:100%" ng-show="fb_login_show">
+          <br>
+			     <input type="button" value="cancel login" ng-click="close_modal()">
+          <br>
+        </div>
+        <div align="center"  ng-show="fb_login_loading_show">
+          <br><br><br>
+          <div class="ball"></div>
+          <div class="ball1"></div>
+          <br><br>
+        </div>
+
+
+  </div>
+</div>
