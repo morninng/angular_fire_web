@@ -4,6 +4,130 @@
 
 <p class="motion_p"><span class="motion_prefix">motion:</span><span class="motion"> {{game_motion}}</span></p>
 
+
+
+<span ng-switch="deb_style">
+
+<span ng-switch-when="NA">
+ 
+
+
+<div class="article_show_left col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Government</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in NA_Gov_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div class="each_element" ng-if="NA_Gov_def_intro">
+				<div class="each_element">
+					<show-defintro_directive arg-id="NA_Gov_def_intro"></show-defintro_directive>
+				</div>
+			</div>
+			<div ng-repeat="arg in NA_Gov_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="article_show_right col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Opposition</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in NA_Opp_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div ng-repeat="arg in NA_Opp_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+</span>
+<span ng-switch-when="Asian">
+
+
+
+
+<div class="article_show_left col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Proposition</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in Asian_Prop_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div class="each_element" ng-if="Asian_Prop_def_intro">
+				<div class="each_element">
+					<show-defintro_directive arg-id="Asian_Prop_def_intro"></show-defintro_directive>
+				</div>
+			</div>
+			<div ng-repeat="arg in Asian_Prop_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="article_show_right col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+	<div class="side_container">
+		<div class="team_container">
+			<p class="team_name">Opposition</p>
+			<div class="participant_element">
+				<div ng-repeat="debater_id in Asian_Opp_debaters" class=user_info>
+					<div>
+						<span class="person_name">{{userdata_storage.user_data[debater_id].first_name}} </span>
+					</div>
+					<img ng-src={{userdata_storage.user_data[debater_id].profile_pict}}>
+				</div>
+			</div>
+			<div ng-repeat="arg in Asian_Opp_arguments">
+				<div class="each_element">
+					<show-argument_directive  arg-id="arg"></show-argument_directive>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+</span>
+
+<!-- **************   -->
+<span ng-switch-when="BP">
+
+
+
 <div class="article_show_left col-xs-12 col-sm-6 col-md-6 col-lg-6">
 	<div class="side_container">
 		<div class="team_container">
@@ -45,9 +169,6 @@
 		</div>
 	</div>
 </div>
-
-
-
 <div class="article_show_right col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
 	<div class="side_container">
@@ -84,9 +205,12 @@
 			</div>
 		</div>
 	</div>
-
-
 </div>
 
+</span>
+<span ng-switch-default>
+  no style yet
+</span>
+</span>
 
 </div>
