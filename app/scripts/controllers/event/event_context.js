@@ -20,6 +20,7 @@ angular.module('mixideaWebApp')
     event_ref.once("value", function(snapshot){
     	
       $scope.event_obj = snapshot.val();
+      set_calendar_info();
 
     },function(){
     	alert("fail to load event data");
@@ -296,5 +297,80 @@ angular.module('mixideaWebApp')
 
 
   });
+
+////////////////////////////////////////
+////////calendar info /////////////////
+///////////////////////////////////////
+
+function pad(n){return n<10 ? '0'+n : n};
+function convert_datestyle(input_date){
+
+  var d = new Date(input_date);
+var year = pad(d.getUTCFullYear());
+var month = pad(d.getUTCMonth() + 1);
+var date = pad(d.getUTCDate());
+var hour = pad(d.getUTCHours());
+var minute = pad(d.getUTCMinutes());
+var second = pad(d.getUTCSeconds());
+
+
+  var date_string = String(year)
+                  + String(month)
+                  + String(date)
+                  + 'T'
+                  + String(hour)
+                  + String(minute)
+                  + String(second) + 'Z';
+  return date_string;
+
+}
+
+  function set_calendar_info(){
+
+  var start_time = $scope.event_obj.date_time;
+  var start_time_str = convert_datestyle(start_time);
+  var finish_time = start_time +  (2* 60 * 60 * 1000);
+  var finish_time_str = convert_datestyle(finish_time);
+
+
+  //var cal_domain = "https://calendar.google.com/calendar/gp?";
+  var cal_domain = "https://www.google.com/calendar/render?";
+  var cal_action = "action=TEMPLATE&";
+  var cal_text = "text=Mixidea + Online + Debate&";
+  var cal_dates = "dates=20131206T050000Z/20131208T060000Z";
+  var cal_dates = "dates=" + start_time_str + "/" + finish_time_str;
+  var cal_location = "&location=From your Home Computer&";
+  var cal_sprop = "sprop=name:Name&";
+  var cal_sprop2 = "sprop=website:EventWebite&";
+  var cal_detail = ""
+  var cal_sf = "sf=true&";
+  var cal_output = "output=xml";
+
+
+  var current_url = location.href;
+  var detail = "You need to prepare following items" + 
+    "\n - Google Chrome browser" + 
+    "\n - headset with microphone" + 
+    "\n - Desktop , Laptop, Netbook or tablet. Mobile phone is not available" + 
+    "\n - Basic Pearliamenatary debate skill" +
+    "\n\n" +
+    "\n you can go to event page from here" + 
+    "\n " + current_url;
+  var detail_encrypt = encodeURIComponent(detail);
+  cal_detail = "details=" + detail_encrypt + "&";
+  var href_str = cal_domain + cal_action + cal_text + cal_dates + cal_location + cal_sprop + cal_sprop2 + cal_detail + cal_sf + cal_output;
+
+  $scope.calendar_link = href_str;
+
+
+}
+
+
+
+
+
+
+
+
 
 }]);

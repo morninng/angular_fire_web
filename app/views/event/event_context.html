@@ -7,7 +7,6 @@
 	<span class="category_title">prerequisit:</span>  {{event_obj.prerequisit}} <br>
 	<span class="category_title">deb_style:</span>  {{event_obj.deb_style}} <br>
 	<span class="category_title">deb_skill:</span>  {{event_obj.deb_skill}} <br>
-	<span class="category_title">motion:</span>  {{event_obj.motion}} <br>
 	<span class="category_title">date:</span> {{event_obj.date_time | DateValueString}}<br>
 </div>
 
@@ -110,6 +109,11 @@
 
 
 </div>
-
+<div id="event_additional">
+	 you can register this event information on google Calendar<br>
+	 <a target="_blank" ng-href={{calendar_link}}>
+		<img src="./images/google_calendar.png">
+	 </a>
+</div>
 
 </div>

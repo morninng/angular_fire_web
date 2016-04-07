@@ -282,6 +282,19 @@
   font-weight: bold;
   font-size: large;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000387}}
+#event_context_container #event_additional {
+  background-color: #FFFAF0;
+  padding: 10px;
+  margin: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_context\.scss}line{font-family:\0000393}}
+#event_context_container #event_additional img {
+  margin-top: 10px;
+  margin-left: 30px;
+  width: 50px;
+  height: 50px;
+}
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_article\.scss}line{font-family:\000032}}
 #article_top_link .article_title_element {
