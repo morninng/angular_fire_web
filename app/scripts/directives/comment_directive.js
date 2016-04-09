@@ -22,10 +22,36 @@ angular.module('mixideaWebApp')
 		console.log("comment obj");
 		console.log(scope.comment_obj);
       	var article_id = scope.comment_obj.article_id;
+      	var type = scope.comment_obj.type;
+
+
+	    scope.comment_obj["article_id"] = article_id;
+	    scope.comment_obj["type"] = "argument_each";
+
 
 	    var root_ref = new Firebase(MixideaSetting.firebase_url);
-	    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/general/context");
-	    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/general/num");
+
+	    switch(type){
+	    	case "argument_all":
+			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/context");
+			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/num");
+	    	break;
+	    	case "argument_each":
+      			var argument_id = scope.comment_obj.argument_id;
+			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/context");
+			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/num");
+	    	break;
+	    	case "audio_all":
+	    	break;
+	    	case "audio_each":
+	    	break;
+	    	default :
+	    		return;
+	    	break;
+	    }
+
+
+
 
 
 	    scope.userdata_storage = UserDataStorageService;

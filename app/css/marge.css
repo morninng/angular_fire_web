@@ -655,33 +655,41 @@
   font-size: medium;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\000031}}
+.comment_container {
+  background-color: #FFFAFA;
+  border-top: solid #D3D3D3;
+  border-width: 1px;
+  padding-top: 2px;
+  padding-left: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\000039}}
 .comment_container .comment_input {
   display: flex;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000312}}
 .comment_container .comment_input .user_column {
   padding: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000315}}
 .comment_container .comment_input .user_column img {
   width: 20px;
   height: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000320}}
 .comment_container .comment_input .input_column {
   flex: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000322}}
 .comment_container .comment_input .input_column textarea {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000329}}
 .comment_container .write_comment_button .save_button {
   float: right;
   margin-right: 30px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000333}}
 .comment_container .write_comment_button .save_button:after {
   clear: both;
   visibility: hidden;
@@ -690,22 +698,22 @@
   display: block;
   clear: both;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000342}}
 .comment_container .textarea_focus {
   width: 90%;
   height: 5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000346}}
 .comment_container .textarea_default {
   width: 90%;
   height: 1.8em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000353}}
 .comment_container .comment_list ul {
   list-style: none;
   padding-left: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000358}}
 .comment_container .comment_list .commment_context {
   display: flex;
   background-color: white;
@@ -713,20 +721,20 @@
   margin-right: 5px;
   margin-top: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000364}}
 .comment_container .comment_list .commment_context .user_column {
   padding: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000366}}
 .comment_container .comment_list .commment_context .user_column img {
   width: 20px;
   height: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000371}}
 .comment_container .comment_list .commment_context .context_column {
   flex: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_comment\.scss}line{font-family:\0000375}}
 .comment_container .comment_list .commment_context .comment_user_name {
   color: #0000FF;
   font-size: small;

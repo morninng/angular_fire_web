@@ -27,7 +27,12 @@ angular.module('mixideaWebApp')
         scope.refute = null;
         scope.refute_div = null;
         scope.show_all = false;
+        scope.comment_obj = new Object();
 
+
+        scope.comment_obj["article_id"] = event_id;
+        scope.comment_obj["argument_id"] = arg_id;
+        scope.comment_obj["type"] = "argument_each";
 
 
         var root_ref = new Firebase(MixideaSetting.firebase_url);

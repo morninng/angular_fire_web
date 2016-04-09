@@ -48,6 +48,7 @@ angular.module('mixideaWebApp')
 
 
     $scope.comment_obj["article_id"] = article_id;
+    $scope.comment_obj["type"] = "argument_all";
 
 
     game_ref.once("value").then(function(snapshot_game){
