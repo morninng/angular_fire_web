@@ -6,9 +6,9 @@
 
 
 
-<span ng-switch="deb_style">
+<div ng-switch="deb_style">
 
-<span ng-switch-when="NA">
+<div ng-switch-when="NA" class="row">
  
 
 
@@ -63,8 +63,8 @@
 
 
 
-</span>
-<span ng-switch-when="Asian">
+</div>
+<div ng-switch-when="Asian" class="row">
 
 
 
@@ -121,10 +121,10 @@
 
 
 
-</span>
+</div>
 
 <!-- **************   -->
-<span ng-switch-when="BP">
+<div ng-switch-when="BP" class="row">
 
 
 
@@ -207,10 +207,19 @@
 	</div>
 </div>
 
-</span>
-<span ng-switch-default>
-  no style yet
-</span>
-</span>
+</div>
+<div ng-switch-default>
+  under loading, please wait ....
+</div>
+</div>
+ <input type="hidden" autofocus="true" />
+
+<div class="below_article">
+-------general comment for entire round------
+
+
+  <comment_directive comment-obj="comment_obj" ></comment_directive>
+</div>
+
 
 </div>

@@ -33,6 +33,7 @@ yo angular:directive one-aud-trans
 
 yo angular:directive show-argument_directive
 yo angular:directive show-defintro_directive
+yo angular:directive comment_directive
 
 
 

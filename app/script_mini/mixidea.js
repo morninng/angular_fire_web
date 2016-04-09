@@ -214,6 +214,7 @@ angular.module('mixideaWebApp')
 		  	$scope.fb_login_show = true;
 		  	$scope.fb_login_loading_show = false;
 			$uibModalInstance.close();
+			location.reload(true);
 		}
   	})
 

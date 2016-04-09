@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('ArticleWrittendescriptionCtrl',['$scope','$timeout','MixideaSetting',"$stateParams","UserDataStorageService",  function ($scope, $timeout, MixideaSetting, $stateParams, UserDataStorageService) {
+  .controller('ArticleWrittendescriptionCtrl',['$scope','$timeout','MixideaSetting',"$stateParams","UserDataStorageService", function ($scope, $timeout, MixideaSetting, $stateParams, UserDataStorageService) {
 
     $scope.userdata_storage = UserDataStorageService;
 
@@ -32,6 +32,7 @@ angular.module('mixideaWebApp')
     $scope.BP_OO_debaters = [];
     $scope.BP_CG_debaters = [];
     $scope.BP_CO_debaters = [];
+    $scope.comment_obj = new Object();
 
 
     console.log('ArticleWrittendescriptionCtrl');
@@ -41,9 +42,12 @@ angular.module('mixideaWebApp')
     var game_ref = root_ref.child("event_related/game/" + article_id);
     var written_description_ref = root_ref.child("event_related/Article_Context/" + article_id);
     var game_role_ref = root_ref.child("event_related/participants/" + article_id + "/game_role");
+
     $scope.deb_style = null;
     $scope.game_motion = null;
 
+
+    $scope.comment_obj["article_id"] = article_id;
 
 
     game_ref.once("value").then(function(snapshot_game){
@@ -262,8 +266,6 @@ angular.module('mixideaWebApp')
     }, function(error){
     	console.log(error);
     });
-
-
 
 
   }]);

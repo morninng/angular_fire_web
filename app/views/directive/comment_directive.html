@@ -1,0 +1,35 @@
+
+<div class="comment_container">
+
+
+	<div class="comment_input">
+		<div class="user_column">
+			<img ng-show="user.loggedIn" ng-src={{user.profile_pict}}>
+		</div>
+		<div class="input_column">
+			<textarea ng-focus="textarea_focus()" ng-model="new_comment.context" ng-class="textarea_class" placeholder="write a comment"></textarea>
+		</div>
+	</div>
+	<div class="write_comment_button" ng-show="writing_comment">
+		<input class="save_button" type="button" value="save"  ng-click="save_comment()">
+		<br><br>
+	</div>
+	<div class="comment_list">
+
+		<ul>
+			<li ng-repeat="comment in comments_array">
+				<div class="commment_context">
+					<div class="user_column">
+						<img ng-src={{userdata_storage.user_data[comment.user].profile_pict}}>
+					</div>
+					<div class="context_column">
+						<span class="comment_user_name">{{userdata_storage.user_data[comment.user].first_name}}</span>
+						<span class="comment_context">{{comment.context}}</span>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+
+</div>

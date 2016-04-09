@@ -27,6 +27,12 @@ angular.module('mixideaWebApp')
       
     };
 
+    user_service.add_by_oneuser_id = function(user_id){
+      one_user_add(user_id, 1);
+      
+    };
+
+
     function one_user_add(user_id, all_user_num){
       
       if( user_service.user_data[user_id] ){
