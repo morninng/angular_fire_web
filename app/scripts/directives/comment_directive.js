@@ -118,12 +118,6 @@ angular.module('mixideaWebApp')
 
 	    }
 
-
-
-
-
-
-
       }
     };
   }]);

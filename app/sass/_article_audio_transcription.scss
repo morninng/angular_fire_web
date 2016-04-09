@@ -35,6 +35,21 @@
 		}
 	}
 
+
+	.below_article{
+		border-top:#FFFFFF solid 2px;
+		background-color:#98FB98;
+		padding-left:10px;
+		padding-right:10px;
+		padding-bottom:10px;
+		.comment_title{
+			margin-top:4px;
+			font-weight:bold;
+			text-align:center;
+			text-decoration: underline;
+		}
+
+	}
 }
 
 
@@ -138,9 +153,8 @@
 			}
 		}
 
-
-
 	}
+
 
 }
 

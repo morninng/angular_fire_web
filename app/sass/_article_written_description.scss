@@ -85,9 +85,17 @@
 		color:#000080;
 	}
 	.below_article{
-		border:#ff0000 solid 1px;
+		border-top:000000 solid 1px;
 		background-color:#FFEBCD;
-
+		padding-left:10px;
+		padding-right:10px;
+		padding-bottom:10px;
+		.comment_title{
+			margin-top:4px;
+			font-weight:bold;
+			text-align:center;
+			text-decoration: underline;
+		}
 
 	}
 
