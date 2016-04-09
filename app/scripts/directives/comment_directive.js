@@ -42,22 +42,22 @@ angular.module('mixideaWebApp')
 			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/num");
 	    	break;
 	    	case "audio_all":
+			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_all/context");
+			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_all/num");
 	    	break;
 	    	case "audio_each":
+				var role = scope.comment_obj.role;
+				var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/context");
+				var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/num");
+
 	    	break;
 	    	default :
 	    		return;
 	    	break;
 	    }
 
-
-
-
-
 	    scope.userdata_storage = UserDataStorageService;
 	    scope.user = UserAuthService;
-
-
 	    scope.textarea_class = "textarea_default";
 
 	    var first_focus = false;

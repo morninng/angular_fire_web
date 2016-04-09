@@ -13,10 +13,18 @@
 				 <one-aud-trans audtrans-data="value">
 				 </one-aud-trans>
 				</div>
+				<div ng-if="audio_transcript_obj[role.name]">
+					<comment_directive comment-obj="role.comment_obj" ></comment_directive>
+				</div>
 			</div>
 		</div>
 		
 	</div>
+
+	<div>
+		 comment to entire speech
+	  	<comment_directive comment-obj="comment_obj" ></comment_directive>
+  	</div>
 </div>
 
 <div class="hidden-xs hidden-sm col-md-3 col-lg-3">

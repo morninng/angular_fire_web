@@ -32,7 +32,6 @@ angular.module('mixideaWebApp')
     $scope.BP_OO_debaters = [];
     $scope.BP_CG_debaters = [];
     $scope.BP_CO_debaters = [];
-    $scope.comment_obj = new Object();
 
 
     console.log('ArticleWrittendescriptionCtrl');
@@ -47,6 +46,7 @@ angular.module('mixideaWebApp')
     $scope.game_motion = null;
 
 
+    $scope.comment_obj = new Object();
     $scope.comment_obj["article_id"] = article_id;
     $scope.comment_obj["type"] = "argument_all";
 
