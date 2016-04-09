@@ -7,7 +7,7 @@
  * # commentDirective
  */
 angular.module('mixideaWebApp')
-  .directive('commentDirective',['$firebaseArray','UserDataStorageService','UserAuthService','MixideaSetting', function ($firebaseArray, UserDataStorageService, UserAuthService, MixideaSetting) {
+  .directive('commentDirective',['$firebaseArray','UserDataStorageService','UserAuthService','MixideaSetting','$timeout','$uibModal', function ($firebaseArray, UserDataStorageService, UserAuthService, MixideaSetting, $timeout, $uibModal) {
     return {
       templateUrl: 'views/directive/comment_directive.html',
       restrict: 'E',
@@ -26,7 +26,6 @@ angular.module('mixideaWebApp')
 	    var root_ref = new Firebase(MixideaSetting.firebase_url);
 	    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/general/context");
 	    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/general/num");
-	    var commentor_list_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor");
 
 
 	    scope.userdata_storage = UserDataStorageService;
@@ -80,36 +79,18 @@ angular.module('mixideaWebApp')
 	        return (current_value || 0) +1;
 	      });
 
-
 	      // add user to commentor
-	      var commentor_list_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/" + scope.user.own_uid);
-	      commentor_list_ref.set(true);
+	      var commentor_list_own_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/" + scope.user.own_uid);
+	      commentor_list_own_ref.set(true);
 
 	      //reflesh data
 	      scope.new_comment.context = null;
 	      scope.writing_comment = false;
 	      first_focus = false;
-	      scope.below_article_text_class = "textarea_default";
+	      scope.textarea_class = "textarea_default";
 	      $timeout(function(){});
 
 	    }
-
-	    //retrieve commentor info
-	    // this will be executed once user click open comment button
-	    // for the time being, we do not have open so it is executed as a default
-
-	    var commentor_list_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/")
-	    commentor_list_ref.on("value", function(snapshot, prevchild_key){
-	      var participants_array_obj  = snapshot.val();
-	      if(participants_array_obj){
-	        console.log(participants_array_obj);
-	        var user_id_array = new Array();
-	        for(var key in participants_array_obj){
-	          user_id_array.push(key);
-	        }
-	        UserDataStorageService.add_by_array(user_id_array);
-	      }
-	    });
 
 
 

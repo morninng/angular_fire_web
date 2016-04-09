@@ -13,6 +13,9 @@
 		}
 		.input_column{
 			flex:1;
+			textarea {
+				overflow:hidden;
+			}
 		}
 	}
 
