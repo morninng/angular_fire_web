@@ -23,12 +23,112 @@
 
     <!-- Add your site or application content here -->
 
+<span ng-controller="HeaderUserCtrl">
+<div id="mixidea_header">
+  <div class="header_container">
+    <div class="header_left">
+      <a  class="header-left_logo">
+        <img src="./images/mixidea_logo.png">
+      </a>
+      <ul class="header_left_main_nav">
+        <li ><a class="header_left_main_pri" ng-click="link_articlelist()">ArticleList</a></li>
+        <li ><a class="header_left_main_pri" ng-click="link_eventlist()">EventList</a></li>
+        <li ><a class="header_left_main_pri" ng-click="link_mypage()">MyPage</a></li>
+      </ul>
+    </div>
 
-    <nav class="navbar navbar-inverse">
+    <div class="header_right" ng-show="user.loggedIn">
+      <ul>
+        <li class="header-right__sm-link">
+          <a>
+            <img class="icon_img" ng-src="{{user.profile_pict}}">
+          </a>
+        </li>
+        <li class="header-right__sm-link">
+          <a class="header_right_notification" ng-cilck="click_notification()">
+            <img class="icon_img" src="./images/earth.png">
+          </a>
+        </li>
+        <li class="header-right__sm-link">
+          <a class="header_right_message" ng-cilck="click_message()">
+            <img class="icon_img" src="./images/message.png">
+          </a>
+        </li class="header-right__sm-link">
+
+        <li class="header-right__sm-link">
+          <a class="header_right_hamburger" ng-click="click_hamburger()">
+            <img class="icon_img" src="./images/Hamburger.png">
+          </a>
+        </li class="header-right__sm-link">
+      </ul>
+    </div>
+
+
+    <div class="header_right_login" ng-hide="user.loggedIn">
+      <input type="button" value="login" class="btn btn-success" ng-click="show_lgoin_form()">
+    </div>
+
+  </div>
+
+</div>
+
+
+
+     
+
+<span id="header_below" ng-if="show_header_below">
+
+  <span ng-switch="header_below_type">
+
+  <div ng-switch-when="menu" class="menu_items">
+    <ul>
+      <li ng-repeat="menu in menu_list">
+        <div>
+          <a ng-click="menu_click(menu.func_param)"> {{menu.name}} </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-switch-when="notification" class="notification_items">
+   notification
+    <ul>
+      <li ng-repeat="menu in menu_list">
+        <div>
+          <div>
+            <img ng-src={{menu.img}}>
+          </div>
+          <a ng-href="menu.link">{{menu.text}}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-switch-when="message" class="message_items">
+    message
+    <ul>
+      <li ng-repeat="menu in menu_list">
+        <div>
+          <div>
+            <img ng-src={{menu.img}}>
+          </div>
+          <a ng-href="menu.link">{{menu.text}}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </span>
+</span>
+
+</span>
+
+<!--
+    <nav class="navbar navbar-inverse" >
+      
+      
       <div class="container-fluid">
-
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Mixidea</a>
           <ul class="nav navbar-nav">
             <li><a href="#/event/list" class="active">EventList</a></li>
             <li><a href="/my_page">MyPage</a></li> 
@@ -59,6 +159,8 @@
         </div>
       </div>
     </nav>
+
+    -->
 
     <div ui-view="RootView">
       
