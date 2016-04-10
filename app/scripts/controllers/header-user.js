@@ -69,7 +69,7 @@ angular.module('mixideaWebApp')
 		$scope.show_header_below = !$scope.show_header_below;
   		$scope.header_below_type = "menu";
   		var window_width = document.documentElement.clientWidth;
-  		if(window_width < 640){
+  		if(window_width < 800){
   			$scope.menu_list = [
   			{name:"Event List", func_param:"link_eventlist"},
   			{name:"Article List", func_param:"link_articlelist"},

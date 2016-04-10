@@ -2,7 +2,13 @@ $small:  "only screen and (max-width:640px)";
 $middle: "only screen and (min-width:641px) and (max-width:959px)";
 $large:  "only screen and (min-width:960px)";
 
+$small_middle:  "only screen and (max-width:959px)";
 $middle_large: "only screen and (min-width:641px)";
+
+
+$own_small:  "only screen and (max-width:799px)";
+$own_large: "only screen and (min-width:800px)";
+
 
 #mixidea_header {
 	color:#fff;
@@ -23,14 +29,11 @@ $middle_large: "only screen and (min-width:641px)";
 		float:left;
 
 
-		@media #{$large} {
-			width:70%;
+		@media #{$own_large} {
+			width:65%;
 		}
 
-		@media #{$middle} {
-			width:70%;
-		}
-		@media #{$small} {
+		@media #{$own_small} {
 			width:60px;
 		}
 
@@ -52,21 +55,8 @@ $middle_large: "only screen and (min-width:641px)";
 			li{
 				float:left;
 
-				@media #{$large} {
+				@media #{$own_large} {
 
-					a{
-						padding: 13px 10px;
-						display: block;
-						color: #000;
-						text-transform: uppercase;
-						letter-spacing: 0.5px;
-						font-size: 14px;
-						height: 46px;
-					}
-
-				}
-
-				@media #{$middle} {
 					a{
 						padding: 13px 10px;
 						display: block;
@@ -78,7 +68,9 @@ $middle_large: "only screen and (min-width:641px)";
 					}
 				}
 
-				@media #{$small} {
+
+
+				@media #{$own_small} {
 					.header_left_main_pri{
 						display:none;
 					}
@@ -94,14 +86,11 @@ $middle_large: "only screen and (min-width:641px)";
 		float:right;
 		margin-right:0px;
 
-		@media #{$large} {
-			width:30%;
+		@media #{$own_large} {
+			width:35%;
 		}
 
-		@media #{$middle} {
-			width:30%;
-		}
-		@media #{$small} {
+		@media #{$own_small} {
 			width:80%;
 		}
 
@@ -135,17 +124,14 @@ $middle_large: "only screen and (min-width:641px)";
 
 	.header_right_login{
 
-		@media #{$large} {
-			margin-top:3px;
-			text-align:center;
-		}
-		@media #{$middle} {
+		@media #{$own_large} {
 			margin-top:3px;
 			text-align:center;
 		}
 
 
-		@media #{$small} {
+
+		@media #{$own_small} {
 			float:right;
 			margin-top:5px;
 			margin-right:20px;
@@ -182,7 +168,7 @@ $middle_large: "only screen and (min-width:641px)";
 	position: absolute;
 
 
-	@media #{$middle_large} {
+	@media #{$large} {
 
 
 		right:0px;
@@ -207,7 +193,7 @@ $middle_large: "only screen and (min-width:641px)";
 
 	}
 
-	@media #{$small} {
+	@media #{$small_middle} {
 		width:100%;
 		margin-top:0px;
 		background-color:white;

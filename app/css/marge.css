@@ -767,7 +767,7 @@
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000313}}
 #mixidea_header {
   color: #fff;
   width: 100%;
@@ -777,57 +777,51 @@
   	background-color:#D8BFD8;
   */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000322}}
 #mixidea_header .header_container {
   margin-left: auto;
   margin-right: auto;
   max-width: 1280px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000328}}
 #mixidea_header .header_left {
   float: left;
 }
-@media only screen and (min-width: 960px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000322}}
+@media only screen and (min-width: 800px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000328}}
   #mixidea_header .header_left {
-    width: 70%;
+    width: 65%;
   }
 }
-@media only screen and (min-width: 641px) and (max-width: 959px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000322}}
-  #mixidea_header .header_left {
-    width: 70%;
-  }
-}
-@media only screen and (max-width: 640px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000322}}
+@media only screen and (max-width: 799px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000328}}
   #mixidea_header .header_left {
     width: 60px;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000340}}
 #mixidea_header .header_left .header-left_logo {
   float: left;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000343}}
 #mixidea_header .header_left .header-left_logo img {
   width: 50px;
   height: 50px;
   margin: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000350}}
 #mixidea_header .header_left .header_left_main_nav {
   margin: 0px;
   padding: 0px;
   list-style-type: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000355}}
 #mixidea_header .header_left .header_left_main_nav li {
   float: left;
 }
-@media only screen and (min-width: 960px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000357}}
+@media only screen and (min-width: 800px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000360}}
   #mixidea_header .header_left .header_left_main_nav li a {
     padding: 13px 10px;
     display: block;
@@ -838,54 +832,36 @@
     height: 46px;
   }
 }
-@media only screen and (min-width: 641px) and (max-width: 959px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000370}}
-  #mixidea_header .header_left .header_left_main_nav li a {
-    padding: 13px 10px;
-    display: block;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 14px;
-    height: 46px;
-  }
-}
-@media only screen and (max-width: 640px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000382}}
+@media only screen and (max-width: 799px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000374}}
   #mixidea_header .header_left .header_left_main_nav li .header_left_main_pri {
     display: none;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000385}}
 #mixidea_header .header_right {
   float: right;
   margin-right: 0px;
 }
-@media only screen and (min-width: 960px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000393}}
+@media only screen and (min-width: 800px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000385}}
   #mixidea_header .header_right {
-    width: 30%;
+    width: 35%;
   }
 }
-@media only screen and (min-width: 641px) and (max-width: 959px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000393}}
-  #mixidea_header .header_right {
-    width: 30%;
-  }
-}
-@media only screen and (max-width: 640px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000393}}
+@media only screen and (max-width: 799px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000385}}
   #mixidea_header .header_right {
     width: 80%;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\0000397}}
 #mixidea_header .header_right ul {
   float: right;
   margin-right: 0px;
   list-style-type: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003112}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003101}}
 #mixidea_header .header_right ul li {
   float: left;
   /*
@@ -901,35 +877,28 @@
   }
   */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003103}}
 #mixidea_header .header_right ul li a {
   display: block;
   padding: 10px 5px;
   height: 46px;
 }
-@media only screen and (min-width: 960px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003136}}
+@media only screen and (min-width: 800px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003125}}
   #mixidea_header .header_right_login {
     margin-top: 3px;
     text-align: center;
   }
 }
-@media only screen and (min-width: 641px) and (max-width: 959px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003136}}
-  #mixidea_header .header_right_login {
-    margin-top: 3px;
-    text-align: center;
-  }
-}
-@media only screen and (max-width: 640px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003136}}
+@media only screen and (max-width: 799px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003125}}
   #mixidea_header .header_right_login {
     float: right;
     margin-top: 5px;
     margin-right: 20px;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003155}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003141}}
 #mixidea_header .icon_img {
   width: 30px;
   height: 30px;
@@ -937,7 +906,7 @@
   margin-right: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003164}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003150}}
 #mixidea_header:after {
   content: "";
   display: block;
@@ -947,17 +916,17 @@
   visibility: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003179}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003165}}
 #header_below {
   z-index: 999;
   position: absolute;
 }
-@media only screen and (min-width: 641px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003179}}
+@media only screen and (min-width: 960px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003165}}
   #header_below {
     right: 0px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003189}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003175}}
   #header_below .menu_items {
     width: 100px;
     margin-top: 0px;
@@ -965,31 +934,31 @@
     background-color: white;
     border: thin solid #000000;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003197}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003183}}
   #header_below .menu_items ul {
     list-style-type: none;
     margin: 0px;
     padding: 10px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003202}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003188}}
   #header_below .menu_items ul li div {
     border-bottom: thin solid #000000;
   }
 }
-@media only screen and (max-width: 640px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003179}}
+@media only screen and (max-width: 959px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003165}}
   #header_below {
     width: 100%;
     margin-top: 0px;
     background-color: white;
     border-bottom: medium solid #D3D3D3;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003214}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003200}}
   #header_below ul {
     list-style-type: none;
     margin: 0px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003217}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_header\.scss}line{font-family:\00003203}}
   #header_below ul li div {
     padding-top: 5px;
     border-bottom: thin solid #000000;
