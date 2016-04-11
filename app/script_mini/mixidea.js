@@ -519,11 +519,9 @@ angular.module('mixideaWebApp')
       var event_obj = {
       	"date_time": event_date,
       	"time":event_time,
-      	"deb_style": $scope.$parent.$parent.deb_style,
       	"context": $scope.$parent.$parent.context,
       	"deb_skill": $scope.$parent.$parent.exp_deb_skill,
       	"lang_skil": $scope.$parent.$parent.exp_lang_skil,
-      	"motion": $scope.$parent.$parent.motion,
       	"prerequisit": $scope.$parent.$parent.prerequisit,
       	"created_by": UserAuthService.own_uid
       }
@@ -545,11 +543,14 @@ angular.module('mixideaWebApp')
 
     function save_game_data(event_id){
 
+      var event_date = $scope.$parent.$parent.date_time.getTime();
+
       var game_obj = {
         "deb_style": $scope.$parent.$parent.deb_style,
         "motion":$scope.$parent.$parent.motion,
         "game_status": "introduction",
         "type": "debate",
+        "date_time":event_date
       }
 
       var root_ref = new Firebase(MixideaSetting.firebase_url);
@@ -711,10 +712,10 @@ angular.module('mixideaWebApp')
 
   	$scope.event_obj = new Object();
     var event_ref = root_ref.child("event_related/event/" + event_id);
-    event_ref.once("value", function(snapshot){
+    event_ref.once("value", function(event_snapshot){
     	
-      $scope.event_obj = snapshot.val();
-      set_calendar_info();
+      $scope.event_obj = event_snapshot.val();
+      set_google_calendar_info();
 
     },function(){
     	alert("fail to load event data");
@@ -735,19 +736,29 @@ angular.module('mixideaWebApp')
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
     var event_participant_ref = root_ref.child("event_related/participants/" + event_id + "/event_role");
-    event_participant_ref.on("value", function(snapshot){
+    var game_ref = root_ref.child("event_related/game/" + event_id);
 
-      $scope.available_audience = false;
-      $scope.available_debater = false;
-      $scope.available_aud_or_debater = false;
-      $scope.total_num = 0;
+    $scope.game_obj = new Object();
+    game_ref.once("value", function(game_snapshot){
+      $scope.game_obj = game_snapshot.val();
+      
+      event_participant_ref.on("value", function(participant_snapshot){
 
-      var participant_obj = snapshot.val();
-      retrieve_userinfo_all(participant_obj);
+        $scope.available_audience = false;
+        $scope.available_debater = false;
+        $scope.available_aud_or_debater = false;
+        $scope.total_num = 0;
 
-    },function(){
-      alert("fail to load participant data");
-    });
+        var participant_obj = participant_snapshot.val();
+        retrieve_userinfo_all(participant_obj);
+
+      },function(){
+        alert("fail to load participant data");
+      });
+
+    })
+
+
 
     function retrieve_userinfo_all(participant_obj){
 
@@ -811,7 +822,7 @@ angular.module('mixideaWebApp')
 
   function validate(role_type, num){
 
-    var style = $scope.event_obj.deb_style;
+    var style = $scope.game_obj.deb_style;
     if($scope.total_num>9){
       return false
     }
@@ -862,13 +873,17 @@ angular.module('mixideaWebApp')
 
   function register_user(role_type){
 
-
-    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
+    var own_event_list_ref = root_ref.child("users/event_list/" + $scope.user.own_uid + "/" + event_id);
+    var event_participant_eventrole_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
     var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + $scope.user.own_uid);
 
-    full_participant_ref.set(true).then(function(obj){
 
-      return event_participant_user_ref.set(true);
+    own_event_list_ref.set("registered").then(function(o){
+
+      return full_participant_ref.set(true);
+    }).then(function(obj){
+
+      return event_participant_eventrole_ref.set(true);
     }).then(function(){
       
       alert("succeed to join");
@@ -880,20 +895,24 @@ angular.module('mixideaWebApp')
 
   function un_register_user(role_type){
 
-    var role_ref = event_ref.child("participant/" + role_type + "/member/" + $scope.user.own_uid);
-    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + $scope.user.own_uid);
+//    var role_ref = event_ref.child("participant/" + role_type + "/member/" + $scope.user.own_uid);
+//    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + $scope.user.own_uid);
 
 
 
-    var event_participant_user_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
+    var own_event_list_ref = root_ref.child("users/event_list/" + $scope.user.own_uid + "/" + event_id);
+    var event_participant_eventrole_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + $scope.user.own_uid);
     var full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full/" + $scope.user.own_uid);
 
     
-    event_participant_user_ref.set(null).then(function(obj){
+    event_participant_eventrole_ref.set(null).then(function(obj){
 
       return full_participant_ref.set(null);
     }).then(function(){
       
+      return own_event_list_ref.set("cancelled");
+    }).then(function(){
+
       alert("succeed to cancel");
     },function(){
 
@@ -922,7 +941,7 @@ angular.module('mixideaWebApp')
       }else{
         valid = validate(role_type, 0);
         if(!valid){
-          return;        
+          return;
         }
         new_num = 0;
       }
@@ -1019,7 +1038,7 @@ var second = pad(d.getUTCSeconds());
 
 }
 
-  function set_calendar_info(){
+  function set_google_calendar_info(){
 
   var start_time = $scope.event_obj.date_time;
   var start_time_str = convert_datestyle(start_time);

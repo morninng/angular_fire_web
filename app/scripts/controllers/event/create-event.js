@@ -131,11 +131,9 @@ angular.module('mixideaWebApp')
       var event_obj = {
       	"date_time": event_date,
       	"time":event_time,
-      	"deb_style": $scope.$parent.$parent.deb_style,
       	"context": $scope.$parent.$parent.context,
       	"deb_skill": $scope.$parent.$parent.exp_deb_skill,
       	"lang_skil": $scope.$parent.$parent.exp_lang_skil,
-      	"motion": $scope.$parent.$parent.motion,
       	"prerequisit": $scope.$parent.$parent.prerequisit,
       	"created_by": UserAuthService.own_uid
       }
@@ -157,11 +155,14 @@ angular.module('mixideaWebApp')
 
     function save_game_data(event_id){
 
+      var event_date = $scope.$parent.$parent.date_time.getTime();
+
       var game_obj = {
         "deb_style": $scope.$parent.$parent.deb_style,
         "motion":$scope.$parent.$parent.motion,
         "game_status": "introduction",
         "type": "debate",
+        "date_time":event_date
       }
 
       var root_ref = new Firebase(MixideaSetting.firebase_url);

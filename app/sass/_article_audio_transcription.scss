@@ -10,10 +10,6 @@ $own_small:  "only screen and (max-width:799px)";
 $own_large: "only screen and (min-width:800px)";
 
 
-
-
-
-
 #audio_transcript_container{
 	background-color:#FFEFD5;
 
@@ -30,8 +26,6 @@ $own_large: "only screen and (min-width:800px)";
 		background-color:#FFFFE0;
 		border-bottom:medium solid #ffffff;
 	}
-
-
 
 
 	.speech_context{
@@ -182,8 +176,6 @@ $own_large: "only screen and (min-width:800px)";
 			}
 		}
 
-
-
 	}
 	.poi{
 		display:flex;
@@ -216,7 +208,6 @@ $own_large: "only screen and (min-width:800px)";
 		}
 
 	}
-
 
 }
 
