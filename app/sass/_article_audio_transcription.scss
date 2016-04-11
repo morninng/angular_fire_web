@@ -1,3 +1,19 @@
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+$small_middle:  "only screen and (max-width:959px)";
+$middle_large: "only screen and (min-width:641px)";
+
+
+$own_small:  "only screen and (max-width:799px)";
+$own_large: "only screen and (min-width:800px)";
+
+
+
+
+
+
 #audio_transcript_container{
 	background-color:#FFEFD5;
 
@@ -11,7 +27,7 @@
 	}
 	.motion_p{
 		text-align:center;
-		background-color:#98FB98;
+		background-color:#FFFFE0;
 		border-bottom:medium solid #ffffff;
 	}
 
@@ -67,9 +83,19 @@
 
 	.speech{
 		display:flex;
+
+
+		@media #{$own_large} {
+			flex-direction:row;
+			margin-right:70px;
+		}
+		@media #{$own_small} {
+			flex-direction:column;
+			margin-right:10px;
+		}
+
 		background-color:#F0F8FF;
 		margin-left:5px;
-		margin-right:50px;
 
 		.speaker_info{
 			width: 60px;
@@ -78,19 +104,30 @@
 				height:auto;
 			}
 		}
-
-
 	}
 	.poi{
 		display:flex;
-		flex-direction:row-reverse;
 		background-color:#FFF0F5;
-		margin-left:50px;
 		margin-right:5px;
 		font-style: italic;
 
 
+		@media #{$own_large} {
+			flex-direction:row-reverse;
+			margin-left:70px;
+		}
+		@media #{$own_small} {
+			flex-direction:column;
+			margin-left:10px;
+		}
+
+
 		.speaker_info{
+			@media #{$own_small} {
+				width:100%;
+				text-align:right;
+			}
+
 			width: 40px;
 			text-align:right;
 			font-size: x-small;
@@ -118,13 +155,26 @@
 	}
 	.speech{
 		display:flex;
-		flex-direction:row-reverse;
 		background-color:#F0F8FF;
-		margin-left:50px;
 		margin-right:5px;
 
 
+		@media #{$own_large} {
+		flex-direction:row-reverse;
+			margin-left:70px;
+		}
+		@media #{$own_small} {
+			flex-direction:column;
+			margin-left:10px;
+		}
+
+
+
 		.speaker_info{
+			@media #{$own_small} {
+				width:100%;
+				text-align:right;
+			}
 			width: 60px;
 			img{
 				width:40px;
@@ -139,11 +189,23 @@
 		display:flex;
 		background-color:#FFF0F5;
 		margin-left:5px;
-		margin-right:50px;
 		font-style: italic;
 
 
+		@media #{$own_large} {
+			flex-direction:row;
+			margin-right:70px;
+		}
+		@media #{$own_small} {
+			flex-direction:column;
+			margin-right:10px;
+		}
+
 		.speaker_info{
+			@media #{$own_small} {
+				width:100%;
+				text-align:left;
+			}
 			width: 40px;
 			text-align:left;
 			font-size: x-small;

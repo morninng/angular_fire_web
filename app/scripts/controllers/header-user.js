@@ -41,29 +41,28 @@ angular.module('mixideaWebApp')
 
 
   	$scope.link_articlelist = function(){
-		console.log("link_articlelist");
-		$scope.show_header_below = false;
-
+		  console.log("link_articlelist");
+		  $scope.show_header_below = false;
   	}
   	$scope.link_eventlist = function(){
-		console.log("link_eventlist");
+		  console.log("link_eventlist");
   		$state.go('eventsearch_layout_three_column.list');
-		$scope.show_header_below = false;
+		  $scope.show_header_below = false;
   	}
+
   	$scope.link_mypage = function(){
-		console.log("link_mypage");
-		$scope.show_header_below = false;
-  		
+		  console.log("link_mypage");
+		  $scope.show_header_below = false;
   	}
 
   	$scope.click_notification = function(){
-		console.log("click_notification");
-  		
+		  console.log("click_notification");	
   	}
+
   	$scope.click_message = function(){
-		console.log("click_message");
-  		
+		  console.log("click_message");	
   	}
+    
   	$scope.click_hamburger = function(){
 		console.log("click_hamburger");
 		$scope.show_header_below = !$scope.show_header_below;
