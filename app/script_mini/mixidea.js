@@ -696,14 +696,14 @@ angular.module('mixideaWebApp')
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','UserDataStorageService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, UserDataStorageService, CheckBrowserService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService) {
 
     console.log("event context controller called");
 
   	var event_id = $stateParams.id;
     var root_ref = new Firebase(MixideaSetting.firebase_url);
     $scope.user = UserAuthService;
-    $scope.user_service = UserDataStorageService
+    $scope.user_service = DataStorageUserService
 
     $scope.check_browser = CheckBrowserService;
 //////////////////////////////////
@@ -741,7 +741,7 @@ angular.module('mixideaWebApp')
     $scope.game_obj = new Object();
     game_ref.once("value", function(game_snapshot){
       $scope.game_obj = game_snapshot.val();
-      
+
       event_participant_ref.on("value", function(participant_snapshot){
 
         $scope.available_audience = false;
@@ -895,8 +895,6 @@ angular.module('mixideaWebApp')
 
   function un_register_user(role_type){
 
-//    var role_ref = event_ref.child("participant/" + role_type + "/member/" + $scope.user.own_uid);
-//    var participant_ref = root_ref.child("event_related/participants/" + event_id + "/" + $scope.user.own_uid);
 
 
 
@@ -1164,16 +1162,16 @@ angular.module('mixideaWebApp')
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventListCtrl',['$scope','EventSearchService', function ($scope, EventSearchService) {
+  .controller('EventListCtrl',['$scope','DataStorageEventService', function ($scope, DataStorageEventService) {
 
+  	$scope.event_data =  DataStorageEventService;
 
-  	$scope.event_list =  EventSearchService.event_list;
-  	
-
-
-
+    var search_start_timing = new Date();
+    var search_start_timing_value = search_start_timing.getTime();
+    DataStorageEventService.load_all_futuredata(search_start_timing_value);
 
   }]);
+
 
 'use strict';
 

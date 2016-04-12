@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','UserDataStorageService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, UserDataStorageService, CheckBrowserService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService) {
 
     console.log("event context controller called");
 
   	var event_id = $stateParams.id;
     var root_ref = new Firebase(MixideaSetting.firebase_url);
     $scope.user = UserAuthService;
-    $scope.user_service = UserDataStorageService
+    $scope.user_service = DataStorageUserService
 
     $scope.check_browser = CheckBrowserService;
 //////////////////////////////////

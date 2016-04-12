@@ -7,7 +7,7 @@
  * # oneAudTrans
  */
 angular.module('mixideaWebApp')
-  .directive('oneAudTrans',['$timeout','UserDataStorageService', function ($timeout, UserDataStorageService) {
+  .directive('oneAudTrans',['$timeout','DataStorageUserService', function ($timeout, DataStorageUserService) {
     return {
       templateUrl: 'views/directive/oneAudTrans.html',
       restrict: 'E',
@@ -20,7 +20,7 @@ angular.module('mixideaWebApp')
         console.log(scope.audio_transcript_data);
         var speech_context =  scope.audio_transcript_data.spech_context;
         scope.short_context_array = new Array();
-        scope.user_service = UserDataStorageService;
+        scope.user_service = DataStorageUserService;
 
         var audio_file =scope.audio_transcript_data.audio;
 

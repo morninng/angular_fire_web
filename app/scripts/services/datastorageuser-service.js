@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name mixideaWebApp.UserDataStorageService
+ * @name mixideaWebApp.DataStorageUserService
  * @description
- * # UserDataStorageService
+ * # DataStorageUserService
  * Factory in the mixideaWebApp.
  */
 angular.module('mixideaWebApp')
-  .factory('UserDataStorageService',['MixideaSetting','$timeout', function (MixideaSetting, $timeout) {
+  .factory('DataStorageUserService',['MixideaSetting','$timeout', function (MixideaSetting, $timeout) {
     // Service logic
     
     var user_service = new Object();

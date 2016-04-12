@@ -7,7 +7,7 @@
  * # commentDirective
  */
 angular.module('mixideaWebApp')
-  .directive('commentDirective',['$firebaseArray','UserDataStorageService','UserAuthService','MixideaSetting','$timeout','$uibModal', function ($firebaseArray, UserDataStorageService, UserAuthService, MixideaSetting, $timeout, $uibModal) {
+  .directive('commentDirective',['$firebaseArray','DataStorageUserService','UserAuthService','MixideaSetting','$timeout','$uibModal', function ($firebaseArray, DataStorageUserService, UserAuthService, MixideaSetting, $timeout, $uibModal) {
     return {
       templateUrl: 'views/directive/comment_directive.html',
       restrict: 'E',
@@ -56,7 +56,7 @@ angular.module('mixideaWebApp')
 	    	break;
 	    }
 
-	    scope.userdata_storage = UserDataStorageService;
+	    scope.userdata_storage = DataStorageUserService;
 	    scope.user = UserAuthService;
 	    scope.textarea_class = "textarea_default";
 

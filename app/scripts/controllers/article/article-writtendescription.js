@@ -8,9 +8,9 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('ArticleWrittendescriptionCtrl',['$scope','$timeout','MixideaSetting',"$stateParams","UserDataStorageService", function ($scope, $timeout, MixideaSetting, $stateParams, UserDataStorageService) {
+  .controller('ArticleWrittendescriptionCtrl',['$scope','$timeout','MixideaSetting',"$stateParams","DataStorageUserService", function ($scope, $timeout, MixideaSetting, $stateParams, DataStorageUserService) {
 
-    $scope.userdata_storage = UserDataStorageService;
+    $scope.userdata_storage = DataStorageUserService;
 
     $scope.argument_id_data = null;
     $scope.NA_Gov_def_intro = null;

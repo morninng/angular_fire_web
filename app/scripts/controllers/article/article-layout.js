@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('ArticleLayoutCtrl', function ($scope,  $stateParams, UserDataStorageService, MixideaSetting) {
+  .controller('ArticleLayoutCtrl', function ($scope,  $stateParams, DataStorageUserService, MixideaSetting) {
 
   	console.log("ArticleLayoutCtrl");
 
@@ -28,7 +28,7 @@ angular.module('mixideaWebApp')
 		  for(var key in participants_array_obj){
 		  	user_id_array.push(key);
 		  }
-		  UserDataStorageService.add_by_array(user_id_array);
+		  DataStorageUserService.add_by_array(user_id_array);
 		}
 	});
 
@@ -46,7 +46,7 @@ angular.module('mixideaWebApp')
 	    for(var key in participants_array_obj){
 	      user_id_array.push(key);
 	    }
-	    UserDataStorageService.add_by_array(user_id_array);
+	    DataStorageUserService.add_by_array(user_id_array);
 	  }
 	});
 

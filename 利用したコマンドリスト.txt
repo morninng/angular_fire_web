@@ -42,3 +42,10 @@ yo angular:directive comment_directive
 
 
  yo angular:service Util-Service
+
+
+ ---My Page Related ----
+
+
+  yo angular:controller Mypage
+  yo angular:factory OwnEvent-Service
