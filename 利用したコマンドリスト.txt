@@ -48,4 +48,5 @@ yo angular:directive comment_directive
 
 
   yo angular:controller Mypage
-  yo angular:factory OwnEvent-Service
+  yo angular:controller Mypage-Event
+  yo angular:controller Mypage-Article

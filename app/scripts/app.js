@@ -107,13 +107,6 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/article/audio_transcript.html',
 				controller: 'ArticleAudiotranscriptCtrl'
 			}
-/*
-			,
-			"article_right":{
-				templateUrl: 'views/right_column_ad.html'
-			}
-*/
-
 		}
 	})
 	.state('article.written_description', {
@@ -122,13 +115,16 @@ angular.module('mixideaWebApp')
 			"article_main":{
 				templateUrl: 'views/article/written_description.html',
 				controller: 'ArticleWrittendescriptionCtrl'
-			},
-			/*
-			"article_right":{
-				templateUrl: 'views/right_column_ad.html'
 			}
-			*/
 		}
-	});
+	})
+	.state('mypage', {
+		url:'/mypage',
+		views:{
+			"RootView":{
+				templateUrl: 'views/mypage/mypage_layout.html',
+			}
+		}
+	})
 
 }]);

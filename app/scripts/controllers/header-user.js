@@ -52,6 +52,10 @@ angular.module('mixideaWebApp')
 
   	$scope.link_mypage = function(){
 		  console.log("link_mypage");
+      if(true){
+        //popup to show login dialog if not logedin
+      }
+      $state.go('mypage');
 		  $scope.show_header_below = false;
   	}
 

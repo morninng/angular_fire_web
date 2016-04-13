@@ -1,0 +1,26 @@
+<div id="mypage_event_container">
+
+
+<p class="mypage_title">list of event you are planning to join</p>
+
+<div>
+	<ul>
+		<li ng-repeat="event_obj in event_obj_array ">
+			<div class="each_event_list" ng-show="event_data.all_data[event_obj.id].date_time > time_criteria">
+				<p>
+					<a href="#/eventcontext/context/{{event_obj.id}}" >{{event_data.all_data[event_obj.id].date_time | DateValueString}}</a>
+				</p>
+				<div class="each_context" ng-class="event_obj.status=='cancelled' ? 'cancelled' : null">
+					<div ng-if="event_obj.status=='cancelled'"> you cancelled</div>
+					context: {{event_data.all_data[event_obj.id].context}} <br>
+					prerequisit: {{event_data.all_data[event_obj.id].prerequisit}} <br>
+					deb_skill: {{event_data.all_data[event_obj.id].deb_skill}} <br>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+</div>
+

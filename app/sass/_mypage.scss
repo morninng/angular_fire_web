@@ -1,0 +1,29 @@
+#mypage_event_container{
+	background-color:#F5F5F5;
+	.mypage_title{
+		text-align:center;
+		font-weight:bold;
+	}
+
+	ul{
+		list-style:none;
+		padding-left:10px;
+		li{
+		}
+	}
+	.each_event_list{
+		border-bottom: thin solid #000000;
+		p{
+			margin-bottom:2px;
+		}
+		.cancelled{
+			background-color:#708090;
+		}
+	}
+	.each_context{
+		border-radius: 5px;
+		padding-left:10px;
+		margin-bottom:4px;
+	}
+
+}
