@@ -1122,12 +1122,19 @@
   background-color: #FFFFFF;
   border-radius: 5px;
   margin-left: 10px;
+  margin-right: 10px;
   padding-left: 4px;
   margin-bottom: 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000371}}
-#mypage_article_container .each_article_list .each_context p {
-  font-weight: bold;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000373}}
+#mypage_article_container .each_article_list .each_context .article_style {
+  padding-left: 20px;
+  font-size: small;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000377}}
+#mypage_article_container .each_article_list .each_context .article_date {
+  padding-left: 20px;
+  font-size: small;
 }
 
 /*# sourceMappingURL=marge.css.map */

@@ -66,11 +66,19 @@
 			background-color:#FFFFFF;
 			border-radius: 5px;
 			margin-left:10px;
+			margin-right:10px;
 			padding-left:4px;
 			margin-bottom:4px;
-			p{
-				font-weight:bold;
+
+			.article_style{
+				padding-left:20px;
+				font-size:small;
 			}
+			.article_date{
+				padding-left:20px;
+				font-size:small;	
+			}
+
 		}
 
 	}

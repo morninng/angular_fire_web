@@ -1,7 +1,7 @@
 <div id="mypage_article_container">
 
 
-<p class="mypage_title">list of your articles</p>
+<p class="mypage_title">your articles</p>
 
 <div>
 	<ul>
@@ -11,8 +11,9 @@
 					<a href="#/article/{{article_obj.id}}/audio_transcript" >{{article_data.all_data[article_obj.id].motion}}</a>
 				</p>
 				<div class="each_context">
-					style: {{article_data.all_data[article_obj.id].deb_style}} <br>
-					{{article_data.all_data[article_obj.id].date_time | DateValueString}}
+					<span class="article_date">
+					{{article_data.all_data[article_obj.id].date_time | DateMonthDate}}</span>
+					<span class="article_style">style: {{article_data.all_data[article_obj.id].deb_style}}</span>
 				</div>
 			</div>
 		</li>
