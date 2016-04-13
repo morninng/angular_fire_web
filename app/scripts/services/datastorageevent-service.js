@@ -74,19 +74,7 @@ angular.module('mixideaWebApp')
     }
 
 
-/*
-    event_data.reflesh_data = function(){
 
-    }
-
-    event_data.filter_by_weekday = function(day_array){
-
-    }
-
-    event_data.filter_by_timerange = function(time_from, time_to){
-
-    }
-*/
 
     return event_data;
 

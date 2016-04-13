@@ -1,6 +1,23 @@
 <div id="mypage_article_container">
 
-mypage_article_container
+
+<p class="mypage_title">list of your articles</p>
+
+<div>
+	<ul>
+		<li ng-repeat="article_obj in article_obj_array | orderBy:'-time'">
+			<div class="each_article_list">
+				<p class="each_motion">
+					<a href="#/article/{{article_obj.id}}/audio_transcript" >{{article_data.all_data[article_obj.id].motion}}</a>
+				</p>
+				<div class="each_context">
+					style: {{article_data.all_data[article_obj.id].deb_style}} <br>
+					{{article_data.all_data[article_obj.id].date_time | DateValueString}}
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
 
 
 </div>

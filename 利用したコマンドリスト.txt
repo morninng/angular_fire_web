@@ -38,6 +38,7 @@ yo angular:directive comment_directive
 
 
  yo angular:factory UserDataStorage-Service
+ yo angular:factory DataStorageArticle-Service
  
 
 

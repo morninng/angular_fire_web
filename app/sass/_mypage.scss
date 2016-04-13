@@ -4,12 +4,9 @@
 		text-align:center;
 		font-weight:bold;
 	}
-
 	ul{
 		list-style:none;
 		padding-left:10px;
-		li{
-		}
 	}
 	.each_event_list{
 		border-bottom: thin solid #000000;
@@ -40,5 +37,41 @@
 			font-weight:bold;
 		}
 	}
+}
 
+
+#mypage_article_container {
+	background-color:#F5F5F5;
+	.mypage_title{
+		text-align:center;
+		font-weight:bold;
+	}
+	ul{
+		list-style:none;
+		padding-left:10px;
+	}
+
+	.each_article_list{
+		border-bottom: thin solid #000000;
+		background-color:#98FB98;
+
+
+		.each_motion{
+			margin-bottom:2px;
+			font-weight:bold;
+			font-size:medium;
+		}
+
+		.each_context{
+			background-color:#FFFFFF;
+			border-radius: 5px;
+			margin-left:10px;
+			padding-left:4px;
+			margin-bottom:4px;
+			p{
+				font-weight:bold;
+			}
+		}
+
+	}
 }
