@@ -1062,14 +1062,34 @@
   margin-bottom: 2px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000319}}
-#mypage_event_container .each_event_list .cancelled {
-  background-color: #708090;
+#mypage_event_container .each_event_list .mightfinish {
+  background-color: #DCDCDC;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000322}}
+#mypage_event_container .each_event_list .undergoing {
+  background-color: #32CD32;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000325}}
+#mypage_event_container .each_event_list .upcoming {
+  background-color: #FFC0CB;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000328}}
+#mypage_event_container .each_event_list .planned {
+  background-color: #FFFFFF;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000331}}
+#mypage_event_container .each_event_list .cancelled {
+  background-color: #A9A9A9;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000335}}
 #mypage_event_container .each_context {
   border-radius: 5px;
   padding-left: 10px;
   margin-bottom: 4px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_mypage\.scss}line{font-family:\0000339}}
+#mypage_event_container .each_context p {
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=marge.css.map */

@@ -16,14 +16,29 @@
 		p{
 			margin-bottom:2px;
 		}
+		.mightfinish{
+			background-color:#DCDCDC;
+		}
+		.undergoing{
+			background-color:#32CD32;
+		}
+		.upcoming{
+			background-color:#FFC0CB;
+		}
+		.planned{
+			background-color:#FFFFFF;
+		}
 		.cancelled{
-			background-color:#708090;
+			background-color:#A9A9A9;
 		}
 	}
 	.each_context{
 		border-radius: 5px;
 		padding-left:10px;
 		margin-bottom:4px;
+		p{
+			font-weight:bold;
+		}
 	}
 
 }

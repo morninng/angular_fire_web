@@ -15,7 +15,7 @@ angular.module('mixideaWebApp')
     var event_data = {
       all_data: {},
       future_event_idlist:[],
-      own_event_idlist:[]
+      counter:0
     }
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
@@ -34,8 +34,7 @@ angular.module('mixideaWebApp')
           event_data.all_data[loaded_list[i].$id] = loaded_list[i];
           event_data.future_event_idlist.push(loaded_list[i].$id);
         }
-      })
-      
+      }) 
     }
 
     var count_event = 0;
@@ -54,6 +53,7 @@ angular.module('mixideaWebApp')
       if( event_data.all_data[event_id] ){
         count_event++;
         if(count_event == all_event_num){
+          event_data.counter++;
           $timeout(function() {});
         }
         return;
@@ -66,6 +66,7 @@ angular.module('mixideaWebApp')
         var event_key = snapshot.key();
         event_data.all_data[event_key] = event_obj;
         if(count_event == all_event_num){
+          event_data.counter++;
           $timeout(function() {});
         }
       });

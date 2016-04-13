@@ -5,13 +5,17 @@
 
 <div>
 	<ul>
-		<li ng-repeat="event_obj in event_obj_array ">
-			<div class="each_event_list" ng-show="event_data.all_data[event_obj.id].date_time > time_criteria">
+		<li ng-repeat="event_obj in event_obj_array | orderBy:'-time':'reverse'">
+			<div class="each_event_list">
 				<p>
 					<a href="#/eventcontext/context/{{event_obj.id}}" >{{event_data.all_data[event_obj.id].date_time | DateValueString}}</a>
 				</p>
-				<div class="each_context" ng-class="event_obj.status=='cancelled' ? 'cancelled' : null">
-					<div ng-if="event_obj.status=='cancelled'"> you cancelled</div>
+				<div class="each_context" ng-class="event_obj.style">
+					<p ng-if="event_obj.style=='mightfinish'">finish</p>
+					<p ng-if="event_obj.style=='undergoing'"> currently ongoing!!</p>
+					<p ng-if="event_obj.style=='upcoming'"> Event will start soon</p>
+					<p ng-if="event_obj.style=='planned'"> </p>
+					<p ng-if="event_obj.style=='cancelled'"> you cancelled</p>
 					context: {{event_data.all_data[event_obj.id].context}} <br>
 					prerequisit: {{event_data.all_data[event_obj.id].prerequisit}} <br>
 					deb_skill: {{event_data.all_data[event_obj.id].deb_skill}} <br>
