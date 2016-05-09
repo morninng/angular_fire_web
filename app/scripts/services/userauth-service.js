@@ -19,7 +19,8 @@ angular.module('mixideaWebApp')
     profile_pict: null,
     lang_type: null,
     regist_complete:false,
-    own_uid: null
+    own_uid: null,
+    api_securekey : null
   };
   var own_user_ref = null;
   var own_user_basic_ref = null;
@@ -115,11 +116,74 @@ angular.module('mixideaWebApp')
     console.log(error_obj);
   }
 
+
+  // secure key info can be written by user only but cannot read it.
+  //secure key info can be read only by apigateway server
+
+  var generate_random_string = function(){
+
+    var c = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var cl = c.length;
+    var random = "";
+    for(var i=0; i<20; i++){
+      random += c[Math.floor(Math.random()*cl)];
+    }
+    return random;
+  }
+
+  var register_api_securekey = function(){
+
+    var api_securekey = generate_random_string();
+
+    var user_apisecurekey_ref = root_ref.child("users/apisecurekey/" + user.own_uid);
+    user_apisecurekey_ref.set(api_securekey, function(error){
+      if(error){
+        console.log(error);
+      }else{
+        console.log("succeed to save");
+        console.log("apiscurekey : " + api_securekey);
+        var hash = CryptoJS.HmacSHA256(user.own_uid, api_securekey);
+        var hashHex = CryptoJS.enc.Hex.stringify(hash);
+        user.mac = hashHex;
+        console.log("mac value is " + user.mac);
+
+        trial_read_fortest();
+      }
+    });
+  }
+
+  var trial_read_fortest = function(){
+
+    var user_apisecurekey_ref = root_ref.child("users/apisecurekey/" + user.own_uid);
+    user_apisecurekey_ref.once("value",function(snapshot){
+      console.log("secure key is read " + snapshot.val());
+    },function(error){
+      console.log("secure key cannot read" + error);
+    })
+
+  }
+
+
+
+
+
+  user.create_jwt = function(){
+
+    var jwt = {
+      user_id: user.own_uid,
+      mac:user.mac
+    }
+    console.log(jwt);
+    return jwt;
+  }
+
+
   root_ref.onAuth(function(auth_obj){
     if(auth_obj){
       user.loggedIn = true;
       user.own_uid = auth_obj.uid;
       regist_listener_for_registered_user();
+      register_api_securekey();
     }else{
       user.loggedIn = false;
       user.own_uid = null;
