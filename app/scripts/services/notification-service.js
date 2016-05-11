@@ -59,8 +59,6 @@ angular.module('mixideaWebApp')
       for(var i=0; i< notify_service.notify_array.length; i++){
         notify_service.notify_array[i].focus = false;
       }
-      
-
 
     }
 

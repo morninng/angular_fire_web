@@ -21,6 +21,21 @@ angular
     'firebase'
   ]);
 
+
+
+angular.module('mixideaWebApp').run(function($rootScope, $location, $anchorScroll, $stateParams, $timeout) {
+
+	$rootScope.$on('$stateChangeSuccess', function(newRoute, oldRoute) {
+
+		$timeout(function(){
+			$location.hash($stateParams.scrollTo);
+			$anchorScroll();
+		},1000);
+
+	});
+});
+
+
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -116,6 +131,9 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/article/written_description.html',
 				controller: 'ArticleWrittendescriptionCtrl'
 			}
+		},
+		params: {
+			scrollTo: null
 		}
 	})
 	.state('mypage', {

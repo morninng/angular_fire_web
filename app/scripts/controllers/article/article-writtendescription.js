@@ -264,6 +264,7 @@ angular.module('mixideaWebApp')
       }
 
 
+
     }, function(error){
     	console.log(error);
     });
