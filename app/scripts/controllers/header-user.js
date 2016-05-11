@@ -8,17 +8,25 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state', function ($scope, UserAuthService, $uibModal, $state) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService) {
 
   	$scope.user = UserAuthService;
-  	$scope.header_below_type = "menu";
-  	$scope.show_header_below = false;
+    $scope.user_data_store = DataStorageUserService;
+    $scope.article_data_store = DataStorageArticleService;
+
+
+
+    $scope.show_menu = false;
+    $scope.show_notification = false;
+    $scope.show_message = false;
+
   	$scope.menu_list = new Array();
+    $scope.notify_service = NotificationService;
 
   	$scope.logout = function(){
-		$scope.user.logout();
-		console.log("logout");
-		$scope.show_header_below = false;
+  		$scope.user.logout();
+  		console.log("logout");
+  		$scope.show_header_below = false;
   	}
   	
   	$scope.menu_click = function(param){
@@ -38,7 +46,6 @@ angular.module('mixideaWebApp')
   			break;
   		}
   	}
-
 
   	$scope.link_articlelist = function(){
 		  console.log("link_articlelist");
@@ -60,17 +67,45 @@ angular.module('mixideaWebApp')
   	}
 
   	$scope.click_notification = function(){
-		  console.log("click_notification");	
+		  console.log("click_notification");
+      $scope.show_menu = false;
+      $scope.show_notification = !$scope.show_notification;
+      $scope.show_message = false;
   	}
+
+    $scope.notification_select = function(notify_obj){
+      console.log("click_notification");
+      $scope.notify_service.seen(notify_obj.id);
+      //goto selected page
+
+      switch(notify_obj.type){
+        case "argument_all":
+          $state.go('article.written_description', {id:notify_obj.event_id});
+
+        break;
+        
+      }
+
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+      $scope.notify_service.release_focused_status();
+    }
+
+
 
   	$scope.click_message = function(){
 		  console.log("click_message");	
   	}
-    
+
+
   	$scope.click_hamburger = function(){
-		console.log("click_hamburger");
-		$scope.show_header_below = !$scope.show_header_below;
-  		$scope.header_below_type = "menu";
+
+  		console.log("click_hamburger");
+      $scope.show_menu = !$scope.show_menu;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+
   		var window_width = document.documentElement.clientWidth;
   		if(window_width < 800){
   			$scope.menu_list = [
@@ -84,9 +119,7 @@ angular.module('mixideaWebApp')
   			{name:"Logout", func_param:"logout"}
   			];
   		}
-
   	}
-
 
 
 /*

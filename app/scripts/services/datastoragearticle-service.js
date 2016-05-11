@@ -33,6 +33,12 @@ angular.module('mixideaWebApp')
     }
 
 
+    article_data.add_by_onearticle_id = function(article_id){
+      count_article = 0;
+      one_article_add(article_id, 1);
+    };
+
+
     function one_article_add(article_id, all_article_num){
       
       if( article_data.all_data[article_id] ){

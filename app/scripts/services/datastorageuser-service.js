@@ -28,6 +28,7 @@ angular.module('mixideaWebApp')
     };
 
     user_service.add_by_oneuser_id = function(user_id){
+      count_user = 0;
       one_user_add(user_id, 1);
       
     };

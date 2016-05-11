@@ -89,6 +89,7 @@ angular.module('mixideaWebApp')
 	      }
 	    }
 
+
 	    
 
 	    scope.comments_array = $firebaseArray(comments_ref);
@@ -117,7 +118,6 @@ angular.module('mixideaWebApp')
 	      //send comment info to API gateway
 	      var auth_jwt = scope.user.create_jwt();
 	      var auth_jwt_str = JSON.stringify(auth_jwt);
-
 	      var post_message = post_message_format;
 	      post_message["comment"] = scope.new_comment.context;
 
@@ -129,28 +129,20 @@ angular.module('mixideaWebApp')
 	      		'Authorization': auth_jwt_str
 	      	},
 	      	data: post_message
-	      	//data:{aaa:"bbb",ccc:"ddd"}
 	      }).then(function successCallback(response){
-
 	      	console.log("success to put comment on lambda")
 	      	console.log(response);
-
 	      }, function errorCallback(response){
-
 	      	console.log("fail to put comment on lambda")
 	      	console.log(response);
-
 	      });
-	      
 	      //reflesh data
 	      scope.new_comment.context = null;
 	      scope.writing_comment = false;
 	      first_focus = false;
 	      scope.textarea_class = "textarea_default";
 	      $timeout(function(){});
-
 	    }
-
       }
     };
   }]);

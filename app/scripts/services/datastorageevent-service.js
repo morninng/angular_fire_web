@@ -47,6 +47,11 @@ angular.module('mixideaWebApp')
       }
     }
 
+    event_data.add_by_oneevent_id = function(event_id){
+      count_event = 0;
+      one_event_add(event_id, 1);
+      
+    };
 
     function one_event_add(event_id, all_event_num){
       

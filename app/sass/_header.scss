@@ -160,61 +160,107 @@ $own_large: "only screen and (min-width:800px)";
 
 
 
+@media #{$large} {
 
-
-#header_below{
-
-	z-index: 999;
-	position: absolute;
-
-
-	@media #{$large} {
-
-
+	#header_below{
+		z-index: 999;
+		position: absolute;
 		right:0px;
+
+		ul{
+			list-style-type:none;
+			margin:0px;
+			padding: 10px;
+			li >div{
+				border-bottom:thin solid #808080;
+				margin-bottom:5px;
+				padding-bottom:2px;
+			}
+		}
 		.menu_items {
 			width:100px;
 			margin-top:0px;
 			margin-right:20px;
 			background-color:white;
 			border: thin solid #000000;
-
-
-			ul{
-				list-style-type:none;
-				margin:0px;
-				padding: 10px;
-
-				li div{
-					border-bottom:thin solid #000000;
-				}
-			}
 		}
-
+		.notification_items{
+			width:300px;
+			margin-top:0px;
+			margin-right:40px;
+			background-color:white;
+			border: thin solid #000000;
+		}
 	}
+}
 
-	@media #{$small_middle} {
+@media #{$small_middle} {
+
+	#header_below{
+		z-index: 999;
+		position: absolute;
 		width:100%;
 		margin-top:0px;
-		background-color:white;
 		ul{
 			list-style-type:none;
 			margin:0px;
-			li div{
+			li >div{
 				padding-top:5px;
 				border-bottom:thin solid #000000;
-				font-size:large;
-				font-weight:bold;
-				margin-bottom:10px;
-
+				margin-bottom:5px;
+				padding-bottom:2px;
 			}
 		}
-		border-bottom: medium solid #D3D3D3;
+
+		.menu_items {
+			background-color:white;
+			font-size:large;
+			font-weight:bold;
+			border-bottom: medium solid #D3D3D3;
+		}
+
+		.notification_items {
+			background-color:white;
+			font-size:medium;
+			font-weight:bold;
+			border-bottom: medium solid #D3D3D3;
+		}
 
 	}
-
-
-
 }
+
+
+#header_below{
+
+	.notify_title{
+		color:#0000FF;
+	}
+	.notify_user{
+		font-weight: bold; 
+	}
+
+	.focused_box{
+		background-color: #7FFFD4 !important;
+	}
+	.not_seen{
+		background-color: #F0F8FF;
+	}
+
+	.gif_tex_container{
+		display:flex;
+		.gif_tex_img{
+			width:60px;
+			img{
+				margin-left:auto;
+				margin-right:auto;
+				width:50px
+			}
+		}
+		.gif_tex_comment{
+			flex:1;
+		}
+	}
+}
+
 
 

@@ -46,12 +46,12 @@
           </a>
         </li>
         <li class="header-right__sm-link">
-          <a class="header_right_notification" ng-cilck="click_notification()">
-            <img class="icon_img" src="./images/earth.png">
+          <a class="header_right_notification" ng-click="click_notification()">
+            <img class="icon_img" src="{{notify_service.icon_img}}">
           </a>
         </li>
         <li class="header-right__sm-link">
-          <a class="header_right_message" ng-cilck="click_message()">
+          <a class="header_right_message" ng-click="click_message()">
             <img class="icon_img" src="./images/message.png">
           </a>
         </li class="header-right__sm-link">
@@ -75,54 +75,57 @@
 
 
 
-     
+<div id="header_below">
 
-<span id="header_below" ng-if="show_header_below">
-
-  <span ng-switch="header_below_type">
-
-  <div ng-switch-when="menu" class="menu_items">
-    <ul>
-      <li ng-repeat="menu in menu_list">
-        <div>
-          <a ng-click="menu_click(menu.func_param)"> {{menu.name}} </a>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div ng-switch-when="notification" class="notification_items">
-   notification
-    <ul>
-      <li ng-repeat="menu in menu_list">
-        <div>
+  <span ng-if="show_menu">
+    <div class="menu_items">
+      <ul>
+        <li ng-repeat="menu in menu_list">
           <div>
-            <img ng-src={{menu.img}}>
-          </div>
-          <a ng-href="menu.link">{{menu.text}}</a>
-        </div>
-      </li>
-    </ul>
-  </div>
 
-  <div ng-switch-when="message" class="message_items">
-    message
-    <ul>
-      <li ng-repeat="menu in menu_list">
-        <div>
-          <div>
-            <img ng-src={{menu.img}}>
+            <a ng-click="menu_click(menu.func_param)"> {{menu.name}} </a>
+
           </div>
-          <a ng-href="menu.link">{{menu.text}}</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
+  </span>
+
+  <span ng-if="show_notification">
+    <div class="notification_items">
+      <ul>
+        <li ng-repeat="notify_obj in notify_service.notify_array">
+          <div ng-click="notification_select(notify_obj)" ng-mouseenter="notify_obj.focus=true" ng-mouseleave="notify_obj.focus=false" >
+
+            <div ng-class="{'not_seen':!notify_obj.seen}">
+              <div class="gif_tex_container" ng-class="{'focused_box':notify_obj.focus==true}">
+                <div class="gif_tex_img">
+                  <img ng-src={{user_data_store.user_data[notify_obj.userid].profile_pict}}>
+                </div>
+                <div class="gif_tex_comment">
+                  <span class="notify_user">
+                  {{user_data_store.user_data[notify_obj.userid].first_name}}
+                  </span>
+                  {{notify_obj.message}}
+                  <span class="notify_title">
+                  {{article_data_store.all_data[notify_obj.event_id].motion}}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </span>
+
+  <span ng-if="show_message">
 
   </span>
-</span>
 
-</span>
+</div>
+
 
 <!--
     <nav class="navbar navbar-inverse" >
@@ -236,6 +239,7 @@
         <script src="scripts/controllers/mypage/mypage-article.js"></script>
         <script src="scripts/services/datastoragearticle-service.js"></script>
         <script src="scripts/filters/datemonthdate.js"></script>
+        <script src="scripts/services/notification-service.js"></script>
         <!-- endbuild -->
 
 

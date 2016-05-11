@@ -107,13 +107,6 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/article/audio_transcript.html',
 				controller: 'ArticleAudiotranscriptCtrl'
 			}
-/*
-			,
-			"article_right":{
-				templateUrl: 'views/right_column_ad.html'
-			}
-*/
-
 		}
 	})
 	.state('article.written_description', {
@@ -122,14 +115,17 @@ angular.module('mixideaWebApp')
 			"article_main":{
 				templateUrl: 'views/article/written_description.html',
 				controller: 'ArticleWrittendescriptionCtrl'
-			},
-			/*
-			"article_right":{
-				templateUrl: 'views/right_column_ad.html'
 			}
-			*/
 		}
-	});
+	})
+	.state('mypage', {
+		url:'/mypage',
+		views:{
+			"RootView":{
+				templateUrl: 'views/mypage/mypage_layout.html',
+			}
+		}
+	})
 
 }]);
 'use strict';
@@ -142,17 +138,25 @@ angular.module('mixideaWebApp')
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state', function ($scope, UserAuthService, $uibModal, $state) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService) {
 
   	$scope.user = UserAuthService;
-  	$scope.header_below_type = "menu";
-  	$scope.show_header_below = false;
+    $scope.user_data_store = DataStorageUserService;
+    $scope.article_data_store = DataStorageArticleService;
+
+
+
+    $scope.show_menu = false;
+    $scope.show_notification = false;
+    $scope.show_message = false;
+
   	$scope.menu_list = new Array();
+    $scope.notify_service = NotificationService;
 
   	$scope.logout = function(){
-		$scope.user.logout();
-		console.log("logout");
-		$scope.show_header_below = false;
+  		$scope.user.logout();
+  		console.log("logout");
+  		$scope.show_header_below = false;
   	}
   	
   	$scope.menu_click = function(param){
@@ -173,7 +177,6 @@ angular.module('mixideaWebApp')
   		}
   	}
 
-
   	$scope.link_articlelist = function(){
 		  console.log("link_articlelist");
 		  $scope.show_header_below = false;
@@ -186,21 +189,53 @@ angular.module('mixideaWebApp')
 
   	$scope.link_mypage = function(){
 		  console.log("link_mypage");
+      if(true){
+        //popup to show login dialog if not logedin
+      }
+      $state.go('mypage');
 		  $scope.show_header_below = false;
   	}
 
   	$scope.click_notification = function(){
-		  console.log("click_notification");	
+		  console.log("click_notification");
+      $scope.show_menu = false;
+      $scope.show_notification = !$scope.show_notification;
+      $scope.show_message = false;
   	}
+
+    $scope.notification_select = function(notify_obj){
+      console.log("click_notification");
+      $scope.notify_service.seen(notify_obj.id);
+      //goto selected page
+
+      switch(notify_obj.type){
+        case "argument_all":
+          $state.go('article.written_description', {id:notify_obj.event_id});
+
+        break;
+        
+      }
+
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+      $scope.notify_service.release_focused_status();
+    }
+
+
 
   	$scope.click_message = function(){
 		  console.log("click_message");	
   	}
-    
+
+
   	$scope.click_hamburger = function(){
-		console.log("click_hamburger");
-		$scope.show_header_below = !$scope.show_header_below;
-  		$scope.header_below_type = "menu";
+
+  		console.log("click_hamburger");
+      $scope.show_menu = !$scope.show_menu;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+
   		var window_width = document.documentElement.clientWidth;
   		if(window_width < 800){
   			$scope.menu_list = [
@@ -214,9 +249,7 @@ angular.module('mixideaWebApp')
   			{name:"Logout", func_param:"logout"}
   			];
   		}
-
   	}
-
 
 
 /*
@@ -1172,6 +1205,77 @@ angular.module('mixideaWebApp')
 
   }]);
 
+
+'use strict';
+
+/**
+ * @ngdoc filter
+ * @name mixideaWebApp.filter:DateMonthDate
+ * @function
+ * @description
+ * # DateMonthDate
+ * Filter in the mixideaWebApp.
+ */
+angular.module('mixideaWebApp')
+  .filter('DateMonthDate', function () {
+    return function (input) {
+
+
+	    var date_object = new Date(input);
+	    var year = date_object.getFullYear();
+	    var month = date_object.getMonth();
+	    var month_str = null;
+	    switch(month){
+			case 0:
+				month_str = "Jan";
+			break;
+			case 1:
+				month_str = "Feb";
+			break;
+			case 2:
+				month_str = "Mar";
+			break;
+			case 3:
+				month_str = "April";
+			break;
+			case 4:
+				month_str = "May";
+			break;
+			case 5:
+				month_str = "June";
+			break;
+			case 6:
+				month_str = "July";
+			break;
+			case 7:
+				month_str = "Aug";
+			break;
+			case 8:
+				month_str = "Sep";
+			break;
+			case 9:
+				month_str = "Oct";
+			break;
+			case 10:
+				month_str = "Nov";
+			break;
+			case 11:
+				month_str = "Dec";
+			break;
+	    }
+	    var day = date_object.getDate();
+	    var date_string = year
+
+	    date_string = String(year) + '-' + month_str + '-' + String(day);
+
+      return date_string;
+    };
+
+
+
+
+
+  });
 
 'use strict';
 
