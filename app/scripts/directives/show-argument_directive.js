@@ -40,35 +40,25 @@ angular.module('mixideaWebApp')
         				+ arg_id;
         var argument_content_ref = root_ref.child(argument_content_path);
 
-        var title_ref = argument_content_ref.child("title");
-        title_ref.once("value", function(snapshot){
-          scope.title = snapshot.val();
-          if(scope.title){
-            scope.show_all = true;
-          }
-          $timeout(function(){});
-        }); 
 
-        var content_ref = argument_content_ref.child("content");
-        content_ref.once("value", function(snapshot){
-          scope.content = snapshot.val();
+        argument_content_ref.once("value", function(snapshot){
+          var argument_content = snapshot.val();
+          if(!argument_content){
+            scope.show_all = false;
+            //$timeout(function(){});
+            return;
+          }
+          scope.title = argument_content.title;
+          scope.content = argument_content.content;
           scope.content_div = UtilService.add_linebreak_html(scope.content);
-          if(scope.content){
-            scope.show_all = true;
-          }
-          $timeout(function(){});
-        }); 
-
-        var refute_ref = argument_content_ref.child("refute");
-        refute_ref.once("value", function(snapshot){
-          
-          scope.refute = snapshot.val();
+          scope.refute = argument_content.refute;
           scope.refute_div = UtilService.add_linebreak_html(scope.refute);
-          if(scope.refute){
+          if(scope.title || scope.content || scope.refute){
             scope.show_all = true;
+            $timeout(function(){});
           }
-          $timeout(function(){});
-        }); 
+
+        });
 
       }
     };

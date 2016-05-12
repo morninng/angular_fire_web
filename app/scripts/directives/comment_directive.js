@@ -24,9 +24,10 @@ angular.module('mixideaWebApp')
       	var article_id = scope.comment_obj.article_id;
       	var type = scope.comment_obj.type;
 
-
+/*
 	    scope.comment_obj["article_id"] = article_id;
 	    scope.comment_obj["type"] = "argument_each";
+*/
 	    var post_message_format = {};
 
 
@@ -35,26 +36,17 @@ angular.module('mixideaWebApp')
 	    switch(type){
 	    	case "argument_all":
 			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/context");
-			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/num");
-			    post_message_format = {type: "argument_all", article_id: article_id};
 	    	break;
 	    	case "argument_each":
       			var argument_id = scope.comment_obj.argument_id;
 			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/context");
-			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/num");
-			    post_message_format = {type: "argument_each", article_id: article_id, argument_id: argument_id};
 	    	break;
 	    	case "audio_all":
 			    var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_all/context");
-			    var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_all/num");
-			    post_message_format = {type: "audio_all", article_id: article_id};
 	    	break;
 	    	case "audio_each":
 				var role = scope.comment_obj.role;
 				var comments_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/context");
-				var comments_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/num");
-			    post_message_format = {type: "audio_all", article_id: article_id, role: role};
-
 	    	break;
 	    	default :
 	    		return;
@@ -91,6 +83,7 @@ angular.module('mixideaWebApp')
 
 
 	    
+	    
 
 	    scope.comments_array = $firebaseArray(comments_ref);
 	    scope.new_comment = new Object();
@@ -100,20 +93,54 @@ angular.module('mixideaWebApp')
 	      if(!scope.user.own_uid){
 	        return;
 	      }
-	      var comment_obj = {
+		  switch(type){
+			case "argument_all":
+			    var commentor_each_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/commentor/" + scope.user.own_uid);
+			    var comments_each_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_all/num");
+			    post_message_format = {type: "argument_all", event_id: article_id};
+
+			break;
+			case "argument_each":
+			    var commentor_each_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/commentor/"  + scope.user.own_uid);
+			    var comments_each_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/argument_each/" + argument_id + "/num");
+			    post_message_format = {type: "argument_each", event_id: article_id, argument_id: argument_id};
+
+			break;
+			case "audio_all":
+			    var commentor_each_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/" + scope.user.own_uid);
+			    var comments_each_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_all/num");
+			    post_message_format = {type: "audio_all", event_id: article_id};
+
+			break;
+			case "audio_each":
+				var commentor_each_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/commentor/"  + scope.user.own_uid);
+				var comments_each_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/audio_each/" + role + "/num");
+			    post_message_format = {type: "audio_each", event_id: article_id, role: role};
+
+			break;
+		  }
+
+	      var comment_object = {
 	        context: scope.new_comment.context,
 	        user: scope.user.own_uid
 	      }
-	      scope.comments_array.$add(comment_obj);
+	      scope.comments_array.$add(comment_object);
 
 	      //comments_num_ref ++
-	      comments_num_ref.transaction(function(current_value){
+
+		  var comments_all_num_ref = root_ref.child("event_related/comment_web/" + article_id + "/number_all/");
+	      comments_all_num_ref.transaction(function(current_value){
+	        return (current_value || 0) +1;
+	      });
+	      comments_each_num_ref.transaction(function(current_value){
 	        return (current_value || 0) +1;
 	      });
 
 	      // add user to commentor
-	      var commentor_list_own_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/" + scope.user.own_uid);
-	      commentor_list_own_ref.set(true);
+	      var all_commentor_list_own_ref = root_ref.child("event_related/comment_web/" + article_id + "/commentor/" + scope.user.own_uid);
+	      all_commentor_list_own_ref.set(true);
+	      commentor_each_ref.set(true);
+
 
 	      //send comment info to API gateway
 	      var auth_jwt = scope.user.create_jwt();

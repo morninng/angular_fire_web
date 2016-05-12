@@ -21,6 +21,21 @@ angular
     'firebase'
   ]);
 
+
+
+angular.module('mixideaWebApp').run(function($rootScope, $location, $anchorScroll, $stateParams, $timeout) {
+
+	$rootScope.$on('$stateChangeSuccess', function(newRoute, oldRoute) {
+
+		$timeout(function(){
+			$location.hash($stateParams.scrollTo);
+			$anchorScroll();
+		},1000);
+
+	});
+});
+
+
 angular.module('mixideaWebApp')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -116,6 +131,9 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/article/written_description.html',
 				controller: 'ArticleWrittendescriptionCtrl'
 			}
+		},
+		params: {
+			scrollTo: null
 		}
 	})
 	.state('mypage', {
@@ -128,6 +146,7 @@ angular.module('mixideaWebApp')
 	})
 
 }]);
+
 'use strict';
 
 /**
@@ -210,8 +229,11 @@ angular.module('mixideaWebApp')
 
       switch(notify_obj.type){
         case "argument_all":
-          $state.go('article.written_description', {id:notify_obj.event_id});
+          var state_param =  {id:notify_obj.event_id, scrollTo:'written_description_comment_all'}
+          $state.go('article.written_description', state_param);
 
+          // need implementation if no page shift but scroll to the right place
+          // as $stateChangeSuccess is not called in case no state is changed
         break;
         
       }
