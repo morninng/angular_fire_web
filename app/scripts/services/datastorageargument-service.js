@@ -28,9 +28,9 @@ angular.module('mixideaWebApp')
         var argument_obj = snapshot.val();
 
         if(argument_obj.title){
-          argument_data.all_data[concat_id] = argument_obj.title.slice(0,30);
+          argument_data.all_data[concat_id] = argument_obj.title.slice(0,45);
         }else if(argument_obj.context){
-          argument_data.all_data[concat_id] = argument_obj.context.slice(0,30);
+          argument_data.all_data[concat_id] = argument_obj.context.slice(0,45);
         }else{
           argument_data.all_data[concat_id] = " ";
         }

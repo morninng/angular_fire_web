@@ -179,7 +179,9 @@ angular.module('mixideaWebApp')
   	$scope.logout = function(){
   		$scope.user.logout();
   		console.log("logout");
-  		$scope.show_header_below = false;
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
   	}
   	
   	$scope.menu_click = function(param){
@@ -202,12 +204,16 @@ angular.module('mixideaWebApp')
 
   	$scope.link_articlelist = function(){
 		  console.log("link_articlelist");
-		  $scope.show_header_below = false;
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
   	}
   	$scope.link_eventlist = function(){
 		  console.log("link_eventlist");
   		$state.go('eventsearch_layout_three_column.list');
-		  $scope.show_header_below = false;
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
   	}
 
   	$scope.link_mypage = function(){
@@ -216,7 +222,9 @@ angular.module('mixideaWebApp')
         //popup to show login dialog if not logedin
       }
       $state.go('mypage');
-		  $scope.show_header_below = false;
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
   	}
 
   	$scope.click_notification = function(){
