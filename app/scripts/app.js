@@ -122,6 +122,9 @@ angular.module('mixideaWebApp')
 				templateUrl: 'views/article/audio_transcript.html',
 				controller: 'ArticleAudiotranscriptCtrl'
 			}
+		},
+		params: {
+			scrollTo: null
 		}
 	})
 	.state('article.written_description', {

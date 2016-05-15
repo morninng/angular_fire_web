@@ -141,33 +141,40 @@ angular.module('mixideaWebApp')
         console.log(error);
       }else{
         console.log("succeed to save");
-        console.log("apiscurekey : " + api_securekey);
-        var hash = CryptoJS.HmacSHA256(user.own_uid, api_securekey);
-        var hashHex = CryptoJS.enc.Hex.stringify(hash);
-        user.mac = hashHex;
-        console.log("mac value is " + user.mac);
-
-        trial_read_fortest();
+        //set_mac_value(api_securekey);
+        //trial_read_fortest();
       }
     });
-  }
 
-  var trial_read_fortest = function(){
+    user_apisecurekey_ref.on("value",function(snapshot){
+      var api_securekey = snapshot.val();
+      console.log("secure key is updated : " + api_securekey);
+      set_mac_value(api_securekey);
 
-    var user_apisecurekey_ref = root_ref.child("users/apisecurekey/" + user.own_uid);
-    user_apisecurekey_ref.once("value",function(snapshot){
-      console.log("secure key is read " + snapshot.val());
     },function(error){
       console.log("secure key cannot read" + error);
-    })
+    });
 
   }
+
+  var set_mac_value = function(secure_key){
+
+      console.log("apiscurekey : " + secure_key);
+      var hash = CryptoJS.HmacSHA256(user.own_uid, secure_key);
+      var hashHex = CryptoJS.enc.Hex.stringify(hash);
+      user.mac = hashHex;
+      console.log("mac value is " + user.mac);
+
+  }
+
 
 
 
 
 
   user.create_jwt = function(){
+
+
 
     var jwt = {
       user_id: user.own_uid,

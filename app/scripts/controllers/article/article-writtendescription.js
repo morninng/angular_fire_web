@@ -49,6 +49,7 @@ angular.module('mixideaWebApp')
     $scope.comment_obj = new Object();
     $scope.comment_obj["article_id"] = article_id;
     $scope.comment_obj["type"] = "argument_all";
+    $scope.comment_obj["author_list"] = new Array();
 
 
     game_ref.once("value").then(function(snapshot_game){
@@ -62,8 +63,6 @@ angular.module('mixideaWebApp')
     }).then(function(snapshot_written_description){
 
       var argument_id_data = snapshot_written_description.val();
-
-
 
       switch($scope.deb_style){
       case "NA":
@@ -176,11 +175,10 @@ angular.module('mixideaWebApp')
           }
         }
 
-
       break;
       }
 
-    	$timeout(function(){});
+    	//$timeout(function(){});
 
       var game_role_style_ref =  game_role_ref.child($scope.deb_style);
        return game_role_style_ref.once("value");
@@ -232,8 +230,6 @@ angular.module('mixideaWebApp')
           }
         }
 
-
-
       break;
       case "BP":
         var role_team_array = [
@@ -258,16 +254,27 @@ angular.module('mixideaWebApp')
         console.log($scope.BP_OO_debaters);
         console.log($scope.BP_CG_debaters);
         console.log($scope.BP_CO_debaters);
-
-
       break;
       }
 
+      $timeout(function(){});
 
 
     }, function(error){
     	console.log(error);
     });
 
+
+    var full_participants_ref = root_ref.child("event_related/participants/" + event_id_val + "/full");
+    full_participants_ref.once("value",function(snapshot){
+
+      var participants_obj = snapshot.val();
+      console.log(participants_obj);
+
+      for(var key in participants_obj){
+        $scope.comment_obj["author_list"].push(key);
+      }
+      $timeout(function(){});
+    });
 
   }]);

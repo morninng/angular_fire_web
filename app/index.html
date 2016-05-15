@@ -108,7 +108,12 @@
                   </span>
                   {{notify_obj.message}}
                   <span class="notify_title">
-                  {{article_data_store.all_data[notify_obj.event_id].motion}}
+                    <span ng-if="notify_obj.type =='argument_all' || notify_obj.type =='audio_all' || notify_obj.type =='audio_each'">
+                      {{article_data_store.all_data[notify_obj.event_id].motion}}
+                    </span>
+                    <span ng-if="notify_obj.type =='argument_each'">
+                     {{argument_data_store.all_data[notify_obj.event_id + "_" + notify_obj.argument_id]}}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -240,6 +245,7 @@
         <script src="scripts/services/datastoragearticle-service.js"></script>
         <script src="scripts/filters/datemonthdate.js"></script>
         <script src="scripts/services/notification-service.js"></script>
+        <script src="scripts/services/datastorageargument-service.js"></script>
         <!-- endbuild -->
 
 

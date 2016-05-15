@@ -8,11 +8,12 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
     $scope.article_data_store = DataStorageArticleService;
+    $scope.argument_data_store = DataStorageArgumentService;
 
 
 
@@ -77,16 +78,55 @@ angular.module('mixideaWebApp')
       console.log("click_notification");
       $scope.notify_service.seen(notify_obj.id);
       //goto selected page
+      var current_stateid = $state.params.id;
+      var current_state_name = $state.current.name;
+
 
       switch(notify_obj.type){
         case "argument_all":
-          var state_param =  {id:notify_obj.event_id, scrollTo:'written_description_comment_all'}
-          $state.go('article.written_description', state_param);
-
+          var scroll_param = 'written_description_comment_all'; 
+          if(current_state_name == 'article.written_description' && current_stateid == notify_obj.event_id){
+            $location.hash(scroll_param);
+            $anchorScroll();
+          }else{
+            var state_param =  {id:notify_obj.event_id, scrollTo:scroll_param}
+            $state.go('article.written_description', state_param);
+          }
           // need implementation if no page shift but scroll to the right place
           // as $stateChangeSuccess is not called in case no state is changed
         break;
-        
+        case "argument_each":
+          var scroll_param = "scroll_anchor_" + notify_obj.argument_id; 
+          if(current_state_name == 'article.written_description' && current_stateid == notify_obj.event_id){
+            $location.hash(scroll_param);
+            $anchorScroll();
+          }else{
+            var state_param =  {id:notify_obj.event_id, scrollTo:scroll_param};
+            $state.go('article.written_description', state_param);
+          }
+        break;
+        case "audio_all":
+
+          var scroll_param = 'audio_transcript_comment_all'; 
+          if(current_state_name == 'article.audio_transcript' && current_stateid == notify_obj.event_id){
+            $location.hash(scroll_param);
+            $anchorScroll();
+          }else{
+            var state_param =  {id:notify_obj.event_id, scrollTo:scroll_param}
+            $state.go('article.audio_transcript', state_param);
+          }
+          
+        break;
+        case "audio_each":
+          var scroll_param = "scroll_anchor_" + notify_obj.role; 
+          if(current_state_name == 'article.audio_transcript' && current_stateid == notify_obj.event_id){
+            $location.hash(scroll_param);
+            $anchorScroll();
+          }else{
+            var state_param =  {id:notify_obj.event_id, scrollTo:scroll_param};
+            $state.go('article.audio_transcript', state_param);
+          }
+        break;
       }
 
       $scope.show_menu = false;

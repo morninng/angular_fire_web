@@ -13,7 +13,8 @@ angular.module('mixideaWebApp')
       restrict: 'E',
       replace: true,
       scope: {
-      	argument_id_obj: '=argId'
+      	argument_id_obj: '=argId',
+        author_list: '=authorList'
       },
       link: function postLink(scope, element, attrs) {
 
@@ -29,10 +30,13 @@ angular.module('mixideaWebApp')
         scope.show_all = false;
         scope.comment_obj = new Object();
 
+        console.log(scope.author_list);
 
         scope.comment_obj["article_id"] = event_id;
         scope.comment_obj["argument_id"] = arg_id;
         scope.comment_obj["type"] = "argument_each";
+        scope.comment_obj["author_list"] = scope.author_list;
+        scope.notification_anchor = "scroll_anchor_" + arg_id
 
 
         var root_ref = new Firebase(MixideaSetting.firebase_url);

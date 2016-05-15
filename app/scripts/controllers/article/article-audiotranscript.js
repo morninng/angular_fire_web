@@ -18,11 +18,12 @@ angular.module('mixideaWebApp')
     $scope.deb_style = "BP";
     $scope.game_motion = null;
 
-
     $scope.comment_obj = new Object();
     $scope.comment_obj["article_id"] = article_identifier;
     $scope.comment_obj["type"] = "audio_all";
+    $scope.comment_obj["author_list"] = new Array();
     $scope.article_id = article_identifier;
+    $scope.full_participant_array = new Array();
 
 
     var NA_role_array = [
@@ -79,12 +80,51 @@ angular.module('mixideaWebApp')
     		break;
     	}
     	$scope.audio_transcript_obj = snapshot_audio_transcript.val();
+
+        // set the speaker information list as the author_list
+        // 
+        for(var role_key in $scope.audio_transcript_obj){
+            console.log(role_key)
+            var author_list = new Array();
+            var audio_obj_eachrole = $scope.audio_transcript_obj[role_key];
+            for(var key2 in audio_obj_eachrole){
+                var speech_context_obj = audio_obj_eachrole[key2].spech_context;
+                for(var key3 in speech_context_obj){
+                    var each_context = speech_context_obj[key3];
+                    var user_id = each_context.user;
+                    author_list.push(user_id);
+                }
+            }
+            console.log($scope.role_array[role_key]);
+
+            for(var i=0; i< $scope.role_array.length; i++){
+                if($scope.role_array[i].name == role_key){
+                    $scope.role_array[i].comment_obj["author_list"]=author_list;
+                }
+            }
+        }
+
     	$timeout(function(){});
 
     }, function(error){
     	console.log(error);
     });
 
+
+//retrieve full 
+
+    var full_participants_ref = root_ref.child("event_related/participants/" + article_identifier + "/full");
+    full_participants_ref.once("value",function(snapshot){
+
+      var participants_obj = snapshot.val();
+      console.log(participants_obj);
+
+      for(var key in participants_obj){
+        $scope.full_participant_array.push(key);
+        $scope.comment_obj["author_list"].push(key);
+      }
+      $timeout(function(){});
+    });
 
 
   }]);
