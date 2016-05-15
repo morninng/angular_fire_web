@@ -9,8 +9,7 @@
  */
 angular.module('mixideaWebApp')
   .factory('NotificationService',['MixideaSetting','UserAuthService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService', function (MixideaSetting, UserAuthService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService) {
-    // Service logic
-    // ...
+
 
     var notify_service = new Object();
     notify_service.icon_img = "./images/earth.png";
@@ -19,7 +18,6 @@ angular.module('mixideaWebApp')
     var user = UserAuthService;
 
     var notify_obj = new Object();
-
 
     var root_ref = new Firebase(MixideaSetting.firebase_url);
     var own_notify_ref = root_ref.child("users/notify/" + user.own_uid);
