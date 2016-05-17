@@ -98,6 +98,43 @@ $each_participant_imagebox_height: 70px;
 
 		}
 	}
+	#event_web_chat{
+		background-color:#F0FFF0;
+		margin:20px;
+		padding:10px;
+		.chat_input{
+			width:80%;
+			text-align:center;
+			padding-left:20px;
+			padding-right:20px;
+			textarea{
+				width:80%;
+			}
+		}
+	}
+	#chat_display{
+		max-height:200px;
+		overflow:scroll;
+		.chat_box{
+			margin:5px;
+			display:flex;
+			img{
+				width:30px;
+				height:30px;
+			}
+			.commentor_name{
+				font-weight:bold;
+				margin-left:5px;
+				margin-right:10px;
+			}
+			.right_box{
+				flex:1;
+				margin-left:3px;
+				margin-right:10px;
+				background-color:white;
+			}
+		}
+	}
 
 
 }

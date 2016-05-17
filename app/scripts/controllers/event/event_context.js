@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService','$firebaseArray','$http', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService, $firebaseArray, $http) {
 
     console.log("event context controller called");
 
@@ -383,10 +383,85 @@ var second = pad(d.getUTCSeconds());
 
 
 
+////////////////////////////////////////
+////////event web chat /////////////////
+///////////////////////////////////////
+
+  $scope.chat_context = new Object();
+
+  var event_webchat_ref = root_ref.child("event_related/event_webchat/" + event_id);
+  $scope.event_webchat_array = $firebaseArray(event_webchat_ref);
+
+
+  $scope.event_webchat_array.$loaded()
+  .then(function(data) {
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log("Error:", error);
+  });
 
 
 
+  $scope.submit_chat =function(){
 
+    if($scope.chat_context.comment){
+
+      var chat_obj = {
+        type:"comment",
+        context:$scope.chat_context.comment,
+        user:$scope.user.own_uid
+      }
+
+
+      $scope.event_webchat_array.$add(chat_obj).then(function(ref) {
+        console.log(ref.key());
+        $scope.chat_context.comment = null;
+        notify_to_API_Gateway_eventChat();
+      }).catch(function(error) {
+        console.log("Error:", error);
+      });;
+    }
+  }
+
+
+
+  function notify_to_API_Gateway_eventChat(){
+
+
+        var auth_jwt = $scope.user.create_jwt();
+        var auth_jwt_str = JSON.stringify(auth_jwt);
+        var full_participants_array = $scope.participant_audience.concat($scope.participant_debater).concat($scope.participant_aud_or_debater);
+        var post_message = {full_participant: full_participants_array,
+                           event_date: $scope.event_obj.date_time,
+                           event_id: event_id,
+                           type:"comment"
+                            };
+        var api_gateway_webchat_url = MixideaSetting.ApiGateway_url + "/event-webchat-notification";
+
+        $http({
+          url: api_gateway_webchat_url,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': auth_jwt_str
+          },
+          data: post_message
+        }).then(function successCallback(response){
+
+          if(response.data.errorMessage){
+            console.log(response.data.errorMessage);
+          }else{
+            console.log(response.data);
+            console.log("success to send notification to user through lambda")
+          }
+
+        }, function errorCallback(response){
+          console.log("fail to put comment on lambda")
+          console.log(response);
+        });
+
+  }
 
 
 }]);

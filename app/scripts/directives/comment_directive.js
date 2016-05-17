@@ -150,7 +150,7 @@ angular.module('mixideaWebApp')
 	      own_commentor_ref.set(true);
 
 
-	      notify_to_API_Gateway();
+	      notify_to_API_Gateway_comment();
 
 	      //reflesh data
 	      scope.new_comment.context = null;
@@ -163,7 +163,7 @@ angular.module('mixideaWebApp')
 	    }
 
 	    //send comment info to API gateway
-	    function notify_to_API_Gateway(){
+	    function notify_to_API_Gateway_comment(){
 
 	      var auth_jwt = scope.user.create_jwt();
 	      var auth_jwt_str = JSON.stringify(auth_jwt);
@@ -180,8 +180,10 @@ angular.module('mixideaWebApp')
 				}
 				post_message["commentor_list"] = commentor_list;
 
+				var api_gateway_comment_url = MixideaSetting.ApiGateway_url + "/comment"
+
 				$http({
-					url: 'https://jqiokf5mp9.execute-api.us-east-1.amazonaws.com/1/comment',
+					url: api_gateway_comment_url,
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -198,6 +200,8 @@ angular.module('mixideaWebApp')
 
 	      });
 	    }
+
+	    
       }
     };
   }]);

@@ -116,4 +116,32 @@
 	 </a>
 </div>
 
+<div id="event_web_chat" ng-if="(participant_debater.indexOf(user.own_uid) != -1) || (participant_audience.indexOf(user.own_uid) != -1) || (participant_aud_or_debater.indexOf(user.own_uid) != -1) ">
+
+	event participant communication field
+	<div id="chat_display">
+		<span ng-repeat="message in event_webchat_array">
+			<span ng-if="message.type='comment'">
+			<div class="chat_box">
+				<div class="left_box">
+					<img ng-src={{user_service.user_data[message.user].profile_pict}}>
+				</div>
+				<div class="right_box">
+					<span class="commentor_name">{{user_service.user_data[message.user].first_name}}</span>
+					{{message.context}}
+				</div>
+			</div>
+			</span>
+		</span>
+	</div>
+	<div class="chat_input">
+		<textarea ng-model="chat_context.comment"></textarea>
+		<input type="button" value="submit" ng-click="submit_chat()">
+	</div>
+
+
+</div>
+
+
+
 </div>
