@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('EventWebchatCtrl',['$scope','EventWebchatMessageService','DataStorageUserService','$timeout', function ($scope, EventWebchatMessageService, DataStorageUserService, $timeout) {
+  .controller('EventWebchatPcCtrl',['$scope','EventWebchatMessageService','DataStorageUserService','$timeout', function ($scope, EventWebchatMessageService, DataStorageUserService, $timeout) {
 
   	$scope.webchat_message = EventWebchatMessageService;
   	$scope.chat_text_input = new Object();
@@ -26,7 +26,18 @@ angular.module('mixideaWebApp')
 
     $scope.close_window = function(){
       EventWebchatMessageService.finalize();
-      $scope.$emit("close_PC_chat_window");
+
+
+      var screen_type = $scope.$parent.webchat_screentype;
+      console.log(screen_type);
+
+      if(screen_type == "ScreenBottom"){
+        $scope.$emit("close_ScreenBottom_chat_window");
+
+      }else{
+       // $uibModalInstance.close('done');
+      }
+
     }
 
     $scope.click_title = function(){

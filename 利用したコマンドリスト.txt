@@ -45,6 +45,7 @@ yo angular:directive comment_directive
  yo angular:factory Notification-Service
  yo angular:factory EventWebchatNotification-Service
  yo angular:factory EventWebchatMessage-Service
+ yo angular:factory DeviceType-Service
  
 
 

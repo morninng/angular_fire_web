@@ -79,6 +79,7 @@ angular.module('mixideaWebApp')
       notify_service.notify_array.unshift(notify_obj);
     });
 
+    
 
 
     own_notify_ref.on("child_changed", function(snapshot) {

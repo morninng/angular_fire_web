@@ -1,18 +1,18 @@
-#pc_bottom_chat{
+#mobile_chat{
 
+	width:100%;
 	.msg_box{
-		right:20px;
-		position:fixed;
 		bottom:-5px;
-		width:250px;
+		width:90%;
+		margin-right:auto;
+		margin-left:auto;
 		background:white;
-		border-radius:5px 5px 0px 0px;
-		z-index: 2;
 	}
 
 	.msg_head{
-		background:#4e69a2;
-		color:white;
+		background:white;
+		border-bottom:solid thin #000000;
+		color:black;
 		padding:8px;
 		font-weight:bold;
 		border-radius:5px 5px 0px 0px;
@@ -33,7 +33,7 @@
 	.msg_body{
 		left:20px;
 		background:#F0F8FF;
-		height:250px;
+		height:400px;
 		font-size:12px;
 		padding:10px;
 		overflow:auto;

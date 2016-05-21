@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService','DeviceTypeService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService, DeviceTypeService) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
@@ -21,6 +21,7 @@ angular.module('mixideaWebApp')
     $scope.show_notification = false;
     $scope.show_message = false;
     $scope.show_webchat_PC_dialog = false;
+    $scope.webchat_screentype = null;
 
   	$scope.menu_list = new Array();
     $scope.notify_service = NotificationService;
@@ -159,16 +160,37 @@ angular.module('mixideaWebApp')
 
       console.log(webchat_obj);
       EventWebchatMessageService.initialize(webchat_obj.event_id);
-      $scope.show_webchat_PC_dialog = true;
 
       $scope.show_menu = false;
       $scope.show_notification = false;
       $scope.show_message = false;
       EventWebchatNotificationService.seen(webchat_obj.id);
       EventWebchatNotificationService.release_focused_status()
+
+
+
+      var dvice_type = DeviceTypeService.get_type();
+
+      if(dvice_type == "Mobile"){
+        $scope.webchat_screentype = "Popup";
+
+        var modalInstance = $uibModal.open({
+        templateUrl: 'views/mobile_chat.html',
+        controller: 'EventWebchatMobileCtrl',
+            backdrop:"true",
+            size:'lg'
+        });
+
+      }else{
+        $scope.webchat_screentype = "ScreenBottom";
+        $scope.show_webchat_PC_dialog = true;
+      }
+
+
+
     }
 
-    $scope.$on('close_PC_chat_window', function(){
+    $scope.$on('close_ScreenBottom_chat_window', function(){
       $scope.show_webchat_PC_dialog = false;
     });
 

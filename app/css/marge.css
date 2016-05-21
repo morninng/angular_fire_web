@@ -1235,8 +1235,8 @@
   font-size: small;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\000033}}
-#bottom_chat .msg_box {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\000033}}
+#pc_bottom_chat .msg_box {
   right: 20px;
   position: fixed;
   bottom: -5px;
@@ -1245,8 +1245,8 @@
   border-radius: 5px 5px 0px 0px;
   z-index: 2;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000313}}
-#bottom_chat .msg_head {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000313}}
+#pc_bottom_chat .msg_head {
   background: #4e69a2;
   color: white;
   padding: 8px;
@@ -1255,19 +1255,19 @@
   text-align: center;
   display: flex;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000321}}
-#bottom_chat .msg_head .chat_title {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000321}}
+#pc_bottom_chat .msg_head .chat_title {
   flex: 1;
   cursor: pointer;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000325}}
-#bottom_chat .msg_head .chat_button {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000325}}
+#pc_bottom_chat .msg_head .chat_button {
   cursor: pointer;
   width: 22px;
   height: 22px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000333}}
-#bottom_chat .msg_body {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000333}}
+#pc_bottom_chat .msg_body {
   left: 20px;
   background: #F0F8FF;
   height: 250px;
@@ -1276,20 +1276,20 @@
   overflow: auto;
   overflow-x: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000341}}
-#bottom_chat .msg_body ul {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000341}}
+#pc_bottom_chat .msg_body ul {
   list-style-type: none;
   margin-left: 0px;
   margin-right: 0px;
   padding-left: 0px;
   padding-right: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000348}}
-#bottom_chat .msg_body .chat_sender_name {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000348}}
+#pc_bottom_chat .msg_body .chat_sender_name {
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000354}}
-#bottom_chat .msg_input {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000354}}
+#pc_bottom_chat .msg_input {
   width: 100%;
   border: 1px solid white;
   border-top: 1px solid #DDDDDD;
@@ -1299,17 +1299,17 @@
   /* Firefox, other Gecko */
   box-sizing: border-box;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000366}}
-#bottom_chat .chat_msg_other .message_container {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000366}}
+#pc_bottom_chat .chat_msg_other .message_container {
   display: flex;
   flex-direction: row;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000371}}
-#bottom_chat .chat_msg_other .message_box {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000371}}
+#pc_bottom_chat .chat_msg_other .message_box {
   padding-left: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000373}}
-#bottom_chat .chat_msg_other .message_box .message {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000373}}
+#pc_bottom_chat .chat_msg_other .message_box .message {
   position: relative;
   background: #FDE4CE;
   padding-left: 6px;
@@ -1321,8 +1321,8 @@
   margin-right: 10px;
   border-radius: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000384}}
-#bottom_chat .chat_msg_other .message_box .message:before {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000384}}
+#pc_bottom_chat .chat_msg_other .message_box .message:before {
   content: "";
   position: absolute;
   width: 0px;
@@ -1332,22 +1332,22 @@
   left: -20px;
   top: 7px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\0000397}}
-#bottom_chat .chat_msg_other .sender_img img {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\0000397}}
+#pc_bottom_chat .chat_msg_other .sender_img img {
   width: 30px;
   height: 30px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003107}}
-#bottom_chat .chat_msg_own .message_container {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003107}}
+#pc_bottom_chat .chat_msg_own .message_container {
   display: flex;
   flex-direction: row-reverse;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003111}}
-#bottom_chat .chat_msg_own .message_box {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003111}}
+#pc_bottom_chat .chat_msg_own .message_box {
   padding-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003113}}
-#bottom_chat .chat_msg_own .message_box .message {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003113}}
+#pc_bottom_chat .chat_msg_own .message_box .message {
   background: #dbedfe;
   padding-left: 6px;
   padding-right: 5px;
@@ -1359,8 +1359,8 @@
   margin-left: 10px;
   border-radius: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003125}}
-#bottom_chat .chat_msg_own .message_box .message:after {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003125}}
+#pc_bottom_chat .chat_msg_own .message_box .message:after {
   content: "";
   position: absolute;
   width: 0px;
@@ -1370,12 +1370,160 @@
   right: -12px;
   top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003139}}
-#bottom_chat .chat_msg_own .sender_img {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003137}}
+#pc_bottom_chat .chat_msg_own .sender_img {
   padding: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat\.scss}line{font-family:\00003141}}
-#bottom_chat .chat_msg_own .sender_img img {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_pc\.scss}line{font-family:\00003139}}
+#pc_bottom_chat .chat_msg_own .sender_img img {
+  width: 20px;
+  height: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\000031}}
+#mobile_chat {
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\000034}}
+#mobile_chat .msg_box {
+  bottom: -5px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000312}}
+#mobile_chat .msg_head {
+  background: white;
+  border-bottom: solid thin #000000;
+  color: black;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 5px 5px 0px 0px;
+  text-align: center;
+  display: flex;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000321}}
+#mobile_chat .msg_head .chat_title {
+  flex: 1;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000325}}
+#mobile_chat .msg_head .chat_button {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000333}}
+#mobile_chat .msg_body {
+  left: 20px;
+  background: #F0F8FF;
+  height: 400px;
+  font-size: 12px;
+  padding: 10px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000341}}
+#mobile_chat .msg_body ul {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000348}}
+#mobile_chat .msg_body .chat_sender_name {
+  font-weight: bold;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000354}}
+#mobile_chat .msg_input {
+  width: 100%;
+  border: 1px solid white;
+  border-top: 1px solid #DDDDDD;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000366}}
+#mobile_chat .chat_msg_other .message_container {
+  display: flex;
+  flex-direction: row;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000371}}
+#mobile_chat .chat_msg_other .message_box {
+  padding-left: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000373}}
+#mobile_chat .chat_msg_other .message_box .message {
+  position: relative;
+  background: #FDE4CE;
+  padding-left: 6px;
+  padding-right: 5px;
+  padding-bottom: 3px;
+  padding-top: 4px;
+  min-height: 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000384}}
+#mobile_chat .chat_msg_other .message_box .message:before {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 10px solid;
+  border-color: transparent #FDE4CE transparent transparent;
+  left: -20px;
+  top: 7px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\0000397}}
+#mobile_chat .chat_msg_other .sender_img img {
+  width: 30px;
+  height: 30px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003107}}
+#mobile_chat .chat_msg_own .message_container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003111}}
+#mobile_chat .chat_msg_own .message_box {
+  padding-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003113}}
+#mobile_chat .chat_msg_own .message_box .message {
+  background: #dbedfe;
+  padding-left: 6px;
+  padding-right: 5px;
+  padding-bottom: 3px;
+  padding-top: 4px;
+  min-height: 15px;
+  margin-bottom: 5px;
+  position: relative;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003125}}
+#mobile_chat .chat_msg_own .message_box .message:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 6px solid;
+  border-color: transparent transparent transparent #dbedfe;
+  right: -12px;
+  top: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003137}}
+#mobile_chat .chat_msg_own .sender_img {
+  padding: 2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003139}}
+#mobile_chat .chat_msg_own .sender_img img {
   width: 20px;
   height: 20px;
 }
