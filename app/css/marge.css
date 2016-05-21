@@ -1527,5 +1527,15 @@
   width: 20px;
   height: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003145}}
+#mobile_chat .strength {
+  color: red;
+  font-weight: bold;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/morninng\/Angular\/angular_fire_web\/app\/sass\/_event_webchat_mobile\.scss}line{font-family:\00003149}}
+#mobile_chat .mobile_chat_alert {
+  background-color: #E6E6FA;
+  border-bottom: solid thin #708090;
+}
 
 /*# sourceMappingURL=marge.css.map */

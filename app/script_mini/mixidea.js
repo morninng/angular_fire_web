@@ -177,8 +177,7 @@ angular.module('mixideaWebApp')
   	}
 
     $scope.close_window = function(){
-      EventWebchatMessageService.finalize();
-
+      EventWebchatMessageService.finalize(); 
       $uibModalInstance.close('done');
 
 
@@ -186,8 +185,15 @@ angular.module('mixideaWebApp')
 
     $scope.click_title = function(){
       EventWebchatMessageService.goto_eventsite();
+      $uibModalInstance.close('done');
+      EventWebchatMessageService.finalize();
 
     }
+
+    $scope.$on("$destroy", function handler() {
+      console.log("event webchat controller destroyed");
+      EventWebchatMessageService.finalize();
+    });
 
 
   }]);
@@ -219,18 +225,9 @@ angular.module('mixideaWebApp')
   	}
 
     $scope.close_window = function(){
+
       EventWebchatMessageService.finalize();
-
-
-      var screen_type = $scope.$parent.webchat_screentype;
-      console.log(screen_type);
-
-      if(screen_type == "ScreenBottom"){
-        $scope.$emit("close_ScreenBottom_chat_window");
-
-      }else{
-       // $uibModalInstance.close('done');
-      }
+      $scope.$emit("close_ScreenBottom_chat_window");
 
     }
 
@@ -238,6 +235,13 @@ angular.module('mixideaWebApp')
       EventWebchatMessageService.goto_eventsite();
 
     }
+
+
+    $scope.$on("$destroy", function handler() {
+      console.log("event webchat controller destroyed");
+      EventWebchatMessageService.finalize();
+    });
+
 
 
   }]);

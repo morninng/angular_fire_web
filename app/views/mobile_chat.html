@@ -7,6 +7,9 @@
           <img src="./images/close-button-.png">
         </div>
       </div>
+      <div class="mobile_chat_alert">
+        You need to access this site from <span class="strength">PC</span> with <span class="strength">Chrome</span> browser to join an actual debate.
+      </div>
       <div id="msg_wrap">
         <div class="msg_body">
           <ul>
@@ -28,7 +31,7 @@
           </ul>
         </div>
         <div class="msg_footer">
-          <textarea ng-model="chat_text_input.message" ng-keyup="chat_keyup($event)" class="msg_input" rows="2">
+          <textarea ng-model="chat_text_input.message" ng-keyup="chat_keyup($event)" class="msg_input" rows="2" placeholder="write message to event participants here ...">
           </textarea>
         </div>
       </div>

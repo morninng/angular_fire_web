@@ -32,9 +32,9 @@ angular.module('mixideaWebApp')
     }
 
     $scope.click_title = function(){
-      EventWebchatMessageService.finalize();
       EventWebchatMessageService.goto_eventsite();
       $uibModalInstance.close('done');
+      EventWebchatMessageService.finalize();
 
     }
 
