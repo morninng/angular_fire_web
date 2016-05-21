@@ -25,17 +25,23 @@ angular.module('mixideaWebApp')
   	}
 
     $scope.close_window = function(){
-      EventWebchatMessageService.finalize();
-
+      EventWebchatMessageService.finalize(); 
       $uibModalInstance.close('done');
 
 
     }
 
     $scope.click_title = function(){
+      EventWebchatMessageService.finalize();
       EventWebchatMessageService.goto_eventsite();
+      $uibModalInstance.close('done');
 
     }
+
+    $scope.$on("$destroy", function handler() {
+      console.log("event webchat controller destroyed");
+      EventWebchatMessageService.finalize();
+    });
 
 
   }]);

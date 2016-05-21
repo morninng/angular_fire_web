@@ -126,7 +126,6 @@ angular.module('mixideaWebApp')
 
 
     webchat_message_service.goto_eventsite = function(){
-
       var state_param =  {id:webchat_message_service.service_event_id};
       $state.go('eventcontext_layout_two_column.context', state_param);
 
@@ -139,9 +138,14 @@ angular.module('mixideaWebApp')
 
     function finalsize_alldata(){
       webchat_message_service.message_array.length = 0;
-      webchat_message_ref.off("child_added");
-      full_participant_ref.off("value");
+      if(webchat_message_ref){
+        webchat_message_ref.off("child_added");
+      }
       webchat_message_ref = null;
+      if(full_participant_ref){
+        full_participant_ref.off("value");
+      }
+      full_participant_ref = null;
       webchat_message_service.service_event_id = null;
       full_participant_array.length=0;
     }
