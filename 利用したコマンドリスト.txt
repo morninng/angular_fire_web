@@ -16,6 +16,7 @@ touch .ftppass
   yo angular:controller Article-Layout
   yo angular:controller Article-AudioTranscript
   yo angular:controller Article-WrittenDescription
+  yo angular:controller Event-WebChat
 
   bower install angular-bootstrap --save
 
@@ -42,6 +43,8 @@ yo angular:directive comment_directive
  yo angular:factory DataStorageArticle-Service
  yo angular:factory DataStorageArgument-Service
  yo angular:factory Notification-Service
+ yo angular:factory EventWebchatNotification-Service
+ yo angular:factory EventWebchatMessage-Service
  
 
 

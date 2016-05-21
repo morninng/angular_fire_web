@@ -47,12 +47,12 @@
         </li>
         <li class="header-right__sm-link">
           <a class="header_right_notification" ng-click="click_notification()">
-            <img class="icon_img" src="{{notify_service.icon_img}}">
+            <img class="icon_img" ng-src={{notify_service.icon_img}}>
           </a>
         </li>
         <li class="header-right__sm-link">
           <a class="header_right_message" ng-click="click_message()">
-            <img class="icon_img" src="./images/message.png">
+            <img class="icon_img" ng-src={{event_webchat_notify_service.icon_img}}>
           </a>
         </li class="header-right__sm-link">
 
@@ -126,11 +126,84 @@
   </span>
 
   <span ng-if="show_message">
+    <div class="notification_items">
+      <ul>
+        <li ng-repeat="webchat_obj in event_webchat_notify_service.webchat_array">
 
+
+
+          <div ng-click="webchat_notify_select(webchat_obj)" ng-mouseenter="webchat_obj.focus=true" ng-mouseleave="webchat_obj.focus=false" >
+
+            <div ng-class="{'not_seen':!webchat_obj.seen}">
+              <div class="gif_tex_container" ng-class="{'focused_box':webchat_obj.focus==true}">
+                <div class="gif_tex_img">
+                  <img ng-src={{user_data_store.user_data[webchat_obj.userid].profile_pict}}>
+                </div>
+                <div class="gif_tex_comment">
+                  <span class="notify_user">
+                  {{user_data_store.user_data[webchat_obj.userid].first_name}}
+                  </span>
+                  send a message in the chat room of
+                  <span class="notify_title">
+                    {{webchat_obj.event_date  | DateValueString}}
+                  </span>
+                   event
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </li>
+      </ul>
+    </div>
   </span>
 
 </div>
 
+<span ng-if="show_webchat_PC_dialog">
+
+<div id="bottom_chat" ng-controller="EventWebchatCtrl">
+
+    <div class="msg_box" >
+      <div class="msg_head">
+        <div class="chat_title" ng-click="click_title()"> Event participants Chat</div>
+        <div class="chat_button" ng-click="close_window()">
+          <img src="https://s3.amazonaws.com/mixidea/Close.png">
+        </div>
+      </div>
+      <div id="msg_wrap">
+        <div class="msg_body">
+          <ul>
+            <li ng-repeat="message in webchat_message.message_array">
+              <div ng-class="message.position">
+                <div class="message_container">
+                  <div class="sender_img">
+                    <img ng-src={{user_service.user_data[message.user].profile_pict}}>
+                  </div>
+                  <div class="message_box">
+                    <div class="message">
+                      <span class="chat_sender_name">{{user_service.user_data[message.user].first_name}}</span>
+                      <span class="chat_message">{{message.context}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="msg_footer">
+          <textarea ng-model="chat_text_input.message" ng-keyup="chat_keyup($event)" class="msg_input" rows="2">
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</span>
+
+</span>
 
 <!--
     <nav class="navbar navbar-inverse" >
@@ -246,6 +319,9 @@
         <script src="scripts/filters/datemonthdate.js"></script>
         <script src="scripts/services/notification-service.js"></script>
         <script src="scripts/services/datastorageargument-service.js"></script>
+        <script src="scripts/services/eventwebchatnotification-service.js"></script>
+        <script src="scripts/controllers/event-webchat.js"></script>
+        <script src="scripts/services/eventwebchatmessage-service.js"></script>
         <!-- endbuild -->
 
 

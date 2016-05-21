@@ -16,6 +16,9 @@ angular.module('mixideaWebApp')
     notify_service.notify_array = new Array();
     notify_service.active_num = 0;
     var user = UserAuthService;
+    if(!user.own_uid){
+      return notify_service;
+    }
 
     var notify_obj = new Object();
 
@@ -126,7 +129,13 @@ angular.module('mixideaWebApp')
       }
       */
       var notification_obj_ref = root_ref.child("users/notify/" + user.own_uid + "/" + notify_obj_id + "/seen");
-      notification_obj_ref.set(true);
+      notification_obj_ref.set(true, function(error) {
+        if (error) {
+          console.log("fail to set seen");
+        } else {
+          console.log("succeed to set seen");
+        }
+      });
 
     }
 

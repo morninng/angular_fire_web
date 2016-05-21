@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
@@ -20,9 +20,11 @@ angular.module('mixideaWebApp')
     $scope.show_menu = false;
     $scope.show_notification = false;
     $scope.show_message = false;
+    $scope.show_webchat_PC_dialog = false;
 
   	$scope.menu_list = new Array();
     $scope.notify_service = NotificationService;
+    $scope.event_webchat_notify_service = EventWebchatNotificationService;
 
   	$scope.logout = function(){
   		$scope.user.logout();
@@ -147,7 +149,29 @@ angular.module('mixideaWebApp')
 
   	$scope.click_message = function(){
 		  console.log("click_message");	
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = !$scope.show_message;
   	}
+
+
+    $scope.webchat_notify_select = function(webchat_obj){
+
+      console.log(webchat_obj);
+      EventWebchatMessageService.initialize(webchat_obj.event_id);
+      $scope.show_webchat_PC_dialog = true;
+
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+      EventWebchatNotificationService.seen(webchat_obj.id);
+      EventWebchatNotificationService.release_focused_status()
+    }
+
+    $scope.$on('close_PC_chat_window', function(){
+      $scope.show_webchat_PC_dialog = false;
+    });
+
 
 
   	$scope.click_hamburger = function(){

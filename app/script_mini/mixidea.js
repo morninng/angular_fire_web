@@ -154,13 +154,52 @@ angular.module('mixideaWebApp')
 
 /**
  * @ngdoc function
+ * @name mixideaWebApp.controller:EventWebchatCtrl
+ * @description
+ * # EventWebchatCtrl
+ * Controller of the mixideaWebApp
+ */
+angular.module('mixideaWebApp')
+  .controller('EventWebchatCtrl',['$scope','EventWebchatMessageService','DataStorageUserService','$timeout', function ($scope, EventWebchatMessageService, DataStorageUserService, $timeout) {
+
+  	$scope.webchat_message = EventWebchatMessageService;
+  	$scope.chat_text_input = new Object();
+    $scope.user_service = DataStorageUserService;
+
+  	$scope.chat_keyup = function(e){
+  		console.log(e.which);
+  		if(e.which==13){
+  			var message = $scope.chat_text_input.message
+  			EventWebchatMessageService.send_message(message);
+  			$scope.chat_text_input.message = null;
+        //$timeout(function(){});
+  		}
+  	}
+
+    $scope.close_window = function(){
+      EventWebchatMessageService.finalize();
+      $scope.$emit("close_PC_chat_window");
+    }
+
+    $scope.click_title = function(){
+      EventWebchatMessageService.goto_eventsite();
+
+    }
+
+
+  }]);
+
+'use strict';
+
+/**
+ * @ngdoc function
  * @name mixideaWebApp.controller:HeaderUserCtrl
  * @description
  * # HeaderUserCtrl
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
@@ -172,9 +211,11 @@ angular.module('mixideaWebApp')
     $scope.show_menu = false;
     $scope.show_notification = false;
     $scope.show_message = false;
+    $scope.show_webchat_PC_dialog = false;
 
   	$scope.menu_list = new Array();
     $scope.notify_service = NotificationService;
+    $scope.event_webchat_notify_service = EventWebchatNotificationService;
 
   	$scope.logout = function(){
   		$scope.user.logout();
@@ -299,7 +340,29 @@ angular.module('mixideaWebApp')
 
   	$scope.click_message = function(){
 		  console.log("click_message");	
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = !$scope.show_message;
   	}
+
+
+    $scope.webchat_notify_select = function(webchat_obj){
+
+      console.log(webchat_obj);
+      EventWebchatMessageService.initialize(webchat_obj.event_id);
+      $scope.show_webchat_PC_dialog = true;
+
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+      EventWebchatNotificationService.seen(webchat_obj.id);
+      EventWebchatNotificationService.release_focused_status()
+    }
+
+    $scope.$on('close_PC_chat_window', function(){
+      $scope.show_webchat_PC_dialog = false;
+    });
+
 
 
   	$scope.click_hamburger = function(){
@@ -802,7 +865,7 @@ angular.module('mixideaWebApp')
 'use strict';
 
 angular.module('mixideaWebApp')
-  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService) {
+  .controller('EventContextCtrl',['$scope', '$stateParams', '$timeout', 'UserAuthService','MixideaSetting','DataStorageUserService','CheckBrowserService','$firebaseArray','$http', function ($scope, $stateParams,$timeout, UserAuthService, MixideaSetting, DataStorageUserService, CheckBrowserService, $firebaseArray, $http) {
 
     console.log("event context controller called");
 
@@ -1184,10 +1247,85 @@ var second = pad(d.getUTCSeconds());
 
 
 
+////////////////////////////////////////
+////////event web chat /////////////////
+///////////////////////////////////////
+
+  $scope.chat_context = new Object();
+
+  var event_webchat_ref = root_ref.child("event_related/event_webchat/" + event_id);
+  $scope.event_webchat_array = $firebaseArray(event_webchat_ref);
+
+
+  $scope.event_webchat_array.$loaded()
+  .then(function(data) {
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log("Error:", error);
+  });
 
 
 
+  $scope.submit_chat =function(){
 
+    if($scope.chat_context.comment){
+
+      var chat_obj = {
+        type:"comment",
+        context:$scope.chat_context.comment,
+        user:$scope.user.own_uid
+      }
+
+
+      $scope.event_webchat_array.$add(chat_obj).then(function(ref) {
+        console.log(ref.key());
+        $scope.chat_context.comment = null;
+        notify_to_API_Gateway_eventChat();
+      }).catch(function(error) {
+        console.log("Error:", error);
+      });;
+    }
+  }
+
+
+
+  function notify_to_API_Gateway_eventChat(){
+
+
+        var auth_jwt = $scope.user.create_jwt();
+        var auth_jwt_str = JSON.stringify(auth_jwt);
+        var full_participants_array = $scope.participant_audience.concat($scope.participant_debater).concat($scope.participant_aud_or_debater);
+        var post_message = {full_participant: full_participants_array,
+                           event_date: $scope.event_obj.date_time,
+                           event_id: event_id,
+                           type:"comment"
+                            };
+        var api_gateway_webchat_url = MixideaSetting.ApiGateway_url + "/event-webchat-notification";
+
+        $http({
+          url: api_gateway_webchat_url,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': auth_jwt_str
+          },
+          data: post_message
+        }).then(function successCallback(response){
+
+          if(response.data.errorMessage){
+            console.log(response.data.errorMessage);
+          }else{
+            console.log(response.data);
+            console.log("success to send notification to user through lambda")
+          }
+
+        }, function errorCallback(response){
+          console.log("fail to put comment on lambda")
+          console.log(response);
+        });
+
+  }
 
 
 }]);
