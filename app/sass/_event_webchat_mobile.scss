@@ -30,6 +30,37 @@
 	}
 
 
+	.participant_status{
+		img{
+			width:20px;
+			height:20px;
+			margin-left:5px;
+		}
+		.room_name{
+			color:red;
+			padding-left:3px;
+		}
+		.room_row{
+			width:100%;
+			border-left: 1px solid #A9A9A9;
+			border-bottom: 1px solid #A9A9A9;
+			border-right: 1px solid #A9A9A9;
+			padding-top:3px;
+			padding-left:3px;
+			padding-bottom:3px;
+		}
+	}
+	
+	.enter_hangout_message{
+		img {
+			width:20px;
+			height:20px;
+		}
+	}
+
+
+
+
 	.msg_body{
 		left:20px;
 		background:#F0F8FF;

@@ -14,7 +14,9 @@ angular.module('mixideaWebApp')
 
     var webchat_message_service = new Object();
     webchat_message_service.message_array = new Array();
-    webchat_message_service.status_array = new Array();
+    webchat_message_service.status_mainroom = new Array();
+    webchat_message_service.status_teamdiscuss_room = new Object();
+
     var full_participant_array = new Array();
     var webchat_message_ref = null;
     var full_participant_ref = null;
@@ -54,6 +56,9 @@ angular.module('mixideaWebApp')
         }, 0,true);
       });
 
+
+
+
       full_participant_ref = root_ref.child("event_related/participants/" + event_id + "/full");
       full_participant_ref.on("value", function(snapshot){
 
@@ -66,6 +71,40 @@ angular.module('mixideaWebApp')
       },function(){
         console.log("fail to load participant data");
       });
+
+
+
+    var participants_status_ref = root_ref.child("event_related/participants/" + event_id + "/status");
+
+    participants_status_ref.on("value", function(snapshot){
+      var participant_status = snapshot.val();
+
+      //remove every data
+      webchat_message_service.status_mainroom.length=0;
+      for(var key in webchat_message_service.status_teamdiscuss_room){
+        delete webchat_message_service.status_teamdiscuss_room[key];
+      }
+
+      // add data with the latest participant info
+      if(participant_status){
+        var mainroom_obj = participant_status.main;
+        for(var key in mainroom_obj){
+          webchat_message_service.status_mainroom.push(key);
+        }
+
+        var teamdiscuss_room_obj = participant_status.team_discussion;
+        for(var key in teamdiscuss_room_obj){
+          webchat_message_service.status_teamdiscuss_room[key] = teamdiscuss_room_obj[key]
+        }
+      }
+
+      $timeout(function(){});
+
+
+    },function(){
+      console.log("error to get participant status");
+    })
+
 
     }
 

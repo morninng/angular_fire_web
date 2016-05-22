@@ -7,13 +7,42 @@
           <img src="./images/close-button-.png">
         </div>
       </div>
+
+      
       <div class="mobile_chat_alert">
         You need to access this site from <span class="strength">PC</span> with <span class="strength">Chrome</span> browser to join an actual debate.
       </div>
+
+
+      <div class="participant_status">
+        <span ng-if="webchat_message.status_mainroom.length > 0">
+          <div class="room_row">
+            <span class="room_name">main room</span>
+            <span ng-repeat="participant_id in webchat_message.status_mainroom">
+              <img ng-src={{user_service.user_data[participant_id].profile_pict}}>
+            </span>
+          </div>
+        </span>
+        <span ng-repeat="(key, value) in webchat_message.status_teamdiscuss_room">
+            <div class="room_row">
+              <span class="room_name">{{key}} room</span>
+              <span ng-repeat="(key2, value2) in value">
+                <img ng-src={{user_service.user_data[key2].profile_pict}}>
+              </span>
+            </div>
+        </span>
+      </div>
+
+
+
+
+
       <div id="msg_wrap">
         <div class="msg_body">
           <ul>
             <li ng-repeat="message in webchat_message.message_array">
+
+            <span ng-if="message.type=='comment'">
               <div ng-class="message.position">
                 <div class="message_container">
                   <div class="sender_img">
@@ -27,6 +56,17 @@
                   </div>
                 </div>
               </div>
+            </span>
+
+            <span ng-if="message.type=='enter_hangout'">
+              <div class="enter_hangout_message">
+                <img ng-src={{user_service.user_data[message.user].profile_pict}}>
+                <span class="chat_sender_name">{{user_service.user_data[message.user].first_name}}</span> {{message.context}}
+              </div>
+            </span>
+
+
+
             </li>
           </ul>
         </div>

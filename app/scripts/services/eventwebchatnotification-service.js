@@ -8,7 +8,7 @@
  * Factory in the mixideaWebApp.
  */
 angular.module('mixideaWebApp')
-  .factory('EventWebchatNotificationService',['MixideaSetting','UserAuthService' ,'$timeout','EventWebchatMessageService','DataStorageUserService', function (MixideaSetting, UserAuthService, $timeout, EventWebchatMessageService, DataStorageUserService) {
+  .factory('EventWebchatNotificationService',['MixideaSetting','UserAuthService' ,'$timeout','EventWebchatMessageService','DataStorageUserService','DataStorageEventService', function (MixideaSetting, UserAuthService, $timeout, EventWebchatMessageService, DataStorageUserService, DataStorageEventService) {
     // Service logic
     // ...
 
@@ -32,6 +32,7 @@ angular.module('mixideaWebApp')
       var webchat_obj = snapshot.val();
       webchat_obj.id = snapshot.key();
       DataStorageUserService.add_by_oneuser_id(webchat_obj.userid);
+      DataStorageEventService.add_by_oneevent_id(webchat_obj.event_id);
       if(!webchat_obj.seen){
 
         if(EventWebchatMessageService.service_event_id == webchat_obj.event_id){

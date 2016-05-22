@@ -8,13 +8,13 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService','DeviceTypeService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService, DeviceTypeService) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService','DeviceTypeService','DataStorageEventService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService, DeviceTypeService, DataStorageEventService) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
     $scope.article_data_store = DataStorageArticleService;
     $scope.argument_data_store = DataStorageArgumentService;
-
+    $scope.event_data_store = DataStorageEventService;
 
 
     $scope.show_menu = false;
