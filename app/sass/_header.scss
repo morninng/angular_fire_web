@@ -9,8 +9,19 @@ $middle_large: "only screen and (min-width:641px)";
 $own_small:  "only screen and (max-width:799px)";
 $own_large: "only screen and (min-width:800px)";
 
+body{
+	padding-top:60px;
+}
 
 #mixidea_header {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:999;
+	background-color:white;
+	height:58px;
+	overflow:hidden;
+
 	color:#fff;
 	width:100%;
 	border-bottom: medium solid #D3D3D3;
