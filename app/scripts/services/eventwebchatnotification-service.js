@@ -8,7 +8,7 @@
  * Factory in the mixideaWebApp.
  */
 angular.module('mixideaWebApp')
-  .factory('EventWebchatNotificationService',['MixideaSetting','UserAuthService' ,'$timeout','EventWebchatMessageService','DataStorageUserService','DataStorageEventService', function (MixideaSetting, UserAuthService, $timeout, EventWebchatMessageService, DataStorageUserService, DataStorageEventService) {
+  .factory('EventWebchatNotificationService',['MixideaSetting','UserAuthService' ,'$timeout','EventWebchatMessageService','DataStorageUserService','DataStorageEventService','TitleFlash', function (MixideaSetting, UserAuthService, $timeout, EventWebchatMessageService, DataStorageUserService, DataStorageEventService, TitleFlash) {
     // Service logic
     // ...
 
@@ -42,6 +42,7 @@ angular.module('mixideaWebApp')
           event_webchat_service.icon_status = "active";
           $timeout(function() {});
         }
+        TitleFlash.trigger_flash();
       }
       event_webchat_service.webchat_array.unshift(webchat_obj);
     });

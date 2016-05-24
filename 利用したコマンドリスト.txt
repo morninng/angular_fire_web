@@ -50,6 +50,7 @@ yo angular:directive comment_directive
 
 
  yo angular:service Util-Service
+ yo angular:service Util-Service
 
 
  ---My Page Related ----
@@ -58,3 +59,4 @@ yo angular:directive comment_directive
   yo angular:controller Mypage
   yo angular:controller Mypage-Event
   yo angular:controller Mypage-Article
+
