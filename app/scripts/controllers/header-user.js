@@ -241,6 +241,7 @@ angular.module('mixideaWebApp')
 		})
 	}
 
+  $scope.under_loading = false;
 
 
   }]);
