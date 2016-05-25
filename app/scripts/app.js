@@ -29,6 +29,7 @@ angular.module('mixideaWebApp').run(function($rootScope, $location, $anchorScrol
 
 		$timeout(function(){
 			$location.hash($stateParams.scrollTo);
+			$anchorScroll.yOffset = 100;
 			$anchorScroll();
 		},1000);
 

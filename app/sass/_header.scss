@@ -9,6 +9,8 @@ $middle_large: "only screen and (min-width:641px)";
 $own_small:  "only screen and (max-width:799px)";
 $own_large: "only screen and (min-width:800px)";
 
+$header_height: 58px;
+
 body{
 	padding-top:60px;
 }
@@ -27,7 +29,7 @@ body{
 	left:0;
 	z-index:999;
 	background-color:white;
-	height:58px;
+	height:$header_height;
 	overflow:hidden;
 
 	color:#fff;
@@ -182,8 +184,9 @@ body{
 @media #{$large} {
 
 	#header_below{
+		position: fixed;
+		top:$header_height;
 		z-index: 999;
-		position: absolute;
 		right:0px;
 
 		ul{

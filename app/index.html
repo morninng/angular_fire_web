@@ -99,6 +99,7 @@
     </div>
   </span>
 
+
   <span ng-if="show_notification">
     <div class="notification_items">
       <ul>
@@ -137,8 +138,6 @@
     <div class="notification_items">
       <ul>
         <li ng-repeat="webchat_obj in event_webchat_notify_service.webchat_array">
-
-
 
           <div ng-click="webchat_notify_select(webchat_obj)" ng-mouseenter="webchat_obj.focus=true" ng-mouseleave="webchat_obj.focus=false" >
 
@@ -287,10 +286,11 @@
 
     -->
 
-    <div ui-view="RootView">
-      
+    <div id="main_context">
+      <div  ui-view="RootView">
+        
+      </div>
     </div>
-
 
 
 

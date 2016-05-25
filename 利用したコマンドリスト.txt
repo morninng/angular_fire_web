@@ -50,7 +50,7 @@ yo angular:directive comment_directive
 
 
  yo angular:service Util-Service
- yo angular:service Util-Service
+ yo angular:service Title-Flash
 
 
  ---My Page Related ----

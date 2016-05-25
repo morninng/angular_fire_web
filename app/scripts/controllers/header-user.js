@@ -8,7 +8,7 @@
  * Controller of the mixideaWebApp
  */
 angular.module('mixideaWebApp')
-  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService','DeviceTypeService','DataStorageEventService', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService, DeviceTypeService, DataStorageEventService) {
+  .controller('HeaderUserCtrl',['$scope','UserAuthService','$uibModal' ,'$state','NotificationService','DataStorageUserService','DataStorageArticleService','DataStorageArgumentService','$location','$anchorScroll','EventWebchatNotificationService','EventWebchatMessageService','DeviceTypeService','DataStorageEventService','$timeout', function ($scope, UserAuthService, $uibModal, $state, NotificationService, DataStorageUserService, DataStorageArticleService, DataStorageArgumentService, $location, $anchorScroll, EventWebchatNotificationService, EventWebchatMessageService, DeviceTypeService, DataStorageEventService, $timeout) {
 
   	$scope.user = UserAuthService;
     $scope.user_data_store = DataStorageUserService;
@@ -84,6 +84,8 @@ angular.module('mixideaWebApp')
       $scope.show_notification = !$scope.show_notification;
       $scope.show_message = false;
   	}
+
+
 
     $scope.notification_select = function(notify_obj){
       console.log("click_notification");
@@ -240,6 +242,20 @@ angular.module('mixideaWebApp')
 			size:'sm'
 		})
 	}
+
+
+
+  var main_context_element = document.getElementById("main_context");
+  main_context_element.addEventListener("click", function(){
+    console.log("main context is clicked");
+    if($scope.show_menu || $scope.show_notification || $scope.show_message){
+      $scope.show_menu = false;
+      $scope.show_notification = false;
+      $scope.show_message = false;
+      $timeout(function(){}); 
+    }
+  })
+
 
   $scope.under_loading = false;
 
