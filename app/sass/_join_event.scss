@@ -1,0 +1,144 @@
+
+
+/*currently animation with angular-switch is not working*/
+/*should be investigated later*/
+
+.switch_animation{
+
+	&.animate-enter, 
+	&.animate-leave
+	{ 
+	    -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	    -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	    -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	    -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	    transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	} 
+	 
+	&.animate-enter {
+	    left: 100%;
+	}
+	&.animate-enter.animate-enter-active {
+	    left: 0;
+	}
+	 
+	&.animate-leave {
+	    left: 0;
+	}
+	&.animate-leave.animate-leave-active{
+	    left: -100%;
+	}
+
+}
+
+@mixin center_bottom_button{
+	width:100%;
+	text-align:center;
+	input{
+		margin-right:auto;
+		margin-left:auto;
+	}		
+}
+
+
+
+#join_event{
+
+	.title{
+		width:100%;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-right:30px;
+		padding-left:30px;
+		div{
+			background-color:yellow;
+			padding-top:5px;
+			padding-bottom:5px;
+			padding-right:10px;
+			padding-left:10px;
+			color:red;
+			font-weight:bold;
+			text-align:center;
+		}
+
+	}
+
+	.check_table{
+		display:table;
+	}
+
+	.check_row{
+		display:table-row;
+		margin-left:3px;
+		margin-right:3px;
+		.left_column{
+			display:table-cell;
+			text-align:center;
+			width:40px;
+			padding-bottom:20px;
+		}
+		.right_column{
+			display:table-cell;
+			padding:3px;
+		}
+	}
+
+
+	.join_type_inpput{
+		padding-bottom:30px;
+		
+		div{
+			width:100%;
+			text-align:center;
+		}
+
+		.input_type_each{
+			margin-top:20px;
+		}
+
+	}
+	.cancel{
+		text-align:center;
+	}
+	.message{
+		width:100%;
+		.input{
+			margin-left:20px;
+			margin-right:20px;
+			textarea{
+				width:100%;
+				height:6em;
+			}
+		}
+		.button{
+			@include center_bottom_button;
+		}
+	}
+
+	.calendar{
+
+		img {
+			margin-top:10px;
+			margin-left:30px;
+			width:50px;
+			height:50px;
+
+		}
+
+
+	}
+
+
+	.next_button{
+			@include center_bottom_button;
+	}
+
+	.after_complete{
+		padding:10px;
+		padding-bottom:30px;
+		text-align:center;
+		font-weight:bold;
+		font-size:medium;
+	}
+
+}

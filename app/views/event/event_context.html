@@ -10,7 +10,7 @@
 	<span class="category_title">date:</span> {{event_obj.date_time | DateValueString}}<br>
 </div>
 
-<div id="hangout_button_container" ng-if="(participant_debater.indexOf(user.own_uid) != -1) || (participant_audience.indexOf(user.own_uid) != -1) || (participant_aud_or_debater.indexOf(user.own_uid) != -1) " class="fade_angular">
+<div id="hangout_button_container" ng-if="(event_participant.participant_debater.indexOf(user.own_uid) != -1) || (event_participant.participant_audience.indexOf(user.own_uid) != -1) || (event_participant.participant_aud_or_debater.indexOf(user.own_uid) != -1) " class="fade_angular">
 	<div class="hangout_button_area">
 		<div ng-show="check_browser.is_ok">click here to join a event call</div>
 		<div ng-show="!check_browser.is_ok" ng-bind-html="check_browser.alert"></div>
@@ -23,18 +23,30 @@
 	</div>
 </div>
 
+<div class="join">
+
+
+	<span ng-show="(event_participant.available_audience ||  event_participant.available_debater || event_participant.available_aud_or_debater)&& ((event_participant.participant_debater.indexOf(user.own_uid) == -1) && (event_participant.participant_audience.indexOf(user.own_uid) == -1) && (event_participant.participant_aud_or_debater.indexOf(user.own_uid) == -1))" >
+
+
+		<input type="button" ng-click="join_event()" value="join" class="btn btn-success btn-lg">
+
+	</span>
+
+
+
+</div>
+
+
 <div class="participate_control_container">
   <div id="debater_participate_container">
 	<p>
 		<span class="role_title">debater participant</span>
-		<span ng-show="!available_debater" class="role_title_right role_availability_message" > already full</span>
-		<span ng-show="available_debater && ((participant_debater.indexOf(user.own_uid) == -1) && (participant_audience.indexOf(user.own_uid) == -1) && (participant_aud_or_debater.indexOf(user.own_uid) == -1))" class="role_title_right" >
-			<input type="button" ng-click="join('debater')" value="join as Debater" class="btn btn-success">
-		</span>
-		</span>
+		<span ng-show="!event_participant.available_debater" class="role_title_right role_availability_message" > already full</span>
+
 	</p>
 	<div class="participants_container">
-		<div ng-repeat="participant_user_id in participant_debater" class="each_participant_container" >
+		<div ng-repeat="participant_user_id in event_participant.participant_debater" class="each_participant_container" >
 			<div class="participant_img">
 				<img ng-src={{user_service.user_data[participant_user_id].profile_pict}}>
 			</div>
@@ -54,13 +66,10 @@
   <div id="audience_participate_container">
 	<p>
 		<span class="role_title">audience participant</span>
-		<span ng-show="!available_audience" class="role_title_right role_availability_message" > already full</span>
-		<span ng-show="available_audience && ((participant_debater.indexOf(user.own_uid) == -1) && (participant_audience.indexOf(user.own_uid) == -1) && (participant_aud_or_debater.indexOf(user.own_uid) == -1))" class="role_title_right" >
-			<input type="button" ng-click="join('audience')" value="join as Audience" class="btn btn-success">
-		</span>
+		<span ng-show="!event_participant.available_audience" class="role_title_right role_availability_message" > already full</span>
 	</p>
 	<div class="participants_container">
-		<div ng-repeat="participant_user_id in participant_audience" class="each_participant_container" >
+		<div ng-repeat="participant_user_id in event_participant.participant_audience" class="each_participant_container" >
 
 			<div class="participant_img">
 				<img ng-src={{user_service.user_data[participant_user_id].profile_pict}}>
@@ -83,13 +92,10 @@
   <div id="aud_or_debater_participate_container">
 	<p>
 		<span class="role_title">Either Debater or Audience participant</span>
-		<span ng-show="!available_aud_or_debater" class="role_title_right role_availability_message" > already full</span>
-		<span ng-show="available_aud_or_debater && ((participant_debater.indexOf(user.own_uid) == -1) && (participant_audience.indexOf(user.own_uid) == -1) && (participant_aud_or_debater.indexOf(user.own_uid) == -1))" class="role_title_right" >
-			<input type="button" ng-click="join('aud_or_debater')" value="join as Either Debater or Audience" class="btn btn-success">
-		</span>
+		<span ng-show="!event_participant.available_aud_or_debater" class="role_title_right role_availability_message" > already full</span>
 	</p>
 	<div class="participants_container">
-		<div ng-repeat="participant_user_id in participant_aud_or_debater" class="each_participant_container" >
+		<div ng-repeat="participant_user_id in event_participant.participant_aud_or_debater" class="each_participant_container" >
 
 			<div class="participant_img">
 				<img ng-src={{user_service.user_data[participant_user_id].profile_pict}}>
@@ -116,7 +122,7 @@
 	 </a>
 </div>
 
-<div id="event_web_chat" ng-if="(participant_debater.indexOf(user.own_uid) != -1) || (participant_audience.indexOf(user.own_uid) != -1) || (participant_aud_or_debater.indexOf(user.own_uid) != -1) ">
+<div id="event_web_chat" ng-if="(event_participant.participant_debater.indexOf(user.own_uid) != -1) || (event_participant.participant_audience.indexOf(user.own_uid) != -1) || (event_participant.participant_aud_or_debater.indexOf(user.own_uid) != -1) ">
 
 	event participant communication field
 	<div id="chat_display">

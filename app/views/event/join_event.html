@@ -1,0 +1,172 @@
+<div id="join_event">
+
+
+<div ng-switch="event_join_process">
+
+	<div  ng-switch-when="input" >
+
+		<div class="title">
+			<div>
+			followings are the condition to join a event<br>
+	  		please read all points and check if you can agree.
+	  		</div>
+  		</div>
+
+		<div class="check_table">
+			<div class="check_row">
+				<div class="left_column">
+					<input type="checkbox" ng-model="checked.device">  
+				</div>
+				<div class="right_column">
+					<LABEL>Device: Desktop, Laptop, netbook or tablet is necessary to join event. <br>Mobile phone is not acceptable
+					</LABEL>
+				</div>
+			</div>
+
+
+			<div class="check_row">
+				<div class="left_column">
+
+					<input type="checkbox" ng-model="checked.debate_skill"> 
+				</div>
+				<div class="right_column">
+					<LABEL>the participant need sufficient knowledge and experience of pearliament debate</LABEL><br>
+
+				</div>
+			</div>
+
+			<div class="check_row">
+				<div class="left_column">
+
+					<input type="checkbox" ng-model="checked.ontime" >
+
+				</div>
+				<div class="right_column">
+					<LABEL>participant need to come to this event on time. if you become unavailable, please cancel in advance</LABEL>
+					 date and time : {{event_date | DateValueString}}
+				</div>
+			</div>
+
+		</div>
+					
+
+		<div class="join_type_inpput" ng-if="checked.device && checked.debate_skill && checked.ontime">
+
+			<div class="title">
+				<div>
+			 	You can decide your participation pattern.<br>
+			 	The role, such as PM, will be decided within the communication platform.
+			 	</div>
+		 	</div>
+		 	<div class=input_type_each>
+		 		<span ng-show="!event_participant.available_debater">  No vacancy to join as audience</span>
+		 		<span ng-show="event_participant.available_debater && ((event_participant.participant_debater.indexOf(user.own_uid) == -1) && (event_participant.participant_audience.indexOf(user.own_uid) == -1) && (event_participant.participant_aud_or_debater.indexOf(user.own_uid) == -1))" >
+		 			<input type="button" class="btn btn-success" ng-click="click_join('debater')" value="Join as Debater">
+		 		</span>
+		 	</div>
+
+		 	<div class=input_type_each>
+		 		<span ng-show="!event_participant.available_audience">  No vacancy to join as audience</span>
+		 		<span ng-show="event_participant.available_audience && ((event_participant.participant_debater.indexOf(user.own_uid) == -1) && (event_participant.participant_audience.indexOf(user.own_uid) == -1) && (event_participant.participant_aud_or_debater.indexOf(user.own_uid) == -1))" >
+		 			<input type="button" class="btn btn-success" ng-click="click_join('audience')" value="Join as Audience">
+		 		</span>
+		 	</div>
+
+		 	<div class=input_type_each>
+		 		<span ng-show="!event_participant.available_aud_or_debater">  No vacancy to join as audience</span>
+		 		<span ng-show="event_participant.available_aud_or_debater && ((event_participant.participant_debater.indexOf(user.own_uid) == -1) && (event_participant.participant_audience.indexOf(user.own_uid) == -1) && (event_participant.participant_aud_or_debater.indexOf(user.own_uid) == -1))" >
+
+
+		 		<input type="button" class="btn btn-success" ng-click="click_join('aud_or_debater')" value="Join as either Audience of Debater">
+		 	</div>
+		</div>
+
+		<div class="cancel">
+			<input type="button" value="cancel" ng-click="goback_eventpage()">
+		</div>
+
+	</div>
+	<div ng-switch-when="message" >
+		<div class="title">
+			<div>
+			You should send one message to other participants
+			</div>
+		</div>
+
+		<div class="message">
+			<div class="input">
+				<textarea ng-model="message.data"></textarea>
+			</div>
+			<div class="button">
+				<input type="button" ng-click="click_send()" value="send">
+			</div>
+		</div>
+
+	</div>
+	<div  ng-switch-when="calendar_invite" >
+		this part is optional
+
+		<div class="title">
+			<div>
+			please register event info on calendar
+			</div>
+		</div>
+		<div class="calendar">
+
+			<a target="_blank" ng-href={{calendar_link}}>
+				<img src="./images/google_calendar.png">
+	 		</a>
+
+		</div>
+
+		<div class="title">
+			<div>
+			you can invite your friends to this event.
+			</div>
+		</div>
+		<div class="invite">
+			invite function is under implementation
+
+		</div>
+
+		<div class="next_button">
+			<input type="button" ng-click="click_next('calendar_invite')" value="Next">
+		</div>
+
+	</div>
+	<div ng-switch-when="language">
+		language
+	</div>
+	<div  ng-switch-when="under_process" >
+      <br><br><br>
+      <div class="ball"></div>
+      <div class="ball1"></div>
+      <br><br>
+
+		
+	</div>
+	<div  ng-switch-when="complete" >
+
+		<div class="title">
+			<div>
+			setting to join event has been all set!
+			</div>
+		</div>
+
+
+		<div class="after_complete">
+			<a ng-click="goback_eventpage()">goto event page</a>
+		</div>
+
+		<div class="after_complete">
+			<a ng-click="goto_mypage()">goto myage</a>
+			
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</div>

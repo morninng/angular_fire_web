@@ -17,6 +17,7 @@ touch .ftppass
   yo angular:controller Article-AudioTranscript
   yo angular:controller Article-WrittenDescription
   yo angular:controller Event-WebChat
+  yo angular:controller Join-Event
 
   bower install angular-bootstrap --save
 
@@ -29,6 +30,7 @@ touch .ftppass
  yo angular:factory EventSearch-Service
  yo angular:factory CheckBrowser-Service
  yo angular:constant MixideaInitial-Setting
+ yo angular:factory EventParticipate-Service
 
  
 yo angular:directive one-aud-trans
@@ -51,6 +53,7 @@ yo angular:directive comment_directive
 
  yo angular:service Util-Service
  yo angular:service Title-Flash
+ yo angular:service Event-Util
 
 
  ---My Page Related ----

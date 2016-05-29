@@ -221,7 +221,7 @@ angular.module('mixideaWebApp')
   	}
 
 
-/*
+
 	$scope.show_lgoin_form = function(){
 		console.log("show login form is called");
 		var modalInstance = $uibModal.open({
@@ -231,7 +231,7 @@ angular.module('mixideaWebApp')
 			size:'sm'
 		})
 	}
-*/
+
 
 	$scope.show_lgoin_form = function(){
 		console.log("show login form is called");
@@ -244,7 +244,7 @@ angular.module('mixideaWebApp')
 	}
 
 
-
+/*
   var main_context_element = document.getElementById("main_context");
   main_context_element.addEventListener("click", function(){
     console.log("main context is clicked");
@@ -255,7 +255,7 @@ angular.module('mixideaWebApp')
       $timeout(function(){}); 
     }
   })
-
+*/
 
   $scope.under_loading = false;
 
