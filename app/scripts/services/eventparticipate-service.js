@@ -180,7 +180,7 @@ angular.module('mixideaWebApp')
 // user join and cancel management
 /////////////////////////////////
 
-  function register_user(role_type, succeed_regist_cb){
+  function register_user(role_type, succeed_regist_cb, fail_regist_cb){
 
     var own_event_list_ref = root_ref.child("users/event_list/" + UserAuthService.own_uid + "/" + event_id);
     var event_participant_eventrole_ref = root_ref.child("event_related/participants/" + event_id + "/event_role/" + role_type + "/" + UserAuthService.own_uid);
@@ -198,7 +198,8 @@ angular.module('mixideaWebApp')
       succeed_regist_cb();
     },function(){
 
-      alert("error to save data")
+      alert("error to save data");
+      fail_regist_cb();
     })
   }
 
@@ -226,7 +227,7 @@ angular.module('mixideaWebApp')
     })
   }
 
-  function count_up_participants(role_type, succeed_regist_cb){
+  function count_up_participants(role_type, succeed_regist_cb, fail_regist_cb){
 
     if(!UserAuthService.own_uid){
       alert("you need to login to join the game");
@@ -261,8 +262,10 @@ angular.module('mixideaWebApp')
       console.log("transaction complete");
       if(error){
         alert('transaction failed' + error);
+        fail_regist_cb();
       }else if(!committed){
         alert("other person may take a role and cannot login more");
+        fail_regist_cb();
       }else{
         register_user(role_type, succeed_regist_cb);
       }
@@ -281,8 +284,8 @@ angular.module('mixideaWebApp')
   }
 
 
-  event_participant.join = function(role, succeed_regist_cb){
-    count_up_participants(role, succeed_regist_cb);
+  event_participant.join = function(role, succeed_regist_cb, fail_regist_cb){
+    count_up_participants(role, succeed_regist_cb, fail_regist_cb);
   }
 
   event_participant.cancel_participante = function(role){

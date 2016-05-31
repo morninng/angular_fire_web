@@ -559,12 +559,16 @@ angular.module('mixideaWebApp')
     $scope.event_join_process = "message";
     $timeout(function() {});
   }
+  function fail_regist_cb(){
+    $scope.event_join_process = "input";
+    $timeout(function() {});
+  }
 
 
   $scope.click_join = function(role){
     $scope.event_join_process = "under_process";
     $timeout(function() {});
-    EventParticipateService.join(role, succeed_regist_cb);
+    EventParticipateService.join(role, succeed_regist_cb, fail_regist_cb);
 
   }
 
@@ -1083,6 +1087,18 @@ angular.module('mixideaWebApp')
 
   $scope.join_event = function(){
     console.log("join event is called");
+
+    if(!$scope.user.own_uid){
+      alert("you need to login to join the game");
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/login_form_simple.html',
+        controller: 'LoginFormSimpleCtrl',
+        backdrop:"static",
+        size:'sm'
+      })
+      return;
+    }
+
 
     var modalInstance = $uibModal.open({
       templateUrl: 'views/event/join_event.html',

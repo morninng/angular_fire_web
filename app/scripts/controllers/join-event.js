@@ -46,12 +46,16 @@ angular.module('mixideaWebApp')
     $scope.event_join_process = "message";
     $timeout(function() {});
   }
+  function fail_regist_cb(){
+    $scope.event_join_process = "input";
+    $timeout(function() {});
+  }
 
 
   $scope.click_join = function(role){
     $scope.event_join_process = "under_process";
     $timeout(function() {});
-    EventParticipateService.join(role, succeed_regist_cb);
+    EventParticipateService.join(role, succeed_regist_cb, fail_regist_cb);
 
   }
 
